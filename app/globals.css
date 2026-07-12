@@ -1,26 +1,134 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ---------------------------------------------------------------------------
+   Ossentra design system
+
+   Two registers, borrowed from how this work actually gets documented:
+   PLATE  — light, bone-grey, the surgical atlas / engineering drawing sheet.
+   FIELD  — dark navy, the operative field.
+
+   Ink is the Ossentra navy, deepened so it can carry body text. One accent
+   only: `dura` (oxblood). It is the colour of the tissue the protector is
+   there to shield, and it is used for exactly one idea — the thing that must
+   not be cut. Never use it decoratively.
+--------------------------------------------------------------------------- */
+
+@theme {
+  /* Plate register */
+  --color-bone: #e9e8e2; /* page ground */
+  --color-plate: #f4f3ef; /* raised figure plates, cards */
+  --color-bonefill: #dcd9cd; /* cranial bone in diagrams */
+  --color-scalp: #d8c9c2; /* soft tissue in diagrams */
+  --color-hairline: #cdccc4; /* rules on light */
+
+  /* Ink */
+  --color-ink: #131e42; /* primary ink, and the FIELD ground */
+  --color-navy: #1e2e72; /* the brand navy, for the mark only */
+  --color-steel: #626a7e; /* secondary text, leader lines */
+
+  /* Field register */
+  --color-hairline-field: #2a3455;
+  --color-steel-field: #8d95a8;
+  --color-bone-field: #dcdbd5;
+
+  /* The one accent */
+  --color-dura: #8c2f3d;
+  --color-dura-field: #c86a78; /* legible oxblood on navy */
+
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-source-serif), ui-serif, Georgia, serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* --------------------------------------------------------------------------
+   Base
+-------------------------------------------------------------------------- */
+
+body {
+  background-color: var(--color-bone);
+  color: var(--color-ink);
+  font-family: var(--font-serif);
+  -webkit-font-smoothing: antialiased;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+::selection {
+  background-color: var(--color-dura);
+  color: var(--color-bone);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-dura);
+  outline-offset: 2px;
+}
+
+/* Mono carries every measured quantity. Tabular figures keep dimension
+   callouts and spec tables from shifting as values change. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
+   Figure animation
+
+   One orchestrated load sequence on the hero section: the anatomy settles,
+   the dura draws, the instrument arrives, the callouts annotate. Nothing
+   loops — a drawing is not a screensaver.
+-------------------------------------------------------------------------- */
+
+@keyframes ossentra-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes ossentra-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ossentra-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Paths carrying `.draw` must declare pathLength="1" so the dash maths is
+   independent of their real arc length. */
+.draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: ossentra-draw 1.4s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+.fade {
+  animation: ossentra-fade 0.7s ease-out both;
+}
+
+.rise {
+  animation: ossentra-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Land every animated element in its finished state rather than its
+     starting one — a disabled draw-on must not leave the figure blank. */
+  .draw,
+  .fade,
+  .rise {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
+  }
 }
