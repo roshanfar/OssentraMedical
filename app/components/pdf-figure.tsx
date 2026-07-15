@@ -21,7 +21,7 @@ export function PdfFigure({
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="block h-auto w-full" />
       {caption ? (
-        <figcaption className="border-t border-hairline px-5 py-4 font-mono text-[0.6875rem] uppercase leading-[1.6] tracking-[0.12em] text-steel">
+        <figcaption className="border-t border-hairline px-5 py-4 font-serif text-sm leading-[1.6] text-steel">
           {caption}
         </figcaption>
       ) : null}
