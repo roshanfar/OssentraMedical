@@ -23,8 +23,8 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: {
     default:
-      "Ossentra — Articulating bone-cutting instrument for pediatric skull surgery",
-    template: "%s — Ossentra",
+      "Ossentra",
+    template: "%s | Ossentra",
   },
   description:
     "Ossentra is a handheld articulating bone-cutting instrument for minimally invasive craniosynostosis surgery. It bends to follow the curve of an infant's cranium and shields the dura with the jaw that cuts. Spun out of SickKids, Toronto.",
@@ -38,9 +38,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${archivo.variable} ${sourceSerif.variable} ${plexMono.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col bg-bone text-graphite">
+      <body className="min-h-full flex flex-col text-ink">
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />

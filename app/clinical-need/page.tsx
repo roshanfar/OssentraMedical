@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PdfFigure } from "../components/pdf-figure";
 import {
   Body,
   ButtonLink,
@@ -8,21 +9,13 @@ import {
   Lead,
   Section,
 } from "../components/primitives";
-import {
-  epidemiology,
-  problems,
-  quoteSource,
-  references,
-  rejectedClaim,
-  surgeonQuotes,
-} from "../content/need";
+import { clinicalImpact, epidemiology, problems, references } from "../content/need";
 
 export const metadata: Metadata = {
   title: "Clinical need",
   description:
     "Whether a child gets the small operation or the big one is partly a question of how far a straight instrument can reach.",
 };
-//test
 
 export default function ClinicalNeedPage() {
   return (
@@ -31,21 +24,18 @@ export default function ClinicalNeedPage() {
         <div className="max-w-3xl">
           <Eyebrow>Clinical need</Eyebrow>
           <Heading level={1} className="mt-6">
-            Whether a child gets the small operation or the big one is partly a
-            question of reach.
+            The operation a child gets depends on how far the tools can reach.
           </Heading>
           <Lead className="mt-7">
-            In craniosynostosis, a cranial suture fuses too early. The skull stops
-            growing where it should and the pressure goes somewhere else. The fix
-            is surgical: cut the bone, release the suture, let the brain grow.
-            How much bone the surgeon can cut through a small incision decides
-            whether the child needs the small operation at all.
+            In craniosynostosis a suture fuses too early. The fix is surgical:
+            cut the bone, release the suture, let the brain grow. How much bone a
+            surgeon can reach through a small incision decides which operation.
           </Lead>
         </div>
       </Section>
 
       {/* --- The numbers --- */}
-      <div className="border-b border-hairline bg-plate py-12">
+      <div className="border-b border-hairline py-12">
         <div className="mx-auto w-full max-w-6xl px-6 sm:px-8">
           <dl className="grid gap-x-8 gap-y-8 sm:grid-cols-3">
             {epidemiology.map((fact) => (
@@ -69,8 +59,31 @@ export default function ClinicalNeedPage() {
         </div>
       </div>
 
-      {/* --- The chain --- */}
+      {/* --- Two approaches --- */}
       <Section>
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center lg:gap-16">
+          <div>
+            <Eyebrow>Open vs. endoscopic</Eyebrow>
+            <Heading className="mt-5">
+              Extensive reshaping, or a small incision. Not both.
+            </Heading>
+            <Body className="mt-6">
+              Open surgery reshapes the vault but is highly invasive. Endoscopic
+              surgery is minimally invasive but limited in what it can reach.
+              Ossentra is built to close that gap.
+            </Body>
+          </div>
+
+          <PdfFigure
+            src="/figures/craniosynostosis-surgery.png"
+            alt="Craniosynostosis surgery: open vs. endoscopic approach"
+            caption="Open surgery vs. endoscopic surgery for craniosynostosis."
+          />
+        </div>
+      </Section>
+
+      {/* --- The chain --- */}
+      <Section className="border-t border-hairline">
         <LabelledRule className="mb-12">How the limit propagates</LabelledRule>
 
         <div className="flex flex-col">
@@ -88,56 +101,35 @@ export default function ClinicalNeedPage() {
         </div>
       </Section>
 
-      {/* --- What surgeons said --- */}
+      {/* --- The impact --- */}
       <Section register="field">
         <div className="max-w-2xl">
-          <Eyebrow register="field">In their words</Eyebrow>
+          <Eyebrow register="field">Open surgery vs. Ossentra</Eyebrow>
           <Heading register="field" className="mt-5">
-            The curvature problem is the one nobody has been working on.
+            What changes for the infant.
           </Heading>
         </div>
 
-        <div className="mt-12 grid gap-px bg-hairline-field md:grid-cols-3">
-          {surgeonQuotes.map((quote) => (
-            <figure key={quote.text.slice(0, 16)} className="bg-ink p-6 sm:p-7">
-              <blockquote className="font-serif text-lg leading-[1.55] text-bone-field text-pretty">
-                &ldquo;{quote.text}&rdquo;
-              </blockquote>
-              <figcaption className="mt-5 font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-steel-field">
-                {quote.attribution}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-
-        <p className="mt-8 font-mono text-[0.6875rem] uppercase leading-[1.6] tracking-[0.1em] text-steel-field">
-          {quoteSource}
-        </p>
-      </Section>
-
-      {/* --- The claim we are not making. The most important block on the site. --- */}
-      <Section>
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-20">
-          <div>
-            <Eyebrow>A claim we do not make</Eyebrow>
-            <Heading className="mt-5">
-              &ldquo;{rejectedClaim.claim}&rdquo;
-            </Heading>
-          </div>
-          <div className="border-l-2 border-dura pl-7">
-            <Body className="text-[1.0625rem]">{rejectedClaim.verdict}</Body>
-            <Body className="mt-4 text-[1.0625rem]">
-              What Ossentra changes is narrower, and we think more useful: the
-              extent of bone a surgeon can remove through a small incision, and
-              how much of that work is done with the dura covered.
-            </Body>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <ButtonLink href="/technology">See how it works</ButtonLink>
-              <ButtonLink href="/contact" variant="outline">
-                Talk to us
-              </ButtonLink>
+        <dl className="mt-12 grid gap-px bg-hairline-field md:grid-cols-3">
+          {clinicalImpact.map((item) => (
+            <div key={item.value} className="bg-ink p-6 sm:p-7">
+              <dd className="tnum font-display text-3xl font-semibold tracking-[-0.02em] text-bone-field">
+                {item.value}
+              </dd>
+              <dt className="mt-3 font-serif text-[0.9375rem] leading-[1.55] text-steel-field">
+                {item.label}
+              </dt>
             </div>
-          </div>
+          ))}
+        </dl>
+
+        <div className="mt-10 flex flex-wrap gap-3">
+          <ButtonLink href="/technology" register="field">
+            How it works
+          </ButtonLink>
+          <ButtonLink href="/contact" register="field" variant="outline">
+            Talk to us
+          </ButtonLink>
         </div>
       </Section>
 

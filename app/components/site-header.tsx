@@ -6,28 +6,6 @@ import { useState } from "react";
 import { nav } from "../content/site";
 import { Container } from "./primitives";
 
-/**
- * The mark: a ring with a bite taken out of it, echoing the Ossentra wordmark.
- * It is also, literally, what the instrument does — a punch removes bone one
- * bite at a time.
- */
-function Mark({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden className={className} fill="none">
-      <path
-        d="M12 2.6 A 9.4 9.4 0 1 1 5.4 18.6"
-        stroke="currentColor"
-        strokeWidth="3.4"
-        strokeLinecap="butt"
-      />
-      <path
-        d="M5.4 18.6 A 9.4 9.4 0 0 1 2.6 12 L 8.3 12 A 3.7 3.7 0 0 0 9.4 14.6 Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -41,10 +19,8 @@ export function SiteHeader() {
             className="flex items-center gap-2.5"
             onClick={() => setOpen(false)}
           >
-            <Mark className="h-5 w-5 text-navy" />
-            <span className="font-display text-lg font-semibold tracking-[-0.01em] text-ink">
-              Ossentra
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/Logo.png" alt="Ossentra" className="h-9 w-auto" />
           </Link>
 
           <nav aria-label="Primary" className="hidden md:block">

@@ -3,37 +3,35 @@
 /* ---------------------------------------------------------------------------
    Ossentra design system
 
-   Two registers, borrowed from how this work actually gets documented:
-   PLATE  — light, bone-grey, the surgical atlas / engineering drawing sheet.
-   FIELD  — dark navy, the operative field.
+   Two registers:
+   PLATE  — white page ground, the light surface.
+   FIELD  — bold SickKids blue, the operative field.
 
-   Ink is the Ossentra navy, deepened so it can carry body text. One accent
-   only: `dura` (oxblood). It is the colour of the tissue the protector is
-   there to shield, and it is used for exactly one idea — the thing that must
-   not be cut. Never use it decoratively.
+   One accent: `dura`, an azure blue distinct from the navy ink, carried with a
+   soft blue shadow. Used for the one idea — the thing that must not be cut.
 --------------------------------------------------------------------------- */
 
 @theme {
-  /* Plate register */
-  --color-bone: #e9e8e2; /* page ground */
-  --color-plate: #f4f3ef; /* raised figure plates, cards */
-  --color-bonefill: #dcd9cd; /* cranial bone in diagrams */
-  --color-scalp: #d8c9c2; /* soft tissue in diagrams */
-  --color-hairline: #cdccc4; /* rules on light */
+  /* Plate register — clean white */
+  --color-bone: #ffffff; /* page ground / light-on-dark */
+  --color-plate: #ffffff; /* raised cards */
+  --color-bonefill: #d5e3f2;
+  --color-scalp: #cbdcec;
+  --color-hairline: #d6e3f1; /* rules on light */
 
-  /* Ink */
-  --color-ink: #131e42; /* primary ink, and the FIELD ground */
-  --color-navy: #1e2e72; /* the brand navy, for the mark only */
-  --color-steel: #626a7e; /* secondary text, leader lines */
+  /* Ink — the SickKids blue, carrying text and the bold FIELD blocks */
+  --color-ink: #023e7d; /* primary ink, and the FIELD ground */
+  --color-navy: #0466c8; /* brighter brand blue, for the mark & links */
+  --color-steel: #45617d; /* secondary text */
 
-  /* Field register */
-  --color-hairline-field: #2a3455;
-  --color-steel-field: #8d95a8;
-  --color-bone-field: #dcdbd5;
+  /* Field register — set on the bold blue ground */
+  --color-hairline-field: #1a5296;
+  --color-steel-field: #9cc0e4;
+  --color-bone-field: #eaf3fd;
 
-  /* The one accent */
-  --color-dura: #8c2f3d;
-  --color-dura-field: #c86a78; /* legible oxblood on navy */
+  /* The one accent — azure, replacing the old red */
+  --color-dura: #0aa2dc;
+  --color-dura-field: #7fd4f5; /* legible on blue */
 
   --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-source-serif), ui-serif, Georgia, serif;
@@ -44,6 +42,13 @@
    Base
 -------------------------------------------------------------------------- */
 
+/* ~1.5× everything. rem-based utilities scale from the root, so the whole
+   site enlarges proportionally. */
+html {
+  font-size: 24px;
+}
+
+/* Flat white ground. */
 body {
   background-color: var(--color-bone);
   color: var(--color-ink);
@@ -53,7 +58,7 @@ body {
 
 ::selection {
   background-color: var(--color-dura);
-  color: var(--color-bone);
+  color: #ffffff;
 }
 
 :focus-visible {
@@ -61,74 +66,17 @@ body {
   outline-offset: 2px;
 }
 
-/* Mono carries every measured quantity. Tabular figures keep dimension
-   callouts and spec tables from shifting as values change. */
+/* Mono carries every measured quantity. */
 .tnum {
   font-variant-numeric: tabular-nums;
 }
 
-/* --------------------------------------------------------------------------
-   Figure animation
-
-   One orchestrated load sequence on the hero section: the anatomy settles,
-   the dura draws, the instrument arrives, the callouts annotate. Nothing
-   loops — a drawing is not a screensaver.
--------------------------------------------------------------------------- */
-
-@keyframes ossentra-draw {
-  from {
-    stroke-dashoffset: 1;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
+/* The one accent, carried with a soft azure shadow. */
+.accent-shadow {
+  box-shadow: 0 6px 22px rgba(10, 162, 220, 0.28);
 }
 
-@keyframes ossentra-fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes ossentra-rise {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-/* Paths carrying `.draw` must declare pathLength="1" so the dash maths is
-   independent of their real arc length. */
-.draw {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation: ossentra-draw 1.4s cubic-bezier(0.65, 0, 0.35, 1) both;
-}
-
-.fade {
-  animation: ossentra-fade 0.7s ease-out both;
-}
-
-.rise {
-  animation: ossentra-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  /* Land every animated element in its finished state rather than its
-     starting one — a disabled draw-on must not leave the figure blank. */
-  .draw,
-  .fade,
-  .rise {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-    stroke-dashoffset: 0 !important;
-  }
+/* Cards lift off the white with a soft blue-tinted shadow. */
+.card-shadow {
+  box-shadow: 0 2px 10px rgba(2, 62, 125, 0.06), 0 12px 32px rgba(2, 62, 125, 0.07);
 }

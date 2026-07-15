@@ -8,7 +8,7 @@ import {
   Lead,
   Section,
 } from "../components/primitives";
-import { contributors, funding, originStory, team } from "../content/team";
+import { funding, originStory, team } from "../content/team";
 import { ecosystem, site } from "../content/site";
 
 export const metadata: Metadata = {
@@ -27,11 +27,9 @@ export default function TeamPage() {
             The surgeon who invented it still operates.
           </Heading>
           <Lead className="mt-7">
-            Ossentra came out of {site.centre} at {site.origin} — a lab where the
-            engineers sit in on the case. The design requirements were not
-            gathered from a market study. They were gathered from watching a
-            craniosynostosis repair and noticing that the instrument, not the
-            surgeon, was the thing that ran out.
+            Ossentra came out of PCIGITI at {site.origin}, a lab where the
+            engineers sit in on the case. The requirements came from watching a
+            repair and seeing the instrument run out before the surgeon did.
           </Lead>
         </div>
       </Section>
@@ -41,17 +39,24 @@ export default function TeamPage() {
 
         <div className="grid gap-px bg-hairline sm:grid-cols-2">
           {team.map((person) => (
-            <article key={person.name} className="bg-bone p-6 sm:p-8">
-              <p className="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-dura">
-                {person.role}
-              </p>
+            <article key={person.name} className="bg-plate p-6 sm:p-8">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={person.photo}
+                alt={person.name}
+                className="card-shadow h-40 w-40 rounded-full object-cover object-top"
+              />
 
-              <h2 className="mt-5 font-display text-xl font-semibold tracking-[-0.015em] text-ink">
+              <h2 className="mt-6 font-display text-xl font-semibold tracking-[-0.015em] text-ink">
                 {person.name}
                 <span className="ml-2 font-mono text-sm font-normal uppercase tracking-[0.08em] text-steel">
                   {person.credentials}
                 </span>
               </h2>
+
+              <p className="mt-2 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-dura">
+                {person.role}
+              </p>
 
               <p className="mt-1.5 font-mono text-[0.6875rem] uppercase leading-[1.5] tracking-[0.1em] text-steel">
                 {person.affiliation}
@@ -70,8 +75,8 @@ export default function TeamPage() {
         <div className="max-w-2xl">
           <Eyebrow register="field">From paper to product</Eyebrow>
           <Heading register="field" className="mt-5">
-            Research asks whether it is possible. Founding asks whether it reaches
-            the patient.
+            Research asks if it&apos;s possible. Founding asks if it reaches the
+            patient.
           </Heading>
         </div>
 
@@ -97,7 +102,7 @@ export default function TeamPage() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] lg:gap-20">
           <div>
             <Eyebrow>Built on</Eyebrow>
-            <Heading className="mt-5">You do not do this alone.</Heading>
+            <Heading className="mt-5">Not done alone.</Heading>
             <Body className="mt-6">{funding}</Body>
           </div>
 
@@ -124,9 +129,8 @@ export default function TeamPage() {
           <div className="max-w-2xl">
             <Heading>Hiring: mechanism design, verification, regulatory.</Heading>
             <Lead className="mt-6">
-              If you have taken a Class II instrument that works near dura through
-              a 510(k) and come out the other side, we would like to hear from
-              you.
+              Taken a Class II instrument through a 510(k) and out the other
+              side? We&apos;d like to hear from you.
             </Lead>
           </div>
           <ButtonLink href="/contact">Get in touch</ButtonLink>

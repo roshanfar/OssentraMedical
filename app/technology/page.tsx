@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
-import { FigureEndEffector } from "../components/figure-end-effector";
-import { FigureLandscape } from "../components/figure-landscape";
-import { FigureReachability } from "../components/figure-reachability";
+import { PdfFigure } from "../components/pdf-figure";
 import {
   Body,
   ButtonLink,
   Eyebrow,
-  FigurePlate,
   Heading,
   LabelledRule,
   Lead,
@@ -19,7 +16,7 @@ import { site } from "../content/site";
 export const metadata: Metadata = {
   title: "Technology",
   description:
-    "A tendon-driven bending section of three sliding curved joints, a bone punch with an integrated dural protector, and a flexible endoscope — in a 13.5 mm shaft.",
+    "A cable-driven bending section, a bone punch with an integrated dural protector, and a flexible endoscope, all in a 13 mm shaft.",
 };
 
 export default function TechnologyPage() {
@@ -29,83 +26,67 @@ export default function TechnologyPage() {
         <div className="max-w-3xl">
           <Eyebrow>Technology</Eyebrow>
           <Heading level={1} className="mt-6">
-            Continuum tools bend but cannot cut. Powered benders cut but cannot
-            be held.
+            Bend but can&apos;t cut. Cut but can&apos;t be held.
           </Heading>
           <Lead className="mt-7">
-            Steerable instruments already exist. The flexible ones are built for
-            soft tissue and go slack against bone. The rigid, motorized bending
-            drills are built for hips and shoulders — bulky, powered, and with no
-            reason to protect anything above the bone, because in a joint there
-            is nothing there. An infant&apos;s skull is 2 mm of bone with dura
-            beneath it and paper-thin scalp on top. It needs a different
-            instrument.
+            Flexible instruments go slack against bone. Powered benders are built
+            for hips and shoulders. An infant&apos;s skull is 2 mm of bone over
+            dura. It needs a different instrument.
           </Lead>
           <StatusNote className="mt-8 max-w-lg">{site.regulatoryStatus}</StatusNote>
         </div>
       </Section>
 
-      {/* --- The vertical case: the end-effector --- */}
+      {/* --- The end-effector --- */}
       <Section>
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:items-center lg:gap-16">
           <div>
-            <Eyebrow>Fig. 01 — End-effector</Eyebrow>
+            <Eyebrow>The end-effector</Eyebrow>
             <Heading className="mt-5">
-              The jaw that cuts the bone is the jaw that shields the dura.
+              The jaw that cuts is the jaw that shields.
             </Heading>
             <Body className="mt-6">
-              The end-effector is a two-jaw bone punch. The lower jaw is also the
-              dural protector: it slides beneath the bone edge and stays between
-              the punch and the dura through the bite. A scalp retractor above
-              lifts the soft tissue into a pocket, which is the only reason the
-              endoscope has anything to look at.
+              A cable-driven bone punch. The lower jaw is the dural protector,
+              staying between the punch and the dura through every bite. A scalp
+              retractor above makes the pocket the endoscope sees into.
             </Body>
             <Body className="mt-4">
-              The jaws open to 4 mm — enough to take the full 2 mm thickness of
-              an infant calvarium in one bite, with clearance. Protection is not
-              a mode the surgeon selects. It is the geometry of the tool.
+              Punch, dural protector, and endoscope channel all fit in one 13 mm
+              shaft. Protection isn&apos;t a setting the surgeon turns on. It comes
+              from the shape of the jaw.
             </Body>
           </div>
 
-          <FigurePlate
-            number="01"
-            title="Section through the end-effector"
-            caption="Schematic. Soft tissue and the epidural plane are drawn beyond scale for legibility."
-          >
-            <FigureEndEffector />
-          </FigurePlate>
+          <PdfFigure
+            src="/figures/end-effector.png"
+            alt="End-effector: bone punch, scalp retractor, dural protector, and endoscope channel"
+            caption="Bone punch jaws, dural protector, and endoscope channel."
+          />
         </div>
       </Section>
 
-      {/* --- The horizontal case: reachability --- */}
+      {/* --- Articulation / reach --- */}
       <Section register="field">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
-          <FigurePlate
-            number="02"
-            title="Reachability, single vertex incision"
-            register="field"
-            caption="Tool tip constrained to the skull surface. 3D-printed skulls from the CT of three craniosynostosis patients. Dashed segments were reached by lifting the shaft off the vertex, stretching the simulated scalp by 1.2–10.9 mm."
-          >
-            <FigureReachability />
-          </FigurePlate>
+          <PdfFigure
+            src="/figures/articulating-cutter.png"
+            alt="Articulating skull cutter reaching along a craniosynostosis phantom from a single vertex incision"
+            caption="Reaches the distal frontal, parietal and occipital bones from a single vertex incision."
+          />
 
           <div className="lg:order-first">
-            <Eyebrow register="field">Fig. 02 — Reachability</Eyebrow>
+            <Eyebrow register="field">Articulation</Eyebrow>
             <Heading register="field" className="mt-5">
-              Three quarters of the osteotomy, from one hole.
+              It bends to the skull&apos;s curve.
             </Heading>
             <Body register="field" className="mt-6">
-              Three consecutive sliding curved joints, driven by an antagonistic
-              tendon pair, trace a radius of curvature from 30 to 180 mm — the
-              curvature range of the infant cranium, taken from patient CT. A
-              worm gear with a 1:40 reduction holds the angle without power and
-              without back-driving.
+              A cable-driven bending section conforms to the ~140 mm curvature of
+              the infant cranium. A worm-gear drive holds the angle without power
+              and without back-driving.
             </Body>
             <Body register="field" className="mt-4">
-              Sliding curved joints were chosen over hinges or rolling joints for
-              a blunt reason: fewer parts, so more of the 13.5 mm cross-section is
-              left for the things that actually matter — the punch, the protector,
-              and the endoscope channel.
+              One shaft and one vertex incision reach where straight tools work
+              blind or need a second cut.
             </Body>
           </div>
         </div>
@@ -153,44 +134,37 @@ export default function TechnologyPage() {
         </p>
       </Section>
 
-      {/* --- The landscape --- */}
+      {/* --- Robot-ready --- */}
       <Section register="field">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:items-center lg:gap-16">
           <div>
-            <Eyebrow register="field">Fig. 03 — Landscape</Eyebrow>
+            <Eyebrow register="field">Robot-ready</Eyebrow>
             <Heading register="field" className="mt-5">
-              Everyone solves half of it.
+              The same cable that the surgeon pulls, a robot can.
             </Heading>
             <Body register="field" className="mt-6">
-              Scissors, rongeurs, drills and ultrasonic cutters remove bone, and
-              none of them turn. ArtiSential and FlexDex articulate beautifully,
-              for soft tissue. The closest thing to Ossentra is JPI&apos;s
-              articulating bur — which is powered, and built for hip and shoulder
-              joints rather than a 2 mm infant skull. A ROSA robot costs over a
-              million dollars and does not cut bone along a curve.
+              The cable-driven mechanism is the class used in leading surgical
+              robots. It is manual today, and the same architecture mounts as an
+              end-effector on a robotic arm with no redesign. Only the drive needs
+              motorizing.
             </Body>
           </div>
 
-          <FigurePlate
-            number="03"
-            title="Where the instrument sits"
-            register="field"
-            caption="Positioning against instruments in current use and the nearest articulating devices. Axis positions are qualitative."
-          >
-            <FigureLandscape />
-          </FigurePlate>
+          <PdfFigure
+            src="/figures/robot-ready.png"
+            alt="Ossentra handle mounted as an end-effector on a robotic arm"
+            caption="Phase 2: the handle mounts on a collaborative robotic arm. Same end-effectors, same 510(k) class."
+          />
         </div>
       </Section>
 
       {/* --- What we still have to prove --- */}
       <Section>
         <div className="max-w-2xl">
-          <Eyebrow>Open problems</Eyebrow>
-          <Heading className="mt-5">What we still have to solve.</Heading>
+          <Eyebrow>What&apos;s next</Eyebrow>
+          <Heading className="mt-5">What we still have to build.</Heading>
           <Body className="mt-6">
-            These came from the surgeons who reviewed the concept, and they are
-            in the published paper as future work. A page that only listed what
-            already works would be a worse page.
+            The functions between a proven concept and a real osteotomy.
           </Body>
         </div>
 
@@ -204,35 +178,12 @@ export default function TechnologyPage() {
             </article>
           ))}
         </div>
-      </Section>
 
-      {/* --- Materials --- */}
-      <Section className="border-t border-hairline">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:gap-20">
-          <div>
-            <Eyebrow>Build & reprocessing</Eyebrow>
-            <Heading className="mt-5">Designed to be reused.</Heading>
-          </div>
-          <div>
-            <Body className="text-[1.0625rem]">
-              The shaft is 6061 aluminium, the bending section SUS 316 stainless,
-              the gears brass, the tendon guides superelastic nitinol. All are
-              biocompatible and survive high-temperature sterilization. There are
-              no electrical components in the instrument.
-            </Body>
-            <Body className="mt-4 text-[1.0625rem]">
-              The handle on the current prototype is 3D-printed PLA — a research
-              part, not a sterilizable one. Converting it to polypropylene with
-              stainless load-bearing internals is a known design iteration, not an
-              open question, and it is on the path to design freeze.
-            </Body>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <ButtonLink href="/contact">Request the bench data</ButtonLink>
-              <ButtonLink href="/clinical-need" variant="outline">
-                Clinical need
-              </ButtonLink>
-            </div>
-          </div>
+        <div className="mt-12 flex flex-wrap gap-3">
+          <ButtonLink href="/contact">Request the bench data</ButtonLink>
+          <ButtonLink href="/clinical-need" variant="outline">
+            Clinical need
+          </ButtonLink>
         </div>
       </Section>
     </>

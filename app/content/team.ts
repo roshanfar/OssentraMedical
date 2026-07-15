@@ -13,28 +13,32 @@ export const team = [
     credentials: "PhD",
     role: "Co-founder & CEO",
     affiliation: "Postdoctoral fellow, SickKids and University of Toronto",
-    bio: "Surgical-robotics engineer. Eight years on one question — how to make surgery safer with robots — across Concordia, the U of T Microrobotics Lab, and PCIGITI. Previously lead engineer at FemTherapeutics. Leads the venture.",
+    bio: "Surgical-robotics engineer. Eight years making surgery safer with robots. Leads the venture.",
+    photo: "/figures/Majid.jpg",
   },
   {
     name: "Dale Podolsky",
     credentials: "MD, PhD",
     role: "Chief Medical Officer",
     affiliation: "Pediatric craniofacial surgeon · Co-Director, PCIGITI",
-    bio: "Surgeon and engineer, and the inventor of the device. He still operates, which is why the design requirements came out of a craniosynostosis case rather than a market study. Previously founded Simulare Medical.",
+    bio: "Surgeon, engineer, and inventor of the device. He still operates, which is why the requirements came from a real case instead of a market study.",
+    photo: "/figures/Dale.jpg",
   },
   {
     name: "Thomas Looi",
     credentials: "PhD",
     role: "Chief Operating Officer",
     affiliation: "Co-Lead, PCIGITI",
-    bio: "Fifteen years translating surgical innovation from bench to clinic. Owns the path from a characterized prototype to something a hospital can actually buy, reprocess and trust.",
+    bio: "Fifteen years translating surgical innovation from bench to clinic. Owns the path to something a hospital can buy, reprocess and trust.",
+    photo: "/figures/Thomas.jpg",
   },
   {
     name: "Jones Law",
     credentials: "PhD Candidate",
     role: "Chief Technology Officer",
     affiliation: "Institute of Biomedical Engineering, University of Toronto",
-    bio: "Engineering and product development lead, and first author on the paper that characterizes the instrument. Owns the bending section, the end-effector, and the tolerance stack that keeps the punch off the dura.",
+    bio: "Engineering lead and first author on the characterization paper. Owns the bending section, the end-effector, and the punch-to-dura tolerance stack.",
+    photo: "/figures/Jones.png",
   },
 ] as const;
 
@@ -55,11 +59,11 @@ export const contributors = [
 export const originStory = [
   {
     step: "Validate",
-    detail: "Shadowed surgeons in the operating room and mapped the workflow. The gap was not knowledge. It was an instrument.",
+    detail: "Shadowed surgeons in the OR. The gap wasn't knowledge. It was an instrument.",
   },
   {
     step: "Build",
-    detail: "Prototyped inside PCIGITI with a craniofacial surgeon in the room, and characterized it on the bench.",
+    detail: "Prototyped inside PCIGITI with a craniofacial surgeon in the room, then characterized on the bench.",
   },
   {
     step: "Protect",
@@ -67,9 +71,9 @@ export const originStory = [
   },
   {
     step: "Launch",
-    detail: "Spun out as Ossentra, backed by a SickKids Proof-of-Principle grant and the UTEST 2026 cohort.",
+    detail: "Spun out as Ossentra, backed by a SickKids Proof-of-Principle grant and UTEST 2026.",
   },
 ] as const;
 
 export const funding =
-  "The underlying research was supported by NSERC (Canada Graduate Scholarship–Doctoral) and the Canadian Institutes of Health Research.";
+  "Supported by a SickKids Proof-of-Principle grant and a CIHR Project Grant, with a US patent filed through SickKids.";

@@ -1,18 +1,16 @@
-import { FigureEndEffector } from "./components/figure-end-effector";
 import {
   Body,
   ButtonLink,
   Container,
   Eyebrow,
-  FigurePlate,
   Heading,
   LabelledRule,
   Lead,
   Section,
   StatusNote,
 } from "./components/primitives";
-import { capabilities, developmentStages, market, paper, specs } from "./content/device";
-import { quoteSource, surgeonQuotes } from "./content/need";
+import { PdfFigure } from "./components/pdf-figure";
+import { capabilities, developmentStages, market, specs } from "./content/device";
 import { site } from "./content/site";
 
 export default function HomePage() {
@@ -24,19 +22,16 @@ export default function HomePage() {
       <section className="border-b border-hairline py-16 sm:py-24">
         <Container>
           <div className="grid gap-14 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-center lg:gap-16">
-            <div className="rise">
-              <Eyebrow>Craniosynostosis · {site.origin}</Eyebrow>
+            <div>
+              <Eyebrow>Craniosynostosis · SickKids · U of T</Eyebrow>
 
               <Heading level={1} className="mt-6">
-                The skull curves. Every tool we cut it with is straight.
+                Robotics for the smallest skulls.
               </Heading>
 
               <Lead className="mt-7 max-w-xl">
-                Ossentra is a handheld articulating bone-cutting instrument for
-                minimally invasive craniosynostosis surgery. It bends to follow
-                the curve of an infant&apos;s cranium, shields the dura and scalp
-                with the jaw that does the cutting, and reaches 72–78% of the
-                planned osteotomy through a single incision at the vertex.
+                The first articulating, robot-ready bone-cutting instrument for
+                minimally invasive pediatric skull surgery.
               </Lead>
 
               <div className="mt-9 flex flex-wrap gap-3">
@@ -51,14 +46,11 @@ export default function HomePage() {
               </StatusNote>
             </div>
 
-            <FigurePlate
-              number="01"
-              title="Section through the end-effector"
-              caption="Schematic. Soft tissue and the epidural plane are drawn beyond scale for legibility; the 3 mm bar applies to the horizontal axis. Bone thickness after Igo et al. (2021); instrument after Law et al. (2025)."
-              className="fade"
-            >
-              <FigureEndEffector />
-            </FigurePlate>
+            <PdfFigure
+              src="/figures/solution-skull.png"
+              alt="Ossentra articulating instrument following the curved endoscopic path beneath the scalp"
+              caption="A steerable instrument for curved osteotomy trajectories."
+            />
           </div>
         </Container>
       </section>
@@ -68,9 +60,7 @@ export default function HomePage() {
       --------------------------------------------------------------- */}
       <div className="bg-ink py-10 text-bone-field">
         <Container>
-          <Eyebrow register="field">
-            Characterized prototype — {paper.short}
-          </Eyebrow>
+          <Eyebrow register="field">Open surgery vs. Ossentra</Eyebrow>
           <dl className="mt-7 grid grid-cols-2 gap-x-8 gap-y-9 lg:grid-cols-4">
             {specs.map((spec) => (
               <div key={spec.label} className="border-t border-hairline-field pt-4">
@@ -99,19 +89,17 @@ export default function HomePage() {
         <div className="max-w-2xl">
           <Eyebrow>The instrument</Eyebrow>
           <Heading className="mt-5">
-            A bone cutter that articulates, and an articulating tool that cuts
-            bone.
+            Others cut bone. Others articulate. We do both.
           </Heading>
           <Body className="mt-6">
-            Those two things have not existed in the same instrument. Tools that
-            cut bone — scissors, rongeurs, drills, ultrasonic cutters — are rigid
-            and straight. Tools that bend are made for soft tissue.
+            Tools that cut bone are rigid and straight. Tools that bend are made
+            for soft tissue. No instrument has done both, until now.
           </Body>
         </div>
 
         <div className="mt-14 grid gap-px bg-hairline sm:grid-cols-3">
           {capabilities.map((cap) => (
-            <article key={cap.id} className="bg-bone p-6 sm:p-8">
+            <article key={cap.id} className="bg-plate p-6 sm:p-8">
               <p className="tnum font-mono text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-dura">
                 {cap.metric}
               </p>
@@ -131,42 +119,31 @@ export default function HomePage() {
       </Section>
 
       {/* ---------------------------------------------------------------
-          What surgeons said. Field register.
+          Competition. Field register.
       --------------------------------------------------------------- */}
       <Section register="field">
         <div className="max-w-2xl">
-          <Eyebrow register="field">From the operating room</Eyebrow>
+          <Eyebrow register="field">Competition</Eyebrow>
           <Heading register="field" className="mt-5">
-            We asked ten surgeons what was wrong with it before we asked anyone
-            to like it.
+            Others cut bone. Others articulate. We do both.
           </Heading>
           <Lead register="field" className="mt-7">
-            In 2025 we put the concept in front of ten US craniosynostosis
-            surgeons, blinded, and let them take it apart. What they valued and
-            what they rejected are both on this site.
+            Bone cutters are straight. Articulating tools are for soft tissue.
+            The closest thing, JPI&apos;s bur, is built for adult joints.
+            Ossentra is the only device that does all five.
           </Lead>
         </div>
 
-        <div className="mt-14 grid gap-px bg-hairline-field md:grid-cols-3">
-          {surgeonQuotes.map((quote) => (
-            <figure key={quote.attribution + quote.text.slice(0, 12)} className="bg-ink p-6 sm:p-7">
-              <blockquote className="font-serif text-lg leading-[1.55] text-bone-field text-pretty">
-                &ldquo;{quote.text}&rdquo;
-              </blockquote>
-              <figcaption className="mt-5 font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-steel-field">
-                {quote.attribution}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
+        <PdfFigure
+          src="/figures/competition.png"
+          alt="Competitive comparison: Ossentra vs. bone cutters, articulating tools, and robots"
+          caption="Cuts bone × articulates × infant scale × endoscopic access × cleared. Ossentra satisfies all five."
+          className="mt-12"
+        />
 
-        <p className="mt-8 font-mono text-[0.6875rem] uppercase leading-[1.6] tracking-[0.1em] text-steel-field">
-          {quoteSource}
-        </p>
-
-        <div className="mt-9">
-          <ButtonLink href="/clinical-need" register="field" variant="outline">
-            The clinical need
+        <div className="mt-10">
+          <ButtonLink href="/technology" register="field" variant="outline">
+            How it works
           </ButtonLink>
         </div>
       </Section>
@@ -177,10 +154,9 @@ export default function HomePage() {
       <Section>
         <div className="max-w-2xl">
           <Eyebrow>Development status</Eyebrow>
-          <Heading className="mt-5">Where the programme actually is.</Heading>
+          <Heading className="mt-5">Where the programme is.</Heading>
           <Body className="mt-6">
-            Each stage gates the one after it. Nothing below is skipped, and
-            nothing below is finished early.
+            Each stage gates the next. Nothing skipped, nothing finished early.
           </Body>
         </div>
 
@@ -248,12 +224,12 @@ export default function HomePage() {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <div className="max-w-2xl">
             <Heading>
-              We are looking for surgeons who will tell us it does not work.
+              We want surgeons who&apos;ll tell us it doesn&apos;t work.
             </Heading>
             <Lead className="mt-6">
-              Bench and cadaveric evaluation is open to craniofacial surgeons and
-              pediatric neurosurgeons. Procurement and investor materials are
-              available on request.
+              Bench and cadaveric evaluation is open to craniofacial and
+              pediatric neurosurgeons. Procurement and investor materials on
+              request.
             </Lead>
           </div>
           <ButtonLink href="/contact">Contact Ossentra</ButtonLink>

@@ -37,8 +37,10 @@ export function Section({
   className?: string;
   id?: string;
 }) {
+  // Light sections are transparent so the textured ground shows through;
+  // the field register keeps its bold blue block.
   const ground =
-    register === "field" ? "bg-ink text-bone-field" : "bg-bone text-ink";
+    register === "field" ? "bg-ink text-bone-field" : "text-ink";
 
   return (
     <section id={id} className={`${ground} py-20 sm:py-28 ${className}`}>

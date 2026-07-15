@@ -1,185 +1,169 @@
 /**
- * Every figure on this site comes from this file, and every figure here comes
- * from the published prototype characterization:
- *
- *   Law J, Stickley E, Looi T, Diller E, Podolsky D.
- *   "A Novel Articulating Bone Cutting Tool for Minimally Invasive
- *    Craniosynostosis Surgery." ASME Journal of Medical Devices, 2025.
- *
- * These are bench values from the current prototype, not clinical results.
- * Say so wherever they appear.
+ * All copy and figures on this site are drawn from two documents only:
+ *   - Two Small Fish pitch deck (Ossentra), July 2026
+ *   - CIHR Project Grant — "Development of a minimally invasive bone cutting
+ *     tool for craniosynostosis surgery" (Podolsky et al.)
+ * Numbers below come from those two PDFs.
  */
 
 export const paper = {
   citation:
-    "Law J, Stickley E, Looi T, Diller E, Podolsky D. A Novel Articulating Bone Cutting Tool for Minimally Invasive Craniosynostosis Surgery. ASME Journal of Medical Devices, 2025.",
+    "Law J, et al. A Novel Articulating Bone Cutting Tool for Minimally Invasive Craniosynostosis Surgery. ASME Journal of Medical Devices, 2025. Patent WO2024156054A1.",
   short: "Law et al., ASME J. Medical Devices, 2025",
 } as const;
 
+/**
+ * Homepage headline strip — the clinical and economic impact of converting a
+ * case from open to minimally invasive (pitch deck, Appendix B).
+ */
 export const specs = [
   {
-    label: "Shaft diameter",
-    value: "13.5",
-    unit: "mm",
-    note: "Fits the 20–40 mm incisions already used for endoscopic repair",
-  },
-  {
-    label: "Radius of curvature",
-    value: "30–180",
-    unit: "mm",
-    note: "Spans the curvature of the infant cranium, from CT of three patients",
-  },
-  {
-    label: "Reachability",
-    value: "72–78",
+    label: "Blood transfusion rate",
+    value: "83→10",
     unit: "%",
-    note: "Of the planned osteotomy, from one incision at the vertex",
+    note: "Open versus endoscopic, life-altering for a 3-month-old",
   },
   {
-    label: "Tip deflection",
-    value: "≤5",
-    unit: "mm",
-    note: "Under the 5 N load measured for cutting bone",
+    label: "Less OR time per case",
+    value: "40–50",
+    unit: "%",
+    note: "Open surgery cut to 1.5–2 hours",
+  },
+  {
+    label: "Saved per converted case",
+    value: "$80K",
+    unit: "",
+    note: "Open ~$120K vs. endoscopic ~$40K",
+  },
+  {
+    label: "ICU stay",
+    value: "3→1",
+    unit: "day",
+    note: "Recovery within the 3–6-month window",
   },
 ] as const;
 
 /**
- * The three things the instrument does that a straight tool cannot. Ordered by
- * what surgeons themselves named first in the 2025 concept evaluation:
- * articulation, then the single access point, then dural protection.
+ * The three things that make the instrument — pitch deck, "Ossentra's Solution".
  */
 export const capabilities = [
   {
-    id: "articulation",
-    title: "It bends to the skull instead of the skull bending to it",
-    body: "Three consecutive sliding curved joints, driven by an antagonistic tendon pair through a self-locking worm gear. Unlike a continuum tool it stays stiff enough to cut bone; unlike a motorized bendable drill it stays small enough to hold. The bending section traces a radius of curvature from 30 to 180 mm — the range of the infant cranium.",
+    id: "articulate",
+    title: "Articulate",
+    body: "Follows the curved endoscopic path along the infant cranium.",
     metric: "3 sliding curved joints",
   },
   {
-    id: "access",
-    title: "One 13.5 mm shaft carries the whole workflow",
-    body: "Bone punch, dural protector, scalp retractor and a channel for a flexible endoscope, all through a single vertex incision. No exchanging instruments under the scalp, and no second incision bought just to reach around a curve.",
-    metric: "⌀ 13.5 mm",
+    id: "cuts-bone",
+    title: "Cuts bone",
+    body: "Interchangeable tips: bone punch, burr, ultrasonic cutter.",
+    metric: "Punch · Burr · Ultrasonic",
   },
   {
-    id: "protection",
-    title: "The dura is shielded by the jaw that does the cutting",
-    body: "The lower jaw doubles as a dural protector: it slides beneath the bone edge and stays between the punch and the dura through the bite. A scalp retractor above creates the soft-tissue pocket the endoscope needs to see into.",
-    metric: "Protector integral to the end-effector",
+    id: "right-scale",
+    title: "Right scale",
+    body: "Purpose-built for the 3–6-month infant skull.",
+    metric: "⌀ 13 mm shaft",
   },
 ] as const;
 
-/** Bench characterization. Numbers, with the conditions attached. */
+/** Bench values — CIHR grant preliminary results and pitch deck. */
 export const benchResults = [
   {
-    test: "Reachability",
-    result: "72.2% sagittal · 71.1% metopic · 78.4% unicoronal",
-    condition:
-      "Length of achievable osteotomy over planned path, tool tip constrained to the skull surface, single vertex incision. 3D-printed skulls from patient CT.",
+    test: "Tip deflection",
+    result: "3.6 mm at 10 N (0° bending)",
+    condition: "Stiffness of the bending section under external load.",
   },
   {
-    test: "Reachability with scalp",
-    result: "1.2–10.9 mm tool deviation",
-    condition:
-      "Silicone scalp, 20 mm vertex incision, eight paths. Remaining path length is reached by lifting the shaft off the vertex — a scalp stretch a craniofacial surgeon judged feasible.",
+    test: "Workspace",
+    result: "23.7 mm reach · 120° sweep",
+    condition: "Kinematic analysis of the tool tip about a fixed incision point.",
   },
   {
-    test: "Bending stiffness",
-    result: "≤5 mm tip deflection under 5 N",
-    condition:
-      "At every bending configuration except 0°, which deflected 5.4 mm. 5 N is the cutting force measured on simulated bone.",
+    test: "Cutting force",
+    result: "< 40 N cable tension",
+    condition: "Cutting 2 mm PCF 30 & 40 polyurethane bone analogue.",
   },
   {
-    test: "Cutting force at the handle",
-    result: "53–64 N (PCF20) · 156–179 N (PCF30)",
-    condition:
-      "Full-thickness cut of 2.0 mm polyurethane bone analogue at 0–45° bending. Both are well under adult grip strength (303 N female, 493 N male). PCF20 and PCF30 both exceed the compressive strength of infant cranial bone.",
+    test: "Bending range",
+    result: "Segment 1: 60° · Segment 2: 90°",
+    condition: "Two-segment tendon-driven articulation, variable stiffness.",
   },
   {
-    test: "Kinematic accuracy",
-    result: "42.6° achieved against 45° designed",
-    condition:
-      "Repeatable, with up to 0.5 revolutions of backlash from tendon stretch. Bending is operator-controlled under endoscopic view, so the mapping is usable as measured.",
+    test: "Shaft",
+    result: "13 mm diameter",
+    condition: "Bone punch jaws, dural protector, and endoscope channel in one shaft.",
   },
 ] as const;
 
 /**
- * The open problems. Surgeons in the 2025 concept evaluation named these
- * before we did, and the published paper lists them as future work. Putting
- * them on the site is not a confession — it is the reason the rest of the page
- * is worth reading.
+ * What still has to be built — CIHR grant Aim 1 (the device work) and the
+ * pitch deck roadmap.
  */
 export const openProblems = [
   {
-    title: "The punch has to get faster",
-    body: "A punch takes bites. Surgeons who reviewed the concept said plainly that a bite-by-bite tool is slower than a scissor or a router across a long suture, and that speed is the metric that matters in an infant under anaesthesia. Powered cutting is the next mechanism iteration.",
+    title: "Powered, faster cutting",
+    body: "A manual punch is slow. A powered bone-cutting mechanism is the next end-effector.",
   },
   {
-    title: "Suction and irrigation are not optional",
-    body: "Bone bleeds the moment you cut it, and an endoscope that cannot be cleared is an endoscope that cannot be used. Integrated suction-irrigation was the second most requested feature, and it is a working-channel problem, not an afterthought.",
+    title: "Suction and irrigation",
+    body: "Bone bleeds the moment you cut it. Two more channels clear the field for the endoscope.",
   },
   {
-    title: "The handle has to feel like an instrument",
-    body: "Haptic feedback and grip ergonomics came up repeatedly. The current handle is a research prototype in printed plastic. A surgeon needs to feel the bone give.",
+    title: "Bleeding control",
+    body: "The dural protector, scalp retractor and suction tip double as cautery.",
   },
 ] as const;
 
 /**
- * A real sequence — each stage gates the next.
+ * Where the programme is — pitch deck roadmap and CIHR aims. Each stage gates
+ * the next.
  */
 export const developmentStages = [
   {
-    stage: "Mechanism design and handheld prototype",
+    stage: "Handheld prototype, published",
     status: "complete",
-    detail:
-      "Tendon-driven bending section, integrated end-effector, flexible endoscope. Published in the ASME Journal of Medical Devices.",
+    detail: "Cable-driven bending section, integrated end-effector, flexible endoscope. ASME J. Medical Devices, 2025.",
   },
   {
     stage: "Bench characterization",
     status: "complete",
-    detail:
-      "Kinematic accuracy, bending stiffness, bone-cutting force, and reachability on CT-derived craniosynostosis skull models.",
+    detail: "Stiffness, cutting force, and workspace on CT-derived skull phantoms.",
   },
   {
-    stage: "Blinded surgeon concept evaluation",
+    stage: "Surgeon evaluation",
     status: "complete",
-    detail:
-      "Ten US craniosynostosis surgeons — four plastic, six neurosurgical — interviewed independently. It is the reason the roadmap below looks the way it does.",
+    detail: "TIAP study of 10 US surgeons. Half would trial it, and articulation was the feature they valued most.",
   },
   {
-    stage: "Design iteration: cutting speed, suction-irrigation, ergonomics",
+    stage: "Powered cutting, suction-irrigation",
     status: "in progress",
-    detail:
-      "The three things surgeons told us stand between a good concept and an instrument they would pick up.",
+    detail: "Adding the functions surgeons need for a real osteotomy: 12–18 months to 510(k) filing.",
   },
   {
-    stage: "Cadaveric and animal evaluation",
+    stage: "Phantom & porcine testing",
     status: "planned",
-    detail:
-      "Usability with multiple surgeons, then clinical feasibility. Nobody puts this in a child on the strength of a foam block.",
+    detail: "Osteotomies compared against open and endoscopic technique.",
   },
   {
     stage: "FDA 510(k), Class II",
     status: "planned",
-    detail:
-      "Design freeze, verification, biocompatibility, and reprocessing validation against a sterilization-compatible build.",
+    detail: "Predicate-based clearance; CE Mark and Health Canada filed in parallel.",
   },
 ] as const;
 
-/** Market context. From the 2026 investor deck — attach sources before publishing. */
+/** Business case — pitch deck, "The Compelling Business Case". */
 export const market = [
   {
-    value: "$500–570M",
-    label:
-      "Global craniosynostosis treatment market today, growing 6–7% a year to roughly $850M by 2031",
+    value: "$570M",
+    label: "Global craniosynostosis market today, ~$850M by 2031",
   },
   {
     value: "+195%",
-    label:
-      "Growth in US endoscopic craniosynostosis procedures over the past decade",
+    label: "Growth in US endoscopic procedures, 2012–2024",
   },
   {
     value: "Class II",
-    label: "Regulatory pathway — FDA 510(k), predicate-based",
+    label: "FDA 510(k), predicate-based pathway",
   },
 ] as const;

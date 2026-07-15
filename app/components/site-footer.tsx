@@ -55,7 +55,7 @@ export function SiteFooter() {
             {site.regulatoryStatus}
           </p>
           <p className="mt-3 font-mono text-[0.6875rem] uppercase tracking-[0.1em] text-steel-field">
-            © {new Date().getFullYear()} {site.name} — Toronto, Canada
+            © {new Date().getFullYear()} {site.name}, Toronto, Canada
           </p>
         </div>
       </Container>

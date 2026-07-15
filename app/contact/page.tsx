@@ -14,7 +14,7 @@ import { contactRoutes, site } from "../content/site";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact Ossentra — surgeon evaluation, hospital procurement, and investor enquiries.",
+    "Contact Ossentra for surgeon evaluation, hospital procurement, and investor enquiries.",
 };
 
 export default function ContactPage() {
@@ -27,9 +27,8 @@ export default function ContactPage() {
             Tell us which conversation this is.
           </Heading>
           <Lead className="mt-7">
-            Surgeons, procurement reviewers and investors each need a different
-            thing from us. Saying which one you are is the fastest route to a
-            useful reply.
+            Surgeons, procurement, and investors each need a different thing.
+            Say which you are for the fastest useful reply.
           </Lead>
         </div>
       </Section>

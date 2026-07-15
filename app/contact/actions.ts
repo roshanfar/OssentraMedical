@@ -35,7 +35,7 @@ export async function submitEnquiry(
     errors.organization = "Enter your hospital, institution, or firm.";
   }
   if (values.message.length < 20) {
-    errors.message = "Tell us a little more — at least a sentence or two.";
+    errors.message = "Tell us a little more, at least a sentence or two.";
   }
 
   if (Object.keys(errors).length > 0) {
