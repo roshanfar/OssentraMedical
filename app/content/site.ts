@@ -55,6 +55,5 @@ export const ecosystem = [
     detail: "Clinical home, IP, and the Proof-of-Principle grant",
   },
   { name: "PCIGITI", detail: "The lab the instrument was designed and built in" },
-  { name: "University of Toronto", detail: "Institute of Biomedical Engineering" },
   { name: "UTEST", detail: "2026 cohort, early-stage technology incubation" },
 ] as const;

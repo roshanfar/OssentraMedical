@@ -23,7 +23,7 @@ export default function HomePage() {
         <Container>
           <div className="grid gap-14 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-center lg:gap-16">
             <div>
-              <Eyebrow>Craniosynostosis · SickKids · U of T</Eyebrow>
+              <Eyebrow>Craniosynostosis · SickKids</Eyebrow>
 
               <Heading level={1} className="mt-6">
                 Robotics for the smallest skulls.

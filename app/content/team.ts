@@ -12,7 +12,7 @@ export const team = [
     name: "Majid Roshanfar",
     credentials: "PhD",
     role: "Co-founder & CEO",
-    affiliation: "Postdoctoral fellow, SickKids and University of Toronto",
+    affiliation: "Postdoctoral fellow, SickKids",
     bio: "Surgical-robotics engineer. Eight years making surgery safer with robots. Leads the venture.",
     photo: "/figures/Majid.jpg",
   },
@@ -36,7 +36,7 @@ export const team = [
     name: "Jones Law",
     credentials: "PhD Candidate",
     role: "Chief Technology Officer",
-    affiliation: "Institute of Biomedical Engineering, University of Toronto",
+    affiliation: "PCIGITI, SickKids",
     bio: "Engineering lead and first author on the characterization paper. Owns the bending section, the end-effector, and the punch-to-dura tolerance stack.",
     photo: "/figures/Jones.png",
   },
@@ -51,7 +51,7 @@ export const contributors = [
   {
     name: "Eric Diller",
     credentials: "PhD",
-    role: "Microrobotics Laboratory, University of Toronto — co-author",
+    role: "Co-author on the characterization paper",
   },
 ] as const;
 

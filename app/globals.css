@@ -42,10 +42,10 @@
    Base
 -------------------------------------------------------------------------- */
 
-/* ~1.5× everything. rem-based utilities scale from the root, so the whole
-   site enlarges proportionally. */
+/* Global type scale. rem-based utilities scale from the root, so the whole
+   site resizes proportionally. */
 html {
-  font-size: 24px;
+  font-size: 16.8px;
 }
 
 /* Flat white ground. */
