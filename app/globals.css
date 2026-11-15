@@ -34,9 +34,10 @@
   --color-bone-field: #0b1a4a;
   --color-dura-field: #1f56d8;
 
-  --font-display: var(--font-albert), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --font-display: var(--font-display-face), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-text-face), ui-sans-serif, system-ui, sans-serif;
+  /* Small labels use the text face in caps, not a monospace */
+  --font-mono: var(--font-text-face), ui-sans-serif, system-ui, sans-serif;
 }
 
 /* --------------------------------------------------------------------------
@@ -46,7 +47,7 @@
 /* Global type scale. rem-based utilities scale from the root, so the whole
    site resizes proportionally. */
 html {
-  font-size: 17px;
+  font-size: 18px;
   scroll-behavior: smooth;
 }
 

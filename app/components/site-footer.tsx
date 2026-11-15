@@ -1,7 +1,7 @@
 import { nav, site } from "../content/site";
 
-const heading = "font-mono text-[0.72rem] uppercase tracking-[0.16em] text-[#9fb6ff]";
-const link = "text-[0.95rem] text-[#d5ddf5] transition-colors hover:text-white";
+const heading = "font-mono font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-[#9fb6ff]";
+const link = "text-[1rem] text-[#d5ddf5] transition-colors hover:text-white";
 
 export function LinkedInIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
@@ -25,7 +25,7 @@ export function SiteFooter() {
               height={124}
               className="h-7 w-auto"
             />
-            <p className="mt-5 text-[0.95rem] leading-[1.65] text-[#d5ddf5]">
+            <p className="mt-5 text-[1rem] leading-[1.65] text-[#d5ddf5]">
               {site.tagline}. Spun out of {site.origin}.
             </p>
           </div>
@@ -45,7 +45,7 @@ export function SiteFooter() {
 
           <div>
             <p className={heading}>Location</p>
-            <address className="mt-5 text-[0.95rem] not-italic leading-[1.65] text-[#d5ddf5]">
+            <address className="mt-5 text-[1rem] not-italic leading-[1.65] text-[#d5ddf5]">
               {site.address.map((line) => (
                 <span key={line} className="block">
                   {line}
@@ -70,7 +70,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-2 border-t border-white/15 pt-6 font-mono text-[0.74rem] text-[#a9b6e6] sm:flex-row sm:justify-between sm:gap-8">
+        <div className="mt-14 flex flex-col gap-2 border-t border-white/15 pt-6 font-mono font-semibold text-[0.8rem] text-[#a9b6e6] sm:flex-row sm:justify-between sm:gap-8">
           <p className="shrink-0">
             © {new Date().getFullYear()} {site.name}, Toronto, Canada
           </p>

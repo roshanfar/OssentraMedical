@@ -1,31 +1,25 @@
 import type { Metadata } from "next";
-import { Albert_Sans, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { Red_Hat_Display, Red_Hat_Text } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "./components/site-header";
 import { SiteFooter } from "./components/site-footer";
 
-const albert = Albert_Sans({
-  variable: "--font-albert",
+const display = Red_Hat_Display({
+  variable: "--font-display-face",
   subsets: ["latin"],
   weight: ["500", "600", "700"],
 });
 
-const plexSans = IBM_Plex_Sans({
-  variable: "--font-plex-sans",
+const text = Red_Hat_Text({
+  variable: "--font-text-face",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
-});
-
-const plexMono = IBM_Plex_Mono({
-  variable: "--font-plex-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
   title: {
     default:
-      "Ossentra | Reimagining cranial surgery",
+      "Ossentra | Precision was never a straight line",
     template: "%s | Ossentra",
   },
   description:
@@ -41,7 +35,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${albert.variable} ${plexSans.variable} ${plexMono.variable} h-full`}
+      className={`${display.variable} ${text.variable} h-full`}
     >
       <body className="min-h-full flex flex-col text-ink">
         <SiteHeader />

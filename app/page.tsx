@@ -89,7 +89,7 @@ function Mark({ value }: { value: string }) {
         ~
       </span>
     );
-  return <span className="font-mono text-[0.72rem] text-dura">510(k) path</span>;
+  return <span className="font-mono font-semibold text-[0.8rem] text-dura">510(k) path</span>;
 }
 
 function LogoGrid({
@@ -130,12 +130,11 @@ export default function HomePage() {
         <Container className="relative">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center">
             <div>
-              <p className="font-mono text-[0.74rem] uppercase tracking-[0.16em] text-dura">
+              <p className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-dura">
                 Pediatric skull surgery · SickKids, Toronto
               </p>
-              <h1 className="mt-6 font-display text-[2.4rem] font-semibold leading-[1.08] tracking-[-0.02em] text-ink text-balance sm:text-[3rem] lg:text-[3.4rem]">
-                Reimagining cranial surgery,{" "}
-                <Accent>one precise cut at a time.</Accent>
+              <h1 className="mt-6 font-display text-[2.6rem] font-bold leading-[1.06] tracking-[-0.02em] text-ink text-balance sm:text-[3.4rem] lg:text-[4rem]">
+                Precision was never <Accent>a straight line.</Accent>
               </h1>
               <p className="mt-7 max-w-xl text-[1.12rem] leading-[1.7] text-steel">
                 The first articulating bone-cutting instrument for minimally
@@ -160,13 +159,13 @@ export default function HomePage() {
       --------------------------------------------------------------- */}
       <section className="bg-navy py-14 text-white">
         <Container>
-          <p className="font-mono text-[0.74rem] uppercase tracking-[0.16em] text-[#9fb6ff]">
+          <p className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-[#9fb6ff]">
             Open vs. minimally invasive repair
           </p>
           <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4">
             {specs.map((spec) => (
               <div key={spec.label} className="border-t border-white/25 pt-5">
-                <dt className="font-mono text-[0.74rem] uppercase tracking-[0.1em] text-[#c3cdf0]">
+                <dt className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-[#c3cdf0]">
                   {spec.label}
                 </dt>
                 <dd className="tnum mt-3 font-display text-[1.25rem] font-semibold leading-[1.3] sm:text-[1.65rem]">
@@ -180,7 +179,7 @@ export default function HomePage() {
                     </span>
                   ))}
                 </dd>
-                <dd className="mt-2 text-[0.9rem] leading-[1.55] text-[#c3cdf0]">
+                <dd className="mt-2 text-[0.96rem] leading-[1.55] text-[#c3cdf0]">
                   {spec.note}
                 </dd>
               </div>
@@ -224,7 +223,7 @@ export default function HomePage() {
             </RuledCell>
           ))}
         </RuledColumns>
-        <p className="mt-6 font-mono text-[0.74rem] text-steel-dim">
+        <p className="mt-6 text-[0.9rem] text-steel-dim">
           Peer reviewed: Law et al., ASME Journal of Medical Devices, 2025 [2].
           Patents pending in the US and Canada [7].
         </p>
@@ -300,11 +299,11 @@ export default function HomePage() {
                   key={w.step}
                   className="grid grid-cols-[2.5rem_9rem_minmax(0,1fr)] items-baseline gap-2 border-b border-hairline py-3.5"
                 >
-                  <span className="tnum font-mono text-[0.8rem] text-dura">
+                  <span className="tnum font-mono font-semibold text-[0.82rem] text-dura">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="font-medium text-ink">{w.step}</span>
-                  <span className="text-[0.92rem] text-steel">{w.detail}</span>
+                  <span className="text-[0.98rem] text-steel">{w.detail}</span>
                 </li>
               ))}
             </ol>
@@ -329,7 +328,7 @@ export default function HomePage() {
                   {["Test", "Result", "Conditions"].map((h) => (
                     <th
                       key={h}
-                      className="py-3 pr-6 font-mono text-[0.72rem] font-normal uppercase tracking-[0.14em] text-steel-dim"
+                      className="py-3 pr-6 font-mono font-semibold text-[0.8rem] uppercase tracking-[0.09em] text-steel-dim"
                     >
                       {h}
                     </th>
@@ -340,16 +339,16 @@ export default function HomePage() {
                 {benchResults.map((row) => (
                   <tr key={row.test} className="border-b border-hairline">
                     <td className="py-4 pr-6 font-medium text-ink">{row.test}</td>
-                    <td className="tnum py-4 pr-6 font-mono text-[0.88rem] text-dura">
+                    <td className="tnum py-4 pr-6 font-mono font-medium text-[0.98rem] text-dura">
                       {row.result}
                     </td>
-                    <td className="py-4 text-[0.95rem] text-steel">{row.condition}</td>
+                    <td className="py-4 text-[1rem] text-steel">{row.condition}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <p className="mt-4 font-mono text-[0.74rem] text-steel-dim">{paper.citation}</p>
+          <p className="mt-4 text-[0.9rem] text-steel-dim">{paper.citation}</p>
         </div>
       </Section>
 
@@ -375,22 +374,22 @@ export default function HomePage() {
               </h3>
               <dl className="mt-5 space-y-4">
                 <div>
-                  <dt className="font-mono text-[0.72rem] uppercase tracking-[0.12em] text-steel-dim">
+                  <dt className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.08em] text-steel-dim">
                     Now
                   </dt>
-                  <dd className="mt-1 text-[0.95rem] leading-[1.6] text-steel">{p.now}</dd>
+                  <dd className="mt-1 text-[1rem] leading-[1.6] text-steel">{p.now}</dd>
                 </div>
                 <div className="border-l-2 border-dura pl-4">
-                  <dt className="font-mono text-[0.72rem] uppercase tracking-[0.12em] text-dura">
+                  <dt className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.08em] text-dura">
                     With Ossentra
                   </dt>
-                  <dd className="mt-1 text-[0.95rem] leading-[1.6] text-ink">{p.with}</dd>
+                  <dd className="mt-1 text-[1rem] leading-[1.6] text-ink">{p.with}</dd>
                 </div>
               </dl>
             </RuledCell>
           ))}
         </RuledColumns>
-        <p className="mt-6 font-mono text-[0.74rem] text-steel-dim">Illustrative cases.</p>
+        <p className="mt-6 text-[0.9rem] text-steel-dim">Illustrative cases.</p>
       </Section>
 
       {/* ---------------------------------------------------------------
@@ -426,7 +425,7 @@ export default function HomePage() {
               <div className="mt-8 border-t border-ink/80 pt-5">
                 <h3 className="font-display text-[1.3rem] font-semibold text-ink">
                   {op.name}{" "}
-                  <span className="font-mono text-[0.74rem] font-normal text-steel-dim">
+                  <span className="text-[0.9rem] text-steel-dim">
                     {op.cite}
                   </span>
                 </h3>
@@ -465,7 +464,7 @@ export default function HomePage() {
       <Section>
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-16">
           <div>
-            <div className="flex items-center gap-4 font-mono text-[0.74rem] uppercase tracking-[0.16em] text-dura">
+            <div className="flex items-center gap-4 font-mono font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-dura">
               <span>05</span>
               <span>Value proposition</span>
               <span aria-hidden className="h-px flex-1 bg-hairline" />
@@ -481,7 +480,7 @@ export default function HomePage() {
                 key={d.label}
                 className="grid gap-1 border-b border-hairline py-4 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6"
               >
-                <dt className="font-mono text-[0.78rem] uppercase tracking-[0.1em] text-ink">
+                <dt className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-ink">
                   {d.label}
                 </dt>
                 <dd className="text-[0.98rem] leading-[1.6] text-steel">{d.body}</dd>
@@ -506,13 +505,13 @@ export default function HomePage() {
             <caption className="sr-only">Competition at a glance</caption>
             <thead>
               <tr className="border-y border-ink/80">
-                <th className="px-4 py-3.5 font-mono text-[0.72rem] font-normal uppercase tracking-[0.14em] text-steel-dim">
+                <th className="px-4 py-3.5 font-mono font-semibold text-[0.8rem] uppercase tracking-[0.09em] text-steel-dim">
                   Instrument
                 </th>
                 {competitionColumns.map((c) => (
                   <th
                     key={c}
-                    className="px-3 py-3.5 text-center font-mono text-[0.72rem] font-normal uppercase tracking-[0.12em] text-steel-dim"
+                    className="px-3 py-3.5 text-center font-mono font-semibold text-[0.8rem] uppercase tracking-[0.08em] text-steel-dim"
                   >
                     {c}
                   </th>
@@ -529,7 +528,7 @@ export default function HomePage() {
                   >
                     <th
                       scope="row"
-                      className={`px-4 py-3.5 text-[0.95rem] ${
+                      className={`px-4 py-3.5 text-[1rem] ${
                         ours ? "font-semibold text-ink" : "font-normal text-steel"
                       }`}
                     >
@@ -546,7 +545,7 @@ export default function HomePage() {
             </tbody>
           </table>
         </div>
-        <p className="mt-4 font-mono text-[0.74rem] leading-[1.6] text-steel-dim">
+        <p className="mt-4 text-[0.9rem] leading-[1.6] text-steel-dim">
           ✓ full · ✗ no · ~ partial. A June 2026 freedom-to-operate review of 37
           patents and applications found no blocking IP. Ossentra is
           investigational and not yet cleared.
@@ -585,7 +584,7 @@ export default function HomePage() {
                   }`}
                 />
                 <p
-                  className={`mt-5 font-mono text-[0.72rem] uppercase tracking-[0.14em] ${
+                  className={`mt-5 font-mono font-semibold text-[0.8rem] uppercase tracking-[0.09em] ${
                     done ? "text-ok" : active ? "text-dura" : "text-steel-dim"
                   }`}
                 >
@@ -596,7 +595,7 @@ export default function HomePage() {
                 </h3>
                 <ul className="mt-3 space-y-1.5">
                   {m.items.map((it) => (
-                    <li key={it} className="text-[0.95rem] leading-[1.5] text-steel">
+                    <li key={it} className="text-[1rem] leading-[1.5] text-steel">
                       {it}
                     </li>
                   ))}
@@ -614,14 +613,14 @@ export default function HomePage() {
                 key={r.step}
                 className="grid gap-1 border-b border-hairline py-4 sm:grid-cols-[3rem_11rem_8rem_minmax(0,1fr)] sm:items-baseline sm:gap-4"
               >
-                <span className="tnum font-mono text-[0.8rem] text-dura">
+                <span className="tnum font-mono font-semibold text-[0.82rem] text-dura">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="font-medium text-ink">{r.step}</span>
-                <span className="font-mono text-[0.78rem] uppercase tracking-[0.08em] text-steel-dim">
+                <span className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.08em] text-steel-dim">
                   {r.when}
                 </span>
-                <span className="text-[0.95rem] leading-[1.6] text-steel">{r.detail}</span>
+                <span className="text-[1rem] leading-[1.6] text-steel">{r.detail}</span>
               </li>
             ))}
           </ol>
@@ -671,7 +670,7 @@ export default function HomePage() {
         <dl className="mt-10 grid gap-x-8 gap-y-5 border-t border-hairline pt-6 sm:grid-cols-2 lg:grid-cols-4">
           {marketFocus.map((f) => (
             <div key={f.label}>
-              <dt className="font-mono text-[0.72rem] uppercase tracking-[0.14em] text-steel-dim">
+              <dt className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.09em] text-steel-dim">
                 {f.label}
               </dt>
               <dd className="mt-1 text-[0.98rem] text-ink">{f.value}</dd>
@@ -701,14 +700,14 @@ export default function HomePage() {
               />
               <h3 className="mt-5 font-display text-[1.2rem] font-semibold text-ink">
                 {person.name}
-                <span className="ml-2 font-mono text-[0.72rem] font-normal text-steel-dim">
+                <span className="ml-2 text-[0.9rem] text-steel-dim">
                   {person.credentials}
                 </span>
               </h3>
-              <p className="mt-1 font-mono text-[0.74rem] uppercase tracking-[0.1em] text-dura">
+              <p className="mt-1 font-mono font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-dura">
                 {person.role}
               </p>
-              <p className="mt-1 text-[0.88rem] text-steel-dim">{person.affiliation}</p>
+              <p className="mt-1 text-[0.95rem] text-steel-dim">{person.affiliation}</p>
               <Body className="mt-3 text-[0.94rem]">{person.bio}</Body>
             </article>
           ))}
@@ -720,7 +719,7 @@ export default function HomePage() {
             {advisors.map((a) => (
               <RuledCell key={a.name}>
                 <p className="font-medium text-ink">{a.name}</p>
-                <p className="mt-1 text-[0.92rem] text-steel">{a.role}</p>
+                <p className="mt-1 text-[0.98rem] text-steel">{a.role}</p>
               </RuledCell>
             ))}
           </RuledColumns>
@@ -755,9 +754,9 @@ export default function HomePage() {
           {references.map((ref, i) => (
             <li
               key={ref}
-              className="grid grid-cols-[3rem_minmax(0,1fr)] gap-2 border-b border-hairline py-3.5 text-[0.95rem] leading-[1.6] text-steel"
+              className="grid grid-cols-[3rem_minmax(0,1fr)] gap-2 border-b border-hairline py-3.5 text-[1rem] leading-[1.6] text-steel"
             >
-              <span className="tnum font-mono text-[0.8rem] text-dura">[{i + 1}]</span>
+              <span className="tnum font-mono font-semibold text-[0.82rem] text-dura">[{i + 1}]</span>
               <span>{ref}</span>
             </li>
           ))}
@@ -771,7 +770,7 @@ export default function HomePage() {
         <Container>
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:gap-16">
             <div>
-              <div className="flex items-center gap-4 font-mono text-[0.74rem] uppercase tracking-[0.16em] text-dura">
+              <div className="flex items-center gap-4 font-mono font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-dura">
                 <span>Contact</span>
                 <span aria-hidden className="h-px flex-1 bg-hairline" />
               </div>
@@ -789,7 +788,7 @@ export default function HomePage() {
                   href={site.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border border-ink/30 px-6 py-3 text-[0.95rem] font-medium text-ink transition-colors hover:border-ink"
+                  className="inline-flex items-center gap-2 border border-ink/30 px-6 py-3 text-[1rem] font-medium text-ink transition-colors hover:border-ink"
                 >
                   <LinkedInIcon className="h-4 w-4" />
                   Follow on LinkedIn
@@ -799,7 +798,7 @@ export default function HomePage() {
 
             <dl className="self-end border-t border-ink/80">
               <div className="grid gap-1 border-b border-hairline py-4 sm:grid-cols-[8rem_minmax(0,1fr)]">
-                <dt className="font-mono text-[0.74rem] uppercase tracking-[0.12em] text-steel-dim">
+                <dt className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.08em] text-steel-dim">
                   Email
                 </dt>
                 <dd>
@@ -809,7 +808,7 @@ export default function HomePage() {
                 </dd>
               </div>
               <div className="grid gap-1 border-b border-hairline py-4 sm:grid-cols-[8rem_minmax(0,1fr)]">
-                <dt className="font-mono text-[0.74rem] uppercase tracking-[0.12em] text-steel-dim">
+                <dt className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.08em] text-steel-dim">
                   Location
                 </dt>
                 <dd className="text-ink">
@@ -821,7 +820,7 @@ export default function HomePage() {
                 </dd>
               </div>
               <div className="grid gap-1 border-b border-hairline py-4 sm:grid-cols-[8rem_minmax(0,1fr)]">
-                <dt className="font-mono text-[0.74rem] uppercase tracking-[0.12em] text-steel-dim">
+                <dt className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.08em] text-steel-dim">
                   LinkedIn
                 </dt>
                 <dd>

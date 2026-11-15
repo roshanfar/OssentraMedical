@@ -28,7 +28,7 @@ export function SiteHeader() {
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="text-[0.92rem] font-medium text-steel transition-colors hover:text-ink"
+                    className="text-[0.98rem] font-medium text-steel transition-colors hover:text-ink"
                   >
                     {item.label}
                   </a>
@@ -39,7 +39,7 @@ export function SiteHeader() {
 
           <a
             href="#contact"
-            className="hidden border border-navy bg-navy px-5 py-2.5 text-[0.9rem] font-medium text-white transition-colors hover:border-dura hover:bg-dura lg:inline-block"
+            className="hidden border border-navy bg-navy px-5 py-2.5 text-[0.96rem] font-medium text-white transition-colors hover:border-dura hover:bg-dura lg:inline-block"
           >
             Get in touch
           </a>
@@ -49,7 +49,7 @@ export function SiteHeader() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-nav"
-            className="border border-ink/30 px-4 py-1.5 font-mono text-[0.78rem] uppercase tracking-[0.12em] text-ink lg:hidden"
+            className="border border-ink/30 px-4 py-1.5 font-mono font-semibold text-[0.8rem] uppercase tracking-[0.08em] text-ink lg:hidden"
           >
             {open ? "Close" : "Menu"}
           </button>

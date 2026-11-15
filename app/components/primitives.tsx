@@ -61,12 +61,12 @@ export function SectionHead({
 }) {
   return (
     <header className={className}>
-      <div className="flex items-center gap-4 font-mono text-[0.74rem] uppercase tracking-[0.16em] text-dura">
+      <div className="flex items-center gap-4 font-mono font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-dura">
         <span className="tnum">{index}</span>
         <span>{label}</span>
         <span aria-hidden className="h-px flex-1 bg-hairline" />
       </div>
-      <h2 className="mt-7 max-w-3xl font-display text-[1.9rem] font-semibold leading-[1.15] tracking-[-0.012em] text-ink text-balance sm:text-[2.45rem]">
+      <h2 className="mt-7 max-w-3xl font-display text-[2rem] font-bold leading-[1.15] tracking-[-0.015em] text-ink text-balance sm:text-[2.45rem]">
         {title}
       </h2>
       {intro ? (
@@ -92,7 +92,7 @@ export function Label({
 }) {
   return (
     <p
-      className={`font-mono text-[0.72rem] uppercase tracking-[0.14em] text-steel-dim ${className}`}
+      className={`font-mono font-semibold text-[0.8rem] uppercase tracking-[0.09em] text-steel-dim ${className}`}
     >
       {children}
     </p>
@@ -107,7 +107,7 @@ export function Body({
   className?: string;
 }) {
   return (
-    <p className={`text-[0.98rem] leading-[1.7] text-steel text-pretty ${className}`}>
+    <p className={`text-[1.04rem] leading-[1.7] text-steel text-pretty ${className}`}>
       {children}
     </p>
   );
@@ -125,7 +125,7 @@ export function Accent({ children }: { children: ReactNode }) {
 type ButtonVariant = "solid" | "outline";
 
 const buttonBase =
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap border px-6 py-3 text-[0.95rem] font-medium transition-colors duration-150";
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap border px-6 py-3 text-[1rem] font-medium transition-colors duration-150";
 
 function buttonClasses(variant: ButtonVariant) {
   return variant === "solid"
@@ -165,7 +165,7 @@ export function StatusNote({
 }) {
   return (
     <p
-      className={`border-l-2 border-dura pl-3 font-mono text-[0.74rem] leading-[1.65] text-steel ${className}`}
+      className={`border-l-2 border-dura pl-3 text-[0.9rem] leading-[1.6] text-steel ${className}`}
     >
       {children}
     </p>
