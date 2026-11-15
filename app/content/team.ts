@@ -70,6 +70,7 @@ export const institutions = [
     logo: "/logos/proof-of-principle.png",
   },
   { name: "CIHR", logo: "/logos/cihr.png" },
+  { name: "NSERC", logo: "/logos/nserc.png" },
   { name: "Toronto Innovation Acceleration Partners", logo: "/logos/tiap.png" },
 ] as const;
 
