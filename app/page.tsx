@@ -241,7 +241,7 @@ export default function HomePage() {
             The shaft bends to the curve of the skull and the bone punch closes
             at the tip.
           </p>
-          <StatusNote className="mx-auto mt-8 max-w-2xl">
+          <StatusNote className="mx-auto mt-8 w-fit lg:whitespace-nowrap">
             {site.regulatoryStatus}
           </StatusNote>
         </Container>
