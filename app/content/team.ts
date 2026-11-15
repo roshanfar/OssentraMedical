@@ -37,7 +37,6 @@ export const team = [
 
 /** Advisors and support (pitch deck, "Team and advisors"). */
 export const advisors = [
-  { name: "Eric Diller, PhD", role: "U of T Microrobotics" },
   { name: "SickKids IP&C", role: "Licensing, freedom to operate, investors" },
   { name: "Creative Destruction Lab", role: "Mentors and Sauder MBA team" },
   { name: "UTEST and Rotman", role: "Torys LLP and MBA venture team" },

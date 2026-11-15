@@ -18,7 +18,6 @@ export const specs = [
   { label: "Transfusion risk", value: "90% → 20–40%", note: "Open vs. endoscopic repair [1]" },
   { label: "Procedure time", value: "4–8 h → 1–2 h", note: "Less anaesthesia for the infant [1]" },
   { label: "Hospital stay", value: "3–5 d → 1–2 d", note: "Home in a day or two [1]" },
-  { label: "Incision", value: "Ear-to-ear → 1 cm", note: "One keyhole at the vertex [1, 2]" },
 ] as const;
 
 /** The three things that make the instrument (pitch deck, "Our solution"). */
@@ -43,52 +42,28 @@ export const capabilities = [
   },
 ] as const;
 
-/**
- * The babies the instrument is meant for (patient personas). Illustrative
- * cases, not real patients.
- */
-export const patients = [
-  {
-    age: "5 months",
-    tag: "Diagnosed late",
-    now: "Too old for the small-incision surgery, so the full open operation is the only option.",
-    with: "Still eligible for the small-incision surgery.",
-  },
-  {
-    age: "4 months",
-    tag: "Several skull joints fused",
-    now: "Straight tools cannot reach every fused joint, so the case goes to open surgery.",
-    with: "One bending tool reaches every joint through small openings.",
-  },
-  {
-    age: "3 months",
-    tag: "Needs a curved cut",
-    now: "Straight tools cannot follow the curve, so surgeons switch to open surgery.",
-    with: "The tool bends along the curve through one small opening.",
-  },
-] as const;
 
 /** How Ossentra differs from today's tools (pitch deck, "Value proposition"). */
 export const differences = [
   {
-    label: "Complexity",
-    body: "One instrument, the same incision and endoscope, and no capital robot.",
+    label: "Hand position",
+    body: "The bend follows the skull, so the surgeon's hand stays where it is instead of angling a rigid tool under the dissection.",
+  },
+  {
+    label: "Dura",
+    body: "The lower jaw of the punch is the dural protector, between the cut and the dura on every bite.",
+  },
+  {
+    label: "One instrument",
+    body: "Punch, dural protector and endoscope channel in one shaft.",
+  },
+  {
+    label: "Scar",
+    body: "Fewer and smaller incisions, a benefit families notice.",
   },
   {
     label: "Training",
-    body: "A familiar punch and endoscope workflow, with hands-on training at pilot sites.",
-  },
-  {
-    label: "Patient",
-    body: "A 1 cm scar, fewer transfusions, and home in a day or two.",
-  },
-  {
-    label: "Failure modes",
-    body: "A self-locking bend and a dural protector. Conversion to open surgery is always available.",
-  },
-  {
-    label: "Adoption",
-    body: "The procedure is already covered by CPT 61550, so there is no new billing code.",
+    body: "Hands-on sessions on skull phantoms, then in-OR support for the first cases.",
   },
 ] as const;
 
@@ -99,7 +74,7 @@ export const workflow = [
   { step: "Entry", detail: "Through a burr hole" },
   { step: "Steer and cut", detail: "Along the curved path, under endoscopic view" },
   { step: "Check", detail: "Osteotomy complete" },
-  { step: "Close", detail: "About 1.5 to 2 hours in the OR" },
+  { step: "Close", detail: "Standard closure" },
 ] as const;
 
 /** Competition at a glance (pitch deck). "~" means partial. */
@@ -113,11 +88,11 @@ export const competitionColumns = [
 
 export const competitionRows = [
   { name: "Scissors and rongeurs", marks: ["yes", "no", "partial", "no", "yes"] },
-  { name: "Powered drills, ultrasonic", marks: ["yes", "no", "partial", "partial", "yes"] },
-  { name: "ArtiSential, FlexDex (soft tissue)", marks: ["no", "yes", "no", "yes", "yes"] },
-  { name: "JPI Articulator (orthopedic)", marks: ["yes", "yes", "no", "partial", "yes"] },
-  { name: "Fixed-angle cranial drill (Pittsburgh)", marks: ["yes", "no", "yes", "yes", "no"] },
-  { name: "Robotic platforms (ROSA)", marks: ["no", "partial", "partial", "no", "yes"] },
+  { name: "Powered drills and ultrasonic cutters", marks: ["yes", "no", "partial", "partial", "yes"] },
+  { name: "Articulating soft-tissue instruments", marks: ["no", "yes", "no", "yes", "yes"] },
+  { name: "Articulating orthopedic bur", marks: ["yes", "yes", "no", "partial", "yes"] },
+  { name: "Fixed-angle cranial drill", marks: ["yes", "no", "yes", "yes", "no"] },
+  { name: "Robotic surgical platforms", marks: ["no", "partial", "partial", "no", "yes"] },
   { name: "Ossentra", marks: ["yes", "yes", "yes", "yes", "pathway"] },
 ] as const;
 
@@ -153,7 +128,7 @@ export const milestones = [
 export const regulatorySteps = [
   {
     step: "Predicate",
-    detail: "JPI Articulator Arthroscopic Bur, 510(k) cleared December 2025.",
+    detail: "An articulating arthroscopic bone cutter, 510(k) cleared December 2025.",
     when: "In progress",
   },
   {
@@ -182,11 +157,11 @@ export const regulatorySteps = [
 export const ipPosition = [
   {
     title: "Patents",
-    body: "Articulable surgical instrument assembly and uses therefor [7]. PCT/CA2024/050074, priority January 2023; US 19/150,344 and CA 3,280,783 pending. Assignee SickKids, with an exclusive licence to Ossentra under negotiation.",
+    body: "Articulable surgical instrument assembly and uses therefor [3]. PCT/CA2024/050074, priority January 2023; US 19/150,344 and CA 3,280,783 pending. Assignee SickKids, with an exclusive licence to Ossentra under negotiation.",
   },
   {
     title: "Freedom to operate",
-    body: "A June 2026 review of 37 patents and applications, including Ethicon, Covidien, Intuitive, JPI and the University of Pittsburgh, found no blocking IP.",
+    body: "A June 2026 review of 37 patents and applications from medical device companies and universities found no blocking IP.",
   },
   {
     title: "Data and know-how",
@@ -233,12 +208,8 @@ export const benchResults = [
 /** Market (pitch deck, "Market"). Third-party market data only. */
 export const market = [
   {
-    value: "$570M",
-    label: "Global craniosynostosis treatment market in 2024, growing to about $920M by 2032 (Data Bridge Market Research, 2025).",
-  },
-  {
     value: "3x",
-    label: "The minimally invasive share of US craniosynostosis repairs rose from 3% to 9% between 2013 and 2022 [6].",
+    label: "The minimally invasive share of US craniosynostosis repairs rose from 3% to 9% between 2013 and 2022 [7].",
   },
   {
     value: "Class II",

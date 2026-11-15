@@ -22,7 +22,6 @@ import {
   marketFocus,
   milestones,
   paper,
-  patients,
   regulatorySteps,
   specs,
   workflow,
@@ -117,6 +116,30 @@ function LogoGrid({
   );
 }
 
+/** Findings supported across our surgeon interviews (no names). */
+const surgeonFindings = [
+  {
+    title: "Metopic cases are where reach is hardest.",
+    body: "Surgeons pointed to metopic repair as the case where reaching the base through a small incision is difficult, and where a curved cutter would be most useful.",
+  },
+  {
+    title: "Rigid tools force awkward hand angles.",
+    body: "A rigid cutter has to sit under the dissection. Surgeons described wanting a tool whose curve follows the skull so the hand does not have to change position.",
+  },
+  {
+    title: "The dura and sagittal sinus come first.",
+    body: "Working over the superior sagittal sinus is the most stressful part of the case. A dural protector built into the cutting jaw was well received.",
+  },
+  {
+    title: "A smaller scar matters to families.",
+    body: "Fewer incisions were seen as a cosmetic and family-facing benefit, not a change in blood loss or recovery.",
+  },
+  {
+    title: "Surgeons want to try it with their own hands.",
+    body: "New instruments are adopted after a hands-on trial in a realistic model and a side-by-side comparison, often after hearing about it from a peer.",
+  },
+] as const;
+
 export default function HomePage() {
   return (
     <>
@@ -162,7 +185,7 @@ export default function HomePage() {
           <p className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-[#9fb6ff]">
             Open vs. minimally invasive repair
           </p>
-          <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4">
+          <dl className="mt-8 grid gap-x-8 gap-y-10 sm:grid-cols-3">
             {specs.map((spec) => (
               <div key={spec.label} className="border-t border-white/25 pt-5">
                 <dt className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-[#c3cdf0]">
@@ -225,7 +248,7 @@ export default function HomePage() {
         </RuledColumns>
         <p className="mt-6 text-[0.9rem] text-steel-dim">
           Peer reviewed: Law et al., ASME Journal of Medical Devices, 2025 [2].
-          Patents pending in the US and Canada [7].
+          Patents pending in the US and Canada [3].
         </p>
       </Section>
 
@@ -308,7 +331,7 @@ export default function HomePage() {
               ))}
             </ol>
             <Body className="mt-5">
-              Nothing new at the table. The cut extends beyond a strip, and
+              The same endoscope and punch workflow surgeons already know, and
               conversion to open surgery is always available.
             </Body>
           </div>
@@ -378,43 +401,39 @@ export default function HomePage() {
       </Section>
 
       {/* ---------------------------------------------------------------
-          03 Who it is for
+          03 What surgeons told us
       --------------------------------------------------------------- */}
       <Section>
         <SectionHead
           index="03"
-          label="Who it is for"
+          label="What surgeons told us"
           title={
             <>
-              Babies we move from open surgery to a <Accent>small incision.</Accent>
+              Built around what we heard <Accent>in the OR.</Accent>
             </>
           }
+          intro="Findings from our interviews with pediatric craniofacial surgeons and neurosurgeons at children's hospitals across North America."
         />
         <RuledColumns className="mt-12">
-          {patients.map((p) => (
-            <RuledCell key={p.tag}>
-              <Label>{p.tag}</Label>
-              <h3 className="mt-3 font-display text-[1.35rem] font-semibold text-ink">
-                {p.age} old
+          {surgeonFindings.slice(0, 3).map((f) => (
+            <RuledCell key={f.title}>
+              <h3 className="font-display text-[1.25rem] font-semibold leading-[1.3] text-ink">
+                {f.title}
               </h3>
-              <dl className="mt-5 space-y-4">
-                <div>
-                  <dt className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.08em] text-steel-dim">
-                    Now
-                  </dt>
-                  <dd className="mt-1 text-[1rem] leading-[1.6] text-steel">{p.now}</dd>
-                </div>
-                <div className="border-l-2 border-dura pl-4">
-                  <dt className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.08em] text-dura">
-                    With Ossentra
-                  </dt>
-                  <dd className="mt-1 text-[1rem] leading-[1.6] text-ink">{p.with}</dd>
-                </div>
-              </dl>
+              <Body className="mt-3">{f.body}</Body>
             </RuledCell>
           ))}
         </RuledColumns>
-        <p className="mt-6 text-[0.9rem] text-steel-dim">Illustrative cases.</p>
+        <RuledColumns cols={2} className="mt-10">
+          {surgeonFindings.slice(3).map((f) => (
+            <RuledCell key={f.title}>
+              <h3 className="font-display text-[1.25rem] font-semibold leading-[1.3] text-ink">
+                {f.title}
+              </h3>
+              <Body className="mt-3">{f.body}</Body>
+            </RuledCell>
+          ))}
+        </RuledColumns>
       </Section>
 
       {/* ---------------------------------------------------------------
@@ -424,14 +443,14 @@ export default function HomePage() {
         <SectionHead
           index="04"
           label="The clinical need"
-          title="The tool decides who gets open surgery."
+          title="Two operations, each with a cost to the child."
           intro={
             <>
               Craniosynostosis is the premature fusion of an infant&apos;s cranial
-              sutures, and it needs surgery to reshape the skull [3]. Minimally
-              invasive repair cuts blood loss, operative time and hospital stay.
-              Today&apos;s straight, rigid instruments cannot follow the
-              skull&apos;s curvature through a small incision.
+              sutures, and it needs surgery to reshape the skull [4]. Open repair
+              gives full control but brings a long scalp incision and transfusion.
+              Endoscopic repair is far smaller, but it is offered mainly to young
+              infants and is followed by months of helmet therapy.
             </>
           }
         />
@@ -471,9 +490,9 @@ export default function HomePage() {
 
         <div className="mt-14 grid gap-6 border-t border-ink/80 pt-8 md:grid-cols-3">
           {[
-            ["Helmets and springs", "Many endoscopic patients still need months of helmeting, or a second procedure to remove a spring."],
-            ["Excluded patients", "Multisuture, older and complex cases are pushed to open surgery."],
-            ["The opportunity", "An articulating tool brings minimally invasive surgery to more children."],
+            ["Age decides the approach", "Endoscopic repair is offered to young infants. Children who present later go to open surgery."],
+            ["The burden after surgery", "After a strip craniectomy the child wears a helmet for months, or has a second operation to remove a spring."],
+            ["Reach in metopic cases", "Getting a straight tool to the base of a metopic suture through a small incision is hard in a small working space."],
           ].map(([h, b]) => (
             <div key={h}>
               <h3 className="font-display text-[1.1rem] font-semibold text-ink">{h}</h3>
@@ -494,10 +513,10 @@ export default function HomePage() {
               <span>Value proposition</span>
               <span aria-hidden className="h-px flex-1 bg-hairline" />
             </div>
-            <blockquote className="mt-7 font-display text-[1.75rem] font-medium leading-[1.3] tracking-[-0.01em] text-ink sm:text-[2.1rem]">
-              &ldquo;The reshaping control of open surgery through a{" "}
-              <Accent>minimally invasive incision.</Accent>&rdquo;
-            </blockquote>
+            <p className="mt-7 font-display text-[1.75rem] font-medium leading-[1.3] tracking-[-0.01em] text-ink sm:text-[2.1rem]">
+              A cutter whose curve follows the skull, so the{" "}
+              <Accent>hand does not have to.</Accent>
+            </p>
           </div>
           <dl className="border-t border-ink/80">
             {differences.map((d) => (
@@ -523,7 +542,7 @@ export default function HomePage() {
           index="06"
           label="Competition"
           title="Five requirements. One instrument."
-          intro="Bone cutters are straight. Articulating tools are made for soft tissue. The closest, JPI's articulator, is built for adult joints. Ossentra is built to meet all five."
+          intro="Bone cutters are straight. Articulating tools are made for soft tissue or adult joints. Ossentra is built to meet all five."
         />
         <div className="mt-12 overflow-x-auto">
           <table className="w-full min-w-[44rem] border-collapse bg-white text-left">
@@ -682,7 +701,7 @@ export default function HomePage() {
           label="The market"
           title="A growing market with a clear regulatory path."
         />
-        <RuledColumns className="mt-12">
+        <RuledColumns cols={2} className="mt-12">
           {market.map((m) => (
             <RuledCell key={m.value}>
               <p className="tnum font-display text-[2.6rem] font-semibold leading-none text-navy">

@@ -70,12 +70,12 @@ export const operations = [
   },
   {
     name: "Endoscopic strip craniectomy",
-    cite: "[1, 4, 5]",
+    cite: "[1, 5, 6]",
     image: "/figures/endoscopic-strip-craniectomy.webp",
     points: [
       "Keyhole, home in a day",
-      "Straight tools remove a strip only, so a helmet or spring follows",
-      "Closed to late, multi-suture and curved cases",
+      "A strip of bone is removed, so months of helmet therapy or a spring follow",
+      "Offered mainly to young infants; later presenters go to open surgery",
     ],
   },
 ] as const;
@@ -87,9 +87,9 @@ export const operations = [
 export const references = [
   "Proctor MR. Endoscopic craniosynostosis repair. Transl Pediatr. 2014;3(3):247-258.",
   "Law J, Stickley E, Looi T, Diller E, Podolsky D. A novel articulating bone cutting tool for minimally invasive craniosynostosis surgery. ASME J Med Devices. 2025. doi:10.1115/1.4069208",
+  "Podolsky D, Law J, Drake J. Articulable surgical instrument assembly and uses therefor. WO2024156054A1 (PCT/CA2024/050074); US 19/150,344; CA 3,280,783. Priority January 2023.",
   "Governale LS. Craniosynostosis. Pediatr Neurol. 2015;53(5).",
   "Suleman F, et al. The role of helmet therapy in craniosynostosis: a systematic review. Asian J Neurosurg. 2024.",
   "Pearson G, Khansa I, Drapeau A. Spring cranioplasty: incorporation into practice. J Craniofac Surg. 2020;31(7).",
   "Fung E, Yu BZ, Roth JM, et al. Trends in open versus minimally invasive craniosynostosis repair: a 10-year national analysis. J Craniofac Surg. 2025;36(8):2773-2777.",
-  "Podolsky D, Law J, Drake J. Articulable surgical instrument assembly and uses therefor. WO2024156054A1 (PCT/CA2024/050074); US 19/150,344; CA 3,280,783. Priority January 2023.",
 ] as const;
