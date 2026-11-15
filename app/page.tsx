@@ -182,9 +182,12 @@ export default function HomePage() {
 
         <Container className="relative">
           <p className="mt-4 text-center text-sm leading-[1.6] text-steel-dim">
-            The shaft bends to the curve of the skull and the bone punch closes at the tip.
+            The shaft bends to the curve of the skull and the bone punch closes
+            at the tip.
           </p>
-          <StatusNote className="mx-auto mt-8 max-w-2xl">{site.regulatoryStatus}</StatusNote>
+          <StatusNote className="mx-auto mt-8 max-w-2xl">
+            {site.regulatoryStatus}
+          </StatusNote>
         </Container>
       </section>
 
@@ -269,8 +272,7 @@ export default function HomePage() {
           >
             Law et al., ASME Journal of Medical Devices, 2025
           </a>{" "}
-          [2].
-          Patents pending in the US and Canada [3].
+          [2]. Patents pending in the US and Canada [3].
         </p>
       </Section>
 
@@ -331,55 +333,23 @@ export default function HomePage() {
               </Body>
             </div>
           </div>
-          <PdfFigure
-            className="mt-10"
-            src="/figures/articulating-cutter.webp"
-            alt="The prototype reaching along a skull phantom from a single vertex incision"
-            caption="Reaching the frontal, parietal and occipital bones from a single vertex incision."
-          />
-        </div>
-
-        <div className="mt-20 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
-          <div>
-            <Label>Workflow</Label>
-            <h3 className="mt-3 font-display text-[1.6rem] font-bold leading-[1.2] text-ink">
-              One keyhole, and the endoscope surgeons already use.
-            </h3>
-            <ol className="mt-7 border-t border-ink/80">
-              {workflow.map((w, i) => (
-                <li
-                  key={w.step}
-                  className="grid grid-cols-[2.5rem_9rem_minmax(0,1fr)] items-baseline gap-2 border-b border-hairline py-3.5"
-                >
-                  <span className="tnum font-mono font-bold text-[0.82rem] text-dura">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="font-semibold text-ink">{w.step}</span>
-                  <span className="text-[0.98rem] text-steel">{w.detail}</span>
-                </li>
-              ))}
-            </ol>
-            <Body className="mt-5">
-              The same endoscope and punch workflow surgeons already know, and
-              conversion to open surgery is always available.
-            </Body>
-          </div>
-          <figure>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/figures/prototype-handheld.webp"
-              alt="The handheld prototype: rigid shaft, actuation unit, flexible endoscope and end-effector"
-              className="block h-auto w-full"
-            />
-            <div className="mt-3 grid grid-cols-2 gap-3">
+          <figure className="mt-10">
+            <div className="relative">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/figures/prototype-phantom.webp"
-                alt="The prototype cutting on a skull phantom"
-                className="block aspect-[4/3] h-full w-full object-cover"
+                src="/figures/articulating-cutter.webp"
+                alt="The handheld prototype, its reach across a skull phantom from a single vertex incision, and cutting on the phantom"
+                className="block h-auto w-full"
               />
+              {/* The bottom-right panel plays the endoscope view as a loop. */}
               <video
-                className="block aspect-[4/3] h-full w-full bg-black object-cover"
+                className="absolute bg-black object-cover"
+                style={{
+                  left: "81.41%",
+                  top: "58.41%",
+                  width: "18.59%",
+                  height: "41.59%",
+                }}
                 src="/media/endoscope-cutting.mp4"
                 poster="/media/endoscope-cutting-poster.jpg"
                 autoPlay
@@ -390,12 +360,39 @@ export default function HomePage() {
               />
             </div>
             <figcaption className="mt-4 text-center text-sm leading-[1.6] text-steel-dim">
-              The handheld prototype (top), cutting on a skull phantom (left),
-              and the endoscope view of the jaws cutting, sped up 10x (right).
+              The handheld prototype, reaching the frontal, parietal and
+              occipital bones from a single vertex incision, and the endoscope
+              view of the jaws cutting (bottom right, sped up 10x).
             </figcaption>
           </figure>
         </div>
 
+        <div className="mt-20 grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+          <div>
+            <Label>Workflow</Label>
+            <h3 className="mt-3 font-display text-[1.6rem] font-bold leading-[1.2] text-ink">
+              One keyhole, and the endoscope surgeons already use.
+            </h3>
+            <Body className="mt-4">
+              The same endoscope and punch workflow surgeons already know, and
+              conversion to open surgery is always available.
+            </Body>
+          </div>
+          <ol className="border-t border-ink/80">
+            {workflow.map((w, i) => (
+              <li
+                key={w.step}
+                className="grid grid-cols-[2.5rem_9rem_minmax(0,1fr)] items-baseline gap-2 border-b border-hairline py-3.5"
+              >
+                <span className="tnum font-mono font-bold text-[0.82rem] text-dura">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="font-semibold text-ink">{w.step}</span>
+                <span className="text-[0.98rem] text-steel">{w.detail}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
       </Section>
 
       {/* ---------------------------------------------------------------
