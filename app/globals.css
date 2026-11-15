@@ -1,39 +1,40 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   Ossentra design system (dark)
+   Ossentra design system (light, clinical)
 
-   Near-black navy ground in two depths (`bone` and `field`), raised `plate`
-   cards with hairline borders, and one blue-to-teal gradient for emphasis.
+   White ground with cool grey alternate sections, navy type from the logo,
+   one royal blue accent, and navy bands for contrast.
 --------------------------------------------------------------------------- */
 
 @theme {
-  /* Ground — near-black navy, alternating between two depths */
-  --color-bone: #0a0d14; /* page ground */
-  --color-field: #0e121c; /* alternate section ground */
-  --color-plate: #121723; /* raised cards */
-  --color-bonefill: #171e2c; /* cards on cards */
-  --color-scalp: #171e2c;
-  --color-hairline: rgba(255, 255, 255, 0.08); /* rules */
-  --color-hairline-strong: rgba(255, 255, 255, 0.15);
+  /* Ground: clinical white, with a cool grey for alternate sections */
+  --color-bone: #ffffff; /* page ground */
+  --color-field: #f3f6fb; /* alternate section ground */
+  --color-plate: #ffffff; /* cards */
+  --color-bonefill: #f3f6fb; /* cards on cards */
+  --color-scalp: #e9eef7;
+  --color-hairline: #e1e7f0; /* rules and card borders */
+  --color-hairline-strong: #c9d2e1;
 
-  /* Text */
-  --color-ink: #eaf0f8; /* primary text */
-  --color-steel: #9aa8bd; /* secondary text */
-  --color-steel-dim: #6d7b90;
+  /* Text, in the logo's navy */
+  --color-ink: #0b1a4a; /* headings and primary text */
+  --color-steel: #4a5878; /* body text */
+  --color-steel-dim: #7a879f; /* captions */
 
-  /* Brand gradient: blue to teal */
-  --color-navy: #3b82f6;
-  --color-dura: #06d6c6;
-  --color-ok: #22c55e;
+  /* Brand */
+  --color-navy: #011477; /* logo navy, used for dark bands */
+  --color-dura: #1f56d8; /* royal blue accent: links, buttons, eyebrows */
+  --color-sky: #e8efff; /* pale blue tint */
+  --color-ok: #15803d;
 
-  /* Legacy "field" names, kept so older markup reads correctly on dark */
-  --color-hairline-field: rgba(255, 255, 255, 0.1);
-  --color-steel-field: #9aa8bd;
-  --color-bone-field: #eaf0f8;
-  --color-dura-field: #06d6c6;
+  /* Legacy names kept so older markup reads correctly */
+  --color-hairline-field: #e1e7f0;
+  --color-steel-field: #4a5878;
+  --color-bone-field: #0b1a4a;
+  --color-dura-field: #1f56d8;
 
-  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
@@ -61,7 +62,7 @@ body {
 
 ::selection {
   background-color: var(--color-dura);
-  color: #04121a;
+  color: #ffffff;
 }
 
 section[id] {
@@ -78,36 +79,33 @@ section[id] {
   font-variant-numeric: tabular-nums;
 }
 
-/* Blue-to-teal gradient, as fill and as text. */
+/* Accent text and fills (kept as classes so markup stays readable). */
 .bg-grad {
-  background-image: linear-gradient(120deg, #3b82f6, #06d6c6);
+  background-color: var(--color-dura);
+}
+.bg-grad:hover {
+  background-color: var(--color-navy);
 }
 .text-grad {
-  background-image: linear-gradient(120deg, #3b82f6, #06d6c6);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--color-dura);
 }
 
 .accent-shadow {
-  box-shadow: 0 8px 30px rgba(6, 214, 198, 0.24);
-}
-.accent-shadow:hover {
-  box-shadow: 0 12px 38px rgba(6, 214, 198, 0.36);
+  box-shadow: 0 6px 18px rgba(31, 86, 216, 0.22);
 }
 
-/* Cards lift off the dark ground with a deep, soft shadow. */
+/* Cards sit on the white with a soft navy-tinted shadow. */
 .card-shadow {
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 1px 2px rgba(11, 26, 74, 0.05), 0 10px 28px rgba(11, 26, 74, 0.07);
 }
 
 /* Faint drafting grid behind the hero. */
 .hero-grid {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    linear-gradient(rgba(1, 20, 119, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(1, 20, 119, 0.05) 1px, transparent 1px);
   background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse at 60% 40%, #000 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse at 70% 40%, #000 25%, transparent 75%);
 }
 
 /* Travelling dots along the hero curves. */

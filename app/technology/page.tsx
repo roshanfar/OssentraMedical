@@ -114,7 +114,7 @@ export default function TechnologyPage() {
                   key={w.step}
                   className="flex gap-3 rounded-xl border border-hairline bg-plate p-4"
                 >
-                  <span className="text-grad tnum text-xl font-extrabold">
+                  <span className="text-grad tnum text-xl font-display font-bold">
                     {i + 1}
                   </span>
                   <span>
@@ -204,7 +204,7 @@ export default function TechnologyPage() {
               key={s.stage}
               className="rounded-2xl border border-hairline bg-plate p-6"
             >
-              <span className="text-grad tnum text-3xl font-extrabold">
+              <span className="text-grad tnum text-3xl font-display font-bold">
                 {i + 1}
               </span>
               <h3 className="mt-3 text-lg font-bold text-ink">{s.stage}</h3>
@@ -249,7 +249,7 @@ export default function TechnologyPage() {
               key={r.step}
               className={`rounded-2xl border p-5 ${
                 i === 0
-                  ? "border-dura/40 bg-gradient-to-b from-dura/15 to-plate"
+                  ? "border-dura/40 bg-sky"
                   : "border-hairline bg-plate"
               }`}
             >

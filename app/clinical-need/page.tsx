@@ -166,7 +166,7 @@ export default function ClinicalNeedPage() {
         <dl className="mt-12 grid gap-4 md:grid-cols-3">
           {clinicalImpact.map((item) => (
             <div key={item.value} className="rounded-2xl border border-hairline bg-plate p-6 sm:p-7">
-              <dd className="tnum text-grad font-display text-3xl font-extrabold tracking-[-0.02em]">
+              <dd className="tnum text-grad font-display text-3xl font-display font-bold tracking-[-0.02em]">
                 {item.value}
               </dd>
               <dt className="mt-3 font-serif text-[0.9375rem] leading-[1.55] text-steel-field">

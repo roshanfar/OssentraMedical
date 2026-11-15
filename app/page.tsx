@@ -145,7 +145,7 @@ function HeroBackdrop() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
       <div className="hero-grid absolute inset-0" />
-      <div className="absolute -right-40 -top-40 h-[560px] w-[560px] rounded-full bg-[#3b82f6]/20 blur-[120px]" />
+      <div className="absolute -right-40 -top-40 h-[560px] w-[560px] rounded-full bg-dura/10 blur-[120px]" />
       <svg
         className="absolute inset-0 h-full w-full opacity-40 sm:opacity-100"
         viewBox="0 0 1440 700"
@@ -153,12 +153,12 @@ function HeroBackdrop() {
       >
         {curves.map((d) => (
           <g key={d}>
-            <path d={d} fill="none" stroke="#3b82f6" strokeOpacity="0.1" strokeWidth="16" />
+            <path d={d} fill="none" stroke="#011477" strokeOpacity="0.05" strokeWidth="16" />
             <path
               d={d}
               fill="none"
-              stroke="#06d6c6"
-              strokeOpacity="0.7"
+              stroke="#1f56d8"
+              strokeOpacity="0.45"
               strokeWidth="3"
               strokeLinecap="round"
               strokeDasharray="1 23"
@@ -177,7 +177,7 @@ export default function HomePage() {
       {/* ---------------------------------------------------------------
           Hero
       --------------------------------------------------------------- */}
-      <section id="top" className="relative overflow-hidden bg-bone py-20 sm:py-28">
+      <section id="top" className="relative overflow-hidden bg-gradient-to-b from-field to-bone py-16 sm:py-24">
         <HeroBackdrop />
         <Container className="relative">
           <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-center lg:gap-14">
@@ -212,30 +212,34 @@ export default function HomePage() {
       {/* ---------------------------------------------------------------
           Open surgery vs. Ossentra
       --------------------------------------------------------------- */}
-      <section className="border-y border-hairline bg-field py-14">
+      <section className="bg-navy py-14 text-white">
         <Container>
-          <Eyebrow>Open vs. minimally invasive repair</Eyebrow>
-          <dl className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <p className="text-[0.76rem] font-bold uppercase tracking-[0.14em] text-[#9fb6ff]">
+            Open vs. minimally invasive repair
+          </p>
+          <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4">
             {specs.map((spec) => (
-              <Card key={spec.label} as="div" className="!p-4 sm:!p-6">
-                <dt className="text-[0.8rem] font-semibold text-steel">
+              <div key={spec.label} className="border-t border-white/20 pt-5">
+                <dt className="text-[0.85rem] font-semibold text-[#c3cdf0]">
                   {spec.label}
                 </dt>
-                <dd className="tnum mt-3 text-[1.15rem] font-extrabold leading-[1.3] tracking-[-0.01em] sm:text-[1.5rem]">
+                <dd className="tnum mt-2 font-display text-[1.2rem] font-bold leading-[1.3] sm:text-[1.6rem]">
                   {spec.value.split(" → ").map((part, i) => (
                     <span key={part}>
                       {i > 0 ? " " : null}
-                      <span className="text-grad whitespace-nowrap">
-                        {i > 0 ? "→ " : ""}
+                      <span className="whitespace-nowrap">
+                        {i > 0 ? (
+                          <span className="text-[#9fb6ff]">→ </span>
+                        ) : null}
                         {part}
                       </span>
                     </span>
                   ))}
                 </dd>
-                <dd className="mt-2 text-sm leading-[1.55] text-steel">
+                <dd className="mt-2 text-sm leading-[1.55] text-[#c3cdf0]">
                   {spec.note}
                 </dd>
-              </Card>
+              </div>
             ))}
           </dl>
         </Container>
@@ -318,7 +322,7 @@ export default function HomePage() {
                   {p.now}
                 </p>
               </div>
-              <div className="mt-3 rounded-xl border border-dura/30 bg-gradient-to-r from-[#3b82f6]/15 to-dura/15 px-4 py-3">
+              <div className="mt-3 rounded-xl border border-dura/25 bg-sky px-4 py-3">
                 <p className="text-[0.7rem] font-bold uppercase tracking-[0.14em] text-dura">
                   With Ossentra
                 </p>
@@ -391,7 +395,7 @@ export default function HomePage() {
                   key={p.label}
                   className={`rounded-xl border px-5 py-4 ${
                     "highlight" in p && p.highlight
-                      ? "border-dura/30 bg-gradient-to-r from-[#3b82f6]/15 to-dura/15"
+                      ? "border-dura/25 bg-sky"
                       : "border-hairline bg-bonefill"
                   }`}
                 >
@@ -413,7 +417,7 @@ export default function HomePage() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
           <div>
             <Eyebrow>Value proposition</Eyebrow>
-            <p className="mt-5 text-[1.7rem] font-extrabold leading-[1.25] tracking-[-0.02em] text-ink sm:text-[2.1rem]">
+            <p className="mt-5 text-[1.7rem] font-display font-bold leading-[1.25] tracking-[-0.02em] text-ink sm:text-[2.1rem]">
               &ldquo;The reshaping control of open surgery through a{" "}
               <Accent>minimally invasive incision.</Accent>&rdquo;
             </p>
@@ -455,7 +459,7 @@ export default function HomePage() {
               as="li"
               className="flex flex-col items-center !px-4 !py-6 text-center"
             >
-              <span className="text-grad tnum text-3xl font-extrabold">
+              <span className="text-grad tnum text-3xl font-display font-bold">
                 {i + 1}
               </span>
               <span className="mt-2 text-[0.95rem] font-semibold text-ink">
@@ -490,7 +494,7 @@ export default function HomePage() {
                   <tr
                     key={row.name}
                     className={`border-b border-hairline last:border-b-0 ${
-                      ours ? "bg-gradient-to-r from-[#3b82f6]/15 to-dura/15" : ""
+                      ours ? "bg-sky" : ""
                     }`}
                   >
                     <th
@@ -541,7 +545,7 @@ export default function HomePage() {
                 key={m.when}
                 className={`rounded-2xl border p-5 ${
                   active
-                    ? "border-dura/40 bg-gradient-to-b from-dura/15 to-plate"
+                    ? "border-dura/40 bg-sky"
                     : "border-hairline bg-plate"
                 }`}
               >
@@ -552,7 +556,7 @@ export default function HomePage() {
                       done
                         ? "border-ok bg-ok"
                         : active
-                          ? "border-dura bg-dura shadow-[0_0_12px_rgba(6,214,198,0.7)]"
+                          ? "border-dura bg-dura shadow-[0_0_10px_rgba(31,86,216,0.55)]"
                           : "border-hairline-strong bg-field"
                     }`}
                   />
@@ -605,7 +609,7 @@ export default function HomePage() {
           {market.map((m) => (
             <Card key={m.value} as="div">
               <dt className="sr-only">{m.label}</dt>
-              <dd className="text-grad tnum text-4xl font-extrabold tracking-[-0.02em]">
+              <dd className="text-grad tnum text-4xl font-display font-bold tracking-[-0.02em]">
                 {m.value}
               </dd>
               <dd className="mt-3 text-[0.92rem] leading-[1.6] text-steel">
@@ -668,7 +672,7 @@ export default function HomePage() {
             <span
               key={e.name}
               title={e.detail}
-              className="rounded-full border border-hairline-strong bg-white/[0.04] px-4 py-1.5 text-[0.85rem] font-semibold text-ink"
+              className="rounded-md border border-hairline-strong bg-white px-4 py-1.5 text-[0.85rem] font-semibold text-ink"
             >
               {e.name}
             </span>
@@ -698,7 +702,7 @@ export default function HomePage() {
             {supporters.map((s) => (
               <li
                 key={s.name}
-                className="flex h-20 items-center justify-center rounded-xl bg-white p-3"
+                className="flex h-20 items-center justify-center rounded-xl border border-hairline bg-white p-3"
                 title={s.name}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -718,21 +722,37 @@ export default function HomePage() {
       --------------------------------------------------------------- */}
       <section id="contact" className="bg-bone py-20 sm:py-24">
         <Container>
-          <div className="relative overflow-hidden rounded-3xl border border-dura/20 bg-gradient-to-br from-[#3b82f6]/10 via-plate to-dura/10 px-6 py-14 text-center sm:px-12">
-            <Eyebrow>Contact</Eyebrow>
-            <Heading className="mx-auto mt-4 max-w-2xl">
-              We want surgeons who&apos;ll tell us it doesn&apos;t work.
-            </Heading>
-            <Lead className="mx-auto mt-6 max-w-2xl">
-              Bench and cadaveric evaluation is open to craniofacial and
-              pediatric neurosurgeons. Procurement and investor materials are
-              available on request.
-            </Lead>
-            <div className="mt-9 flex flex-wrap justify-center gap-3">
-              <ButtonLink href={`mailto:${site.email}`}>{site.email}</ButtonLink>
-              <ButtonLink href="/contact" variant="outline">
-                Contact form
-              </ButtonLink>
+          <div className="relative overflow-hidden rounded-2xl bg-navy px-6 py-14 text-center text-white sm:px-12">
+            <div
+              aria-hidden
+              className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-dura/40 blur-3xl"
+            />
+            <div className="relative">
+              <p className="text-[0.76rem] font-bold uppercase tracking-[0.14em] text-[#9fb6ff]">
+                Contact
+              </p>
+              <h2 className="mx-auto mt-4 max-w-2xl font-display text-[1.8rem] font-bold leading-[1.18] tracking-[-0.015em] text-balance sm:text-[2.35rem]">
+                We want surgeons who&apos;ll tell us it doesn&apos;t work.
+              </h2>
+              <p className="mx-auto mt-6 max-w-2xl text-lg leading-[1.65] text-[#c3cdf0]">
+                Bench and cadaveric evaluation is open to craniofacial and
+                pediatric neurosurgeons. Procurement and investor materials are
+                available on request.
+              </p>
+              <div className="mt-9 flex flex-wrap justify-center gap-3">
+                <a
+                  href={`mailto:${site.email}`}
+                  className="inline-flex items-center rounded-md bg-white px-6 py-3 text-[0.95rem] font-semibold text-navy transition-colors hover:bg-sky"
+                >
+                  {site.email}
+                </a>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center rounded-md border border-white/40 px-6 py-3 text-[0.95rem] font-semibold text-white transition-colors hover:border-white"
+                >
+                  Contact form
+                </Link>
+              </div>
             </div>
           </div>
         </Container>

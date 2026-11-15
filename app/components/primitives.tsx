@@ -88,15 +88,15 @@ export function Heading({
   const Tag = `h${level}` as "h1" | "h2" | "h3";
   const size =
     level === 1
-      ? "text-[2.5rem] sm:text-5xl lg:text-[3.6rem] leading-[1.08] tracking-[-0.025em]"
+      ? "text-[2.3rem] sm:text-[2.9rem] lg:text-[3.25rem] leading-[1.12] tracking-[-0.02em]"
       : level === 2
-        ? "text-3xl sm:text-[2.6rem] leading-[1.13] tracking-[-0.02em]"
+        ? "text-[1.8rem] sm:text-[2.35rem] leading-[1.18] tracking-[-0.015em]"
         : "text-xl sm:text-2xl leading-[1.2] tracking-[-0.015em]";
   void register;
 
   return (
     <Tag
-      className={`font-display font-extrabold text-balance text-ink ${size} ${className}`}
+      className={`font-display font-bold text-balance text-ink ${size} ${className}`}
     >
       {children}
     </Tag>
@@ -146,14 +146,14 @@ export function Body({
 type ButtonVariant = "solid" | "outline";
 
 const buttonBase =
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border px-[22px] py-3 text-[0.95rem] font-semibold transition duration-200 hover:-translate-y-0.5";
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md border px-6 py-3 text-[0.95rem] font-semibold transition-colors duration-200";
 
 function buttonClasses(variant: ButtonVariant, register: Register) {
   void register;
   if (variant === "solid") {
-    return `${buttonBase} bg-grad accent-shadow border-transparent text-[#04121a]`;
+    return `${buttonBase} bg-grad border-transparent text-white`;
   }
-  return `${buttonBase} border-hairline-strong bg-white/[0.04] text-ink hover:bg-white/[0.09]`;
+  return `${buttonBase} border-hairline-strong bg-white text-ink hover:border-dura hover:text-dura`;
 }
 
 export function ButtonLink({
@@ -333,14 +333,14 @@ export function Card({
 }) {
   return (
     <Tag
-      className={`rounded-2xl border border-hairline bg-plate p-6 sm:p-7 ${className}`}
+      className={`card-shadow rounded-xl border border-hairline bg-plate p-6 sm:p-7 ${className}`}
     >
       {children}
     </Tag>
   );
 }
 
-/** Blue-to-teal gradient text, for the phrase a heading turns on. */
+/** Accent-coloured text, for the phrase a heading turns on. */
 export function Accent({ children }: { children: ReactNode }) {
   return <span className="text-grad">{children}</span>;
 }
