@@ -106,7 +106,7 @@ function Mark({ value }: { value: string }) {
 function LogoGrid({
   items,
 }: {
-  items: readonly { name: string; logo: string }[];
+  items: readonly { name: string; logo: string; url?: string }[];
 }) {
   return (
     <ul className="grid grid-cols-2 border-l border-t border-hairline sm:grid-cols-3 lg:grid-cols-4">
@@ -116,12 +116,28 @@ function LogoGrid({
           title={s.name}
           className="flex h-28 items-center justify-center border-b border-r border-hairline bg-white px-6 py-5"
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={s.logo}
-            alt={s.name}
-            className="max-h-full max-w-full object-contain"
-          />
+          {"url" in s && s.url ? (
+            <a
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-full w-full items-center justify-center"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={s.logo}
+                alt={s.name}
+                className="max-h-full max-w-full object-contain"
+              />
+            </a>
+          ) : (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={s.logo}
+              alt={s.name}
+              className="max-h-full max-w-full object-contain"
+            />
+          )}
         </li>
       ))}
     </ul>
@@ -131,6 +147,7 @@ function LogoGrid({
 /** Links named organisations inside team bios. */
 const bioLinks: Record<string, string> = {
   "Simulare Medical": "https://www.simularemedical.com/",
+  PCIGITI: "https://pcigiti.com/",
 };
 
 function BioText({ text }: { text: string }) {
@@ -768,7 +785,7 @@ export default function HomePage() {
                 {person.role}
               </p>
               <p className="mt-1 text-[0.95rem] text-steel-dim">
-                {person.affiliation}
+                <BioText text={person.affiliation} />
               </p>
               <Body className="mt-3 text-[0.94rem]">
                 <BioText text={person.bio} />
@@ -944,7 +961,21 @@ export default function HomePage() {
                 <dd className="text-ink">
                   {site.address.map((line) => (
                     <span key={line} className="block">
-                      {line}
+                      {line.startsWith("PCIGITI") ? (
+                        <>
+                          <a
+                            href={site.pcigiti}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-ink underline underline-offset-4 hover:text-dura"
+                          >
+                            PCIGITI
+                          </a>
+                          {line.slice("PCIGITI".length)}
+                        </>
+                      ) : (
+                        line
+                      )}
                     </span>
                   ))}
                 </dd>

@@ -9,6 +9,7 @@ export const site = {
   regulatoryStatus:
     "Investigational device. Bench-stage prototype, not cleared for clinical use. Advancing toward FDA Class II 510(k).",
   email: "majid.roshanfar@sickkids.ca",
+  pcigiti: "https://pcigiti.com/",
   linkedin: "https://www.linkedin.com/company/ossentra/",
   address: [
     "PCIGITI, The Hospital for Sick Children",

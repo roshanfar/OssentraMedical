@@ -64,7 +64,7 @@ export const accelerators = [
 export const institutions = [
   { name: "SickKids", logo: "/logos/sickkids.png" },
   { name: "University of Toronto", logo: "/logos/uoft.png" },
-  { name: "PCIGITI", logo: "/logos/pcigiti.png" },
+  { name: "PCIGITI", logo: "/logos/pcigiti.png", url: "https://pcigiti.com/" },
   {
     name: "SickKids Proof of Principle Grant",
     logo: "/logos/proof-of-principle.png",
