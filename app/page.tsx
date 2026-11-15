@@ -147,19 +147,25 @@ function LogoGrid({
 /** Links named organisations inside team bios. */
 const bioLinks: Record<string, string> = {
   "Simulare Medical": "https://www.simularemedical.com/",
-  PCIGITI: "https://pcigiti.com/",
 };
 
-function BioText({ text }: { text: string }) {
-  const names = Object.keys(bioLinks);
+function BioText({
+  text,
+  extra = {},
+}: {
+  text: string;
+  extra?: Record<string, string>;
+}) {
+  const all = { ...bioLinks, ...extra };
+  const names = Object.keys(all);
   const parts = text.split(new RegExp(`(${names.join("|")})`));
   return (
     <>
       {parts.map((part, i) =>
-        bioLinks[part] ? (
+        all[part] ? (
           <a
             key={i}
-            href={bioLinks[part]}
+            href={all[part]}
             target="_blank"
             rel="noopener noreferrer"
             className="font-bold text-dura underline underline-offset-4 hover:text-ink"
@@ -767,7 +773,7 @@ export default function HomePage() {
           intro={`A surgeon and engineer team from ${site.origin}, the world's number one children's hospital (Newsweek, World's Best Specialized Hospitals 2026 and 2027). We build where craniofacial surgery meets engineering.`}
         />
         <div className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-          {team.map((person) => (
+          {team.map((person, i) => (
             <article key={person.name}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -785,7 +791,15 @@ export default function HomePage() {
                 {person.role}
               </p>
               <p className="mt-1 text-[0.95rem] text-steel-dim">
-                <BioText text={person.affiliation} />
+                <BioText
+                  text={person.affiliation}
+                  extra={
+                    i ===
+                    team.findIndex((p) => p.affiliation.includes("PCIGITI"))
+                      ? { PCIGITI: site.pcigiti }
+                      : {}
+                  }
+                />
               </p>
               <Body className="mt-3 text-[0.94rem]">
                 <BioText text={person.bio} />
@@ -961,21 +975,7 @@ export default function HomePage() {
                 <dd className="text-ink">
                   {site.address.map((line) => (
                     <span key={line} className="block">
-                      {line.startsWith("PCIGITI") ? (
-                        <>
-                          <a
-                            href={site.pcigiti}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-ink underline underline-offset-4 hover:text-dura"
-                          >
-                            PCIGITI
-                          </a>
-                          {line.slice("PCIGITI".length)}
-                        </>
-                      ) : (
-                        line
-                      )}
+                      {line}
                     </span>
                   ))}
                 </dd>

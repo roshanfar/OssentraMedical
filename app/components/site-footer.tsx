@@ -60,21 +60,7 @@ export function SiteFooter() {
             <address className="mt-5 text-[1rem] not-italic leading-[1.65] text-[#eef2fc]">
               {site.address.map((line) => (
                 <span key={line} className="block">
-                  {line.startsWith("PCIGITI") ? (
-                    <>
-                      <a
-                        href={site.pcigiti}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline underline-offset-4 hover:text-white"
-                      >
-                        PCIGITI
-                      </a>
-                      {line.slice("PCIGITI".length)}
-                    </>
-                  ) : (
-                    line
-                  )}
+                  {line}
                 </span>
               ))}
             </address>
