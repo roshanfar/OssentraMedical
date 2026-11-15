@@ -718,7 +718,7 @@ export default function HomePage() {
           index="10"
           label="The team"
           title="Spun out of SickKids."
-          intro={`A surgeon and engineer team from ${site.origin}, building where craniofacial surgery meets engineering.`}
+          intro={`A surgeon and engineer team from ${site.origin}, the world's number one children's hospital (Newsweek, World's Best Specialized Hospitals 2026 and 2027). We build where craniofacial surgery meets engineering.`}
         />
         <div className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((person) => (
