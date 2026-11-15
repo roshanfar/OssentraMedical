@@ -156,7 +156,7 @@ export default function HomePage() {
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-16">
             <div>
               <p className="font-mono font-bold text-[0.8rem] uppercase tracking-[0.1em] text-dura">
-                Pediatric skull surgery · SickKids, Toronto
+                Pediatric skull surgery
               </p>
               <h1 className="mt-6 font-display text-[2.6rem] font-bold leading-[1.06] tracking-[-0.02em] text-ink text-balance sm:text-[3.4rem] lg:text-[4.2rem]">
                 Precision was never <Accent>a straight line.</Accent>
