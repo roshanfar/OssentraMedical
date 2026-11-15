@@ -128,6 +128,35 @@ function LogoGrid({
   );
 }
 
+/** Links named organisations inside team bios. */
+const bioLinks: Record<string, string> = {
+  "Simulare Medical": "https://www.simularemedical.com/",
+};
+
+function BioText({ text }: { text: string }) {
+  const names = Object.keys(bioLinks);
+  const parts = text.split(new RegExp(`(${names.join("|")})`));
+  return (
+    <>
+      {parts.map((part, i) =>
+        bioLinks[part] ? (
+          <a
+            key={i}
+            href={bioLinks[part]}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-dura underline underline-offset-4 hover:text-ink"
+          >
+            {part}
+          </a>
+        ) : (
+          part
+        ),
+      )}
+    </>
+  );
+}
+
 /** Findings supported across our surgeon interviews (no names). */
 const surgeonFindings = [
   {
@@ -741,7 +770,18 @@ export default function HomePage() {
               <p className="mt-1 text-[0.95rem] text-steel-dim">
                 {person.affiliation}
               </p>
-              <Body className="mt-3 text-[0.94rem]">{person.bio}</Body>
+              <Body className="mt-3 text-[0.94rem]">
+                <BioText text={person.bio} />
+              </Body>
+              <a
+                href={person.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-2 text-[0.95rem] font-bold text-dura hover:text-ink"
+              >
+                <LinkedInIcon className="h-4 w-4" />
+                LinkedIn
+              </a>
             </article>
           ))}
         </div>
