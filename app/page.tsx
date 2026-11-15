@@ -12,16 +12,13 @@ import {
 } from "./components/primitives";
 import { LinkedInIcon } from "./components/site-footer";
 import {
-  benchResults,
   capabilities,
   competitionColumns,
   competitionRows,
   differences,
-  ipPosition,
   market,
   marketFocus,
   milestones,
-  paper,
   regulatorySteps,
   specs,
   workflow,
@@ -155,31 +152,38 @@ export default function HomePage() {
         className="relative overflow-hidden bg-gradient-to-b from-field to-bone pt-16 pb-14 sm:pt-24 sm:pb-20"
       >
         <Container className="relative">
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-16">
             <div>
               <p className="font-mono font-bold text-[0.8rem] uppercase tracking-[0.1em] text-dura">
                 Pediatric skull surgery · SickKids, Toronto
               </p>
-              <h1 className="mt-6 font-display text-[2.6rem] font-bold leading-[1.06] tracking-[-0.02em] text-ink text-balance sm:text-[3.4rem] lg:text-[4rem]">
+              <h1 className="mt-6 font-display text-[2.6rem] font-bold leading-[1.06] tracking-[-0.02em] text-ink text-balance sm:text-[3.4rem] lg:text-[4.2rem]">
                 Precision was never <Accent>a straight line.</Accent>
               </h1>
-              <p className="mt-7 max-w-xl text-[1.12rem] leading-[1.7] text-steel">
+            </div>
+            <div>
+              <p className="max-w-xl text-[1.12rem] leading-[1.7] text-steel">
                 The first articulating bone-cutting instrument for minimally
                 invasive pediatric skull surgery.
               </p>
-              <div className="mt-9 flex flex-wrap gap-3">
+              <div className="mt-7 flex flex-wrap gap-3">
                 <ButtonLink href="#technology">How it works</ButtonLink>
                 <ButtonLink href="#need" variant="outline">
                   Why it matters
                 </ButtonLink>
               </div>
-              <StatusNote className="mt-10 max-w-md">
-                {site.regulatoryStatus}
-              </StatusNote>
             </div>
-
-            <DeviceAnimation caption="The shaft bends to the curve of the skull and the bone punch closes at the tip." />
           </div>
+        </Container>
+
+        {/* The device animation runs the full width of the page, at its own aspect ratio. */}
+        <DeviceAnimation className="relative mt-12 w-full sm:mt-16" />
+
+        <Container className="relative">
+          <p className="mt-4 text-center text-sm leading-[1.6] text-steel-dim">
+            The shaft bends to the curve of the skull and the bone punch closes at the tip.
+          </p>
+          <StatusNote className="mx-auto mt-8 max-w-2xl">{site.regulatoryStatus}</StatusNote>
         </Container>
       </section>
 
@@ -295,27 +299,34 @@ export default function HomePage() {
           />
         </div>
 
-        <div className="mt-20 grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
+        <div className="mt-20">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+            <div>
+              <Label>Articulation</Label>
+              <h3 className="mt-3 font-display text-[1.6rem] font-bold leading-[1.2] text-ink">
+                It bends to the skull&apos;s curve.
+              </h3>
+            </div>
+            <div>
+              <Body>
+                A cable-driven bending section in two segments conforms to the
+                roughly 140 mm curvature of the infant cranium. A worm-gear
+                drive holds the angle without power and without back-driving.
+              </Body>
+              <Body className="mt-3">
+                On the bench, the bending section held its shape under load, the
+                tip swept a wide arc around a single incision point, and the
+                punch cut bone analogue by hand. From one vertex incision it
+                reached most of the target cutting paths on a skull phantom [2].
+              </Body>
+            </div>
+          </div>
           <PdfFigure
+            className="mt-10"
             src="/figures/articulating-cutter.webp"
             alt="The prototype reaching along a skull phantom from a single vertex incision"
             caption="Reaching the frontal, parietal and occipital bones from a single vertex incision."
           />
-          <div className="lg:order-first">
-            <Label>Articulation</Label>
-            <h3 className="mt-3 font-display text-[1.6rem] font-bold leading-[1.2] text-ink">
-              It bends to the skull&apos;s curve.
-            </h3>
-            <Body className="mt-4">
-              A cable-driven bending section conforms to the roughly 140 mm
-              curvature of the infant cranium. A worm-gear drive holds the angle
-              without power and without back-driving.
-            </Body>
-            <Body className="mt-3">
-              One shaft and one vertex incision reach where straight tools work
-              blind or need a second cut.
-            </Body>
-          </div>
         </div>
 
         <div className="mt-20 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
@@ -375,41 +386,6 @@ export default function HomePage() {
           </figure>
         </div>
 
-        <div className="mt-20">
-          <Label>Bench characterization</Label>
-          <div className="mt-5 overflow-x-auto">
-            <table className="w-full min-w-[40rem] border-collapse text-left">
-              <thead>
-                <tr className="border-y border-ink/80">
-                  {["Test", "Result", "Conditions"].map((h) => (
-                    <th
-                      key={h}
-                      className="py-3 pr-6 font-mono font-bold text-[0.8rem] uppercase tracking-[0.09em] text-steel-dim"
-                    >
-                      {h}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {benchResults.map((row) => (
-                  <tr key={row.test} className="border-b border-hairline">
-                    <td className="py-4 pr-6 font-semibold text-ink">
-                      {row.test}
-                    </td>
-                    <td className="tnum py-4 pr-6 font-mono font-semibold text-[0.98rem] text-dura">
-                      {row.result}
-                    </td>
-                    <td className="py-4 text-[1rem] text-steel">
-                      {row.condition}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-4 text-[0.9rem] text-steel-dim">{paper.citation}</p>
-        </div>
       </Section>
 
       {/* ---------------------------------------------------------------
@@ -616,9 +592,8 @@ export default function HomePage() {
           </table>
         </div>
         <p className="mt-4 text-[0.9rem] leading-[1.6] text-steel-dim">
-          ✓ full · ✗ no · ~ partial. A June 2026 freedom-to-operate review of 37
-          patents and applications found no blocking IP. Ossentra is
-          investigational and not yet cleared.
+          ✓ full · ✗ no · ~ partial. Ossentra is investigational and not yet
+          cleared.
         </p>
       </Section>
 
@@ -731,18 +706,25 @@ export default function HomePage() {
         <SectionHead
           index="08"
           label="Intellectual property"
-          title="Protected, with no blocking IP found."
+          title="Patent pending."
         />
-        <RuledColumns className="mt-12">
-          {ipPosition.map((item) => (
-            <RuledCell key={item.title}>
-              <h3 className="font-display text-[1.2rem] font-bold text-ink">
-                {item.title}
-              </h3>
-              <Body className="mt-3">{item.body}</Body>
-            </RuledCell>
-          ))}
-        </RuledColumns>
+        <div className="mt-10 max-w-3xl border-t border-ink/80 pt-6">
+          <Body>
+            The instrument is protected by the patent application{" "}
+            <a
+              href="https://patents.google.com/patent/WO2024156054A1/en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-dura underline underline-offset-4 hover:text-ink"
+            >
+              WO2024156054A1, &ldquo;Articulable surgical instrument assembly
+              and uses therefor&rdquo;
+            </a>{" "}
+            (PCT/CA2024/050074, priority January 2023), with national
+            applications pending in the United States (19/150,344) and Canada
+            (3,280,783). The applicant is The Hospital for Sick Children [3].
+          </Body>
+        </div>
       </Section>
 
       {/* ---------------------------------------------------------------

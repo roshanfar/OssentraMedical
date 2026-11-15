@@ -17,6 +17,10 @@ export function DeviceAnimation({
           media="(prefers-reduced-motion: reduce)"
           srcSet="/media/ossentra-cutting-still.webp"
         />
+        <source
+          media="(min-width: 1024px)"
+          srcSet="/media/ossentra-cutting-loop-1800.webp"
+        />
         <img
           src="/media/ossentra-cutting-loop.webp"
           alt="Animation of the Ossentra instrument bending its shaft and closing the bone punch jaws"

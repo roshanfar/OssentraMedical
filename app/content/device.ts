@@ -5,10 +5,6 @@
  * need.ts. No financial projections or fundraising terms appear here.
  */
 
-export const paper = {
-  citation: "Bench values from Law et al., ASME Journal of Medical Devices, 2025 [2].",
-  short: "Law et al., ASME J. Medical Devices, 2025",
-} as const;
 
 /**
  * Open vs. minimally invasive repair, from the literature (pitch deck,
@@ -153,55 +149,7 @@ export const regulatorySteps = [
   },
 ] as const;
 
-/** Intellectual property (pitch deck, Appendix D). */
-export const ipPosition = [
-  {
-    title: "Patents",
-    body: "Articulable surgical instrument assembly and uses therefor [3]. PCT/CA2024/050074, priority January 2023; US 19/150,344 and CA 3,280,783 pending. Assignee SickKids, with an exclusive licence to Ossentra under negotiation.",
-  },
-  {
-    title: "Freedom to operate",
-    body: "A June 2026 review of 37 patents and applications from medical device companies and universities found no blocking IP.",
-  },
-  {
-    title: "Data and know-how",
-    body: "The only peer-reviewed publication on an articulating bone cutter for craniosynostosis, an independent study of 10 US surgeons, and SickKids clinical access and phantom library.",
-  },
-] as const;
 
-/** Bench values — CIHR grant preliminary results and pitch deck. */
-export const benchResults = [
-  {
-    test: "Tip deflection",
-    result: "3.6 mm at 10 N (0° bending)",
-    condition: "Stiffness of the bending section under external load.",
-  },
-  {
-    test: "Workspace",
-    result: "23.7 mm reach · 120° sweep",
-    condition: "Kinematic analysis of the tool tip about a fixed incision point.",
-  },
-  {
-    test: "Cutting force",
-    result: "< 40 N cable tension",
-    condition: "Cutting 2 mm PCF 30 & 40 polyurethane bone analogue.",
-  },
-  {
-    test: "Bending range",
-    result: "Segment 1: 60° · Segment 2: 90°",
-    condition: "Two-segment tendon-driven articulation, variable stiffness.",
-  },
-  {
-    test: "Reachability",
-    result: "72 to 78%",
-    condition: "Reachability of the articulating tip across the target cutting paths.",
-  },
-  {
-    test: "Shaft",
-    result: "13 mm diameter",
-    condition: "Bone punch jaws, dural protector, and endoscope channel in one shaft.",
-  },
-] as const;
 
 
 
