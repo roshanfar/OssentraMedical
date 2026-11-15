@@ -828,15 +828,11 @@ export default function HomePage() {
       </Section>
 
       {/* ---------------------------------------------------------------
-          12 References
+          13 References
       --------------------------------------------------------------- */}
       <Section id="references">
-        <SectionHead
-          index="13"
-          label="References"
-          title="Published work and patent."
-        />
-        <ol className="mt-10 border-t border-ink/80">
+        <SectionHead index="13" label="References" />
+        <ol className="mt-8 border-t border-ink/80">
           {references.map((ref, i) => (
             <li
               key={ref}
@@ -924,7 +920,7 @@ export default function HomePage() {
                     rel="noopener noreferrer"
                     className="text-ink underline underline-offset-4 hover:text-dura"
                   >
-                    linkedin.com/company/ossentra
+                    Ossentra on LinkedIn
                   </a>
                 </dd>
               </div>

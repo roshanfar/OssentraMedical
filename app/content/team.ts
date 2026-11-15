@@ -49,6 +49,7 @@ export const accelerators = [
   { name: "Health Innovation Hub (H2i)", logo: "/logos/h2i.png" },
   { name: "ICUBE UTM", logo: "/logos/icube.png" },
   { name: "Lab2Market Validate", logo: "/logos/lab2market.png" },
+  { name: "Lab2Market Launch", logo: "/logos/lab2market-launch.png" },
   { name: "BioHubNet", logo: "/logos/biohubnet.png" },
   { name: "MDDC", logo: "/logos/mddc.png" },
   { name: "The Cradle", logo: "/logos/the-cradle.png" },

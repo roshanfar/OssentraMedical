@@ -55,7 +55,7 @@ export function SectionHead({
 }: {
   index: string;
   label: string;
-  title: ReactNode;
+  title?: ReactNode;
   intro?: ReactNode;
   className?: string;
 }) {
@@ -66,9 +66,11 @@ export function SectionHead({
         <span>{label}</span>
         <span aria-hidden className="h-px flex-1 bg-hairline" />
       </div>
-      <h2 className="mt-7 max-w-3xl font-display text-[2rem] font-bold leading-[1.15] tracking-[-0.015em] text-ink text-balance sm:text-[2.45rem]">
-        {title}
-      </h2>
+      {title ? (
+        <h2 className="mt-7 max-w-3xl font-display text-[2rem] font-bold leading-[1.15] tracking-[-0.015em] text-ink text-balance sm:text-[2.45rem]">
+          {title}
+        </h2>
+      ) : null}
       {intro ? (
         <p className="mt-5 max-w-2xl text-[1.06rem] leading-[1.7] text-steel text-pretty">
           {intro}
@@ -107,7 +109,9 @@ export function Body({
   className?: string;
 }) {
   return (
-    <p className={`text-[1.04rem] leading-[1.7] text-steel text-pretty ${className}`}>
+    <p
+      className={`text-[1.04rem] leading-[1.7] text-steel text-pretty ${className}`}
+    >
       {children}
     </p>
   );
@@ -146,7 +150,11 @@ export function ButtonLink({
   className?: string;
 } & Omit<ComponentProps<typeof Link>, "href" | "className">) {
   return (
-    <Link href={href} className={`${buttonClasses(variant)} ${className}`} {...rest}>
+    <Link
+      href={href}
+      className={`${buttonClasses(variant)} ${className}`}
+      {...rest}
+    >
       {children}
     </Link>
   );
