@@ -49,21 +49,18 @@ export const capabilities = [
  */
 export const patients = [
   {
-    name: "Liam",
     age: "5 months",
     tag: "Diagnosed late",
-    now: "Too old for the small-incision surgery, so he gets the full open operation.",
+    now: "Too old for the small-incision surgery, so the full open operation is the only option.",
     with: "Still eligible for the small-incision surgery.",
   },
   {
-    name: "Sofia",
     age: "4 months",
     tag: "Several skull joints fused",
-    now: "Straight tools cannot reach every fused joint, so she goes to open surgery.",
+    now: "Straight tools cannot reach every fused joint, so the case goes to open surgery.",
     with: "One bending tool reaches every joint through small openings.",
   },
   {
-    name: "Noah",
     age: "3 months",
     tag: "Needs a curved cut",
     now: "Straight tools cannot follow the curve, so surgeons switch to open surgery.",

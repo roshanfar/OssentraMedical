@@ -312,11 +312,36 @@ export default function HomePage() {
               conversion to open surgery is always available.
             </Body>
           </div>
-          <PdfFigure
-            src="/figures/prototype-endoscope-view.webp"
-            alt="Prototype on a skull phantom and the endoscope view of the jaws"
-            caption="(a) The handheld prototype, (b) cutting on a skull phantom, (c) the endoscope view of the jaws."
-          />
+          <figure>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/figures/prototype-handheld.webp"
+              alt="The handheld prototype: rigid shaft, actuation unit, flexible endoscope and end-effector"
+              className="block h-auto w-full"
+            />
+            <div className="mt-3 grid grid-cols-2 gap-3">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/figures/prototype-phantom.webp"
+                alt="The prototype cutting on a skull phantom"
+                className="block aspect-[4/3] h-full w-full object-cover"
+              />
+              <video
+                className="block aspect-[4/3] h-full w-full bg-black object-cover"
+                src="/media/endoscope-cutting.mp4"
+                poster="/media/endoscope-cutting-poster.jpg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                aria-label="Endoscope view of the jaws cutting a bone phantom"
+              />
+            </div>
+            <figcaption className="mt-4 text-center text-sm leading-[1.6] text-steel-dim">
+              The handheld prototype (top), cutting on a skull phantom (left),
+              and the endoscope view of the jaws cutting, sped up 10x (right).
+            </figcaption>
+          </figure>
         </div>
 
         <div className="mt-20">
@@ -367,10 +392,10 @@ export default function HomePage() {
         />
         <RuledColumns className="mt-12">
           {patients.map((p) => (
-            <RuledCell key={p.name}>
+            <RuledCell key={p.tag}>
               <Label>{p.tag}</Label>
               <h3 className="mt-3 font-display text-[1.35rem] font-semibold text-ink">
-                {p.name}, {p.age}
+                {p.age} old
               </h3>
               <dl className="mt-5 space-y-4">
                 <div>
