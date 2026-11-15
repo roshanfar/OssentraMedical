@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ossentra website
 
-## Getting Started
+Live at https://www.ossentramedical.com. Every push to `main` deploys to production on Vercel automatically.
 
-First, run the development server:
+## Run it locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Where things live
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The site is a single scrolling page. Old URLs (`/technology`, `/clinical-need`, `/team`, `/contact`) redirect to their sections (see `next.config.ts`).
 
-## Learn More
+| What | File |
+| --- | --- |
+| Page layout and section order | `app/page.tsx` |
+| Instrument, workflow, competition table, roadmap, regulatory, market | `app/content/device.ts` |
+| Clinical comparison and the reference list | `app/content/need.ts` |
+| Team, advisors, supporter logos | `app/content/team.ts` |
+| Site name, regulatory status line, email, address, LinkedIn, menu, news items | `app/content/site.ts` |
+| Header and footer | `app/components/site-header.tsx`, `app/components/site-footer.tsx` |
+| Animated roadmap staircase | `app/components/roadmap-ladder.tsx` |
+| Hero device animation | `app/components/device-animation.tsx` |
+| Colours, font and base styles | `app/globals.css` (font is Public Sans, loaded in `app/layout.tsx`) |
 
-To learn more about Next.js, take a look at the following resources:
+## Assets
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `public/brand/` logos (navy for the header, white for the footer)
+- `public/media/` hero animation (`ossentra-cutting-loop.webp` for phones, `-1800.webp` for large screens) and the endoscope cutting loop (`endoscope-cutting.mp4`)
+- `public/figures/` figures with transparent backgrounds, and team photos
+- `public/logos/` accelerator and institution logos
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Content rules
 
-## Deploy on Vercel
+- Clinical claims must come from a published paper or be supported by the surgeon interviews.
+- References list only published papers and the patent, numbered in order of first appearance on the page.
+- No financial projections, pricing or fundraising terms.
+- No competitor company names; describe competitors by category.
+- The current device is the articulating bone punch only.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Adding a news item
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Add an entry at the top of the `news` array in `app/content/site.ts` (date, source, logo, title, short summary in your own words, link).
