@@ -6,8 +6,7 @@
  */
 
 export const paper = {
-  citation:
-    "Law J, et al. A Novel Articulating Bone Cutting Tool for Minimally Invasive Craniosynostosis Surgery. ASME Journal of Medical Devices, 2025. Patent WO2024156054A1.",
+  citation: "Bench values from Law et al., ASME Journal of Medical Devices, 2025 [2].",
   short: "Law et al., ASME J. Medical Devices, 2025",
 } as const;
 
@@ -16,10 +15,10 @@ export const paper = {
  * "Value proposition" and Appendix B).
  */
 export const specs = [
-  { label: "Transfusion risk", value: "90% → 20–40%", note: "Open vs. endoscopic repair [2]" },
-  { label: "Procedure time", value: "4–8 h → 1–2 h", note: "Less anaesthesia for the infant [2]" },
-  { label: "Hospital stay", value: "3–5 d → 1–2 d", note: "Home in a day or two [2]" },
-  { label: "Incision", value: "Ear-to-ear → 1 cm", note: "One keyhole at the vertex [2, 7]" },
+  { label: "Transfusion risk", value: "90% → 20–40%", note: "Open vs. endoscopic repair [1]" },
+  { label: "Procedure time", value: "4–8 h → 1–2 h", note: "Less anaesthesia for the infant [1]" },
+  { label: "Hospital stay", value: "3–5 d → 1–2 d", note: "Home in a day or two [1]" },
+  { label: "Incision", value: "Ear-to-ear → 1 cm", note: "One keyhole at the vertex [1, 2]" },
 ] as const;
 
 /** The three things that make the instrument (pitch deck, "Our solution"). */
@@ -33,13 +32,13 @@ export const capabilities = [
   {
     id: "cuts-bone",
     title: "Cuts bone",
-    body: "Interchangeable tips: bone punch, burr or ultrasonic cutter.",
-    metric: "Punch · Burr · Ultrasonic",
+    body: "A cable-driven bone punch. Its lower jaw is the dural protector, so the jaw that cuts is the jaw that shields.",
+    metric: "Bone punch",
   },
   {
     id: "right-scale",
     title: "Right scale",
-    body: "Built for the infant skull.",
+    body: "Punch, dural protector and endoscope channel in one shaft, built for the infant skull.",
     metric: "⌀ 13 mm shaft",
   },
 ] as const;
@@ -137,7 +136,7 @@ export const milestones = [
     when: "Q4 2026",
     title: "Design freeze",
     status: "in progress",
-    items: ["Gen 2 bench validation", "Incorporation and licence"],
+    items: ["Bench validation", "Incorporation and licence"],
   },
   {
     when: "2027",
@@ -151,19 +150,13 @@ export const milestones = [
     status: "planned",
     items: ["510(k) clearance", "10-patient trial at SickKids", "Pilot sites"],
   },
-  {
-    when: "2029+",
-    title: "Platform",
-    status: "planned",
-    items: ["Robot integration", "Any curved bone cut"],
-  },
 ] as const;
 
 /** Regulatory pathway (pitch deck, "Regulatory pathway" and Appendix C). */
 export const regulatorySteps = [
   {
     step: "Predicate",
-    detail: "JPI Articulator Arthroscopic Bur, 510(k) cleared December 2025 [13].",
+    detail: "JPI Articulator Arthroscopic Bur, 510(k) cleared December 2025.",
     when: "In progress",
   },
   {
@@ -188,30 +181,11 @@ export const regulatorySteps = [
   },
 ] as const;
 
-/** The three stages of the platform (pitch deck, "Three stages of the platform"). */
-export const platformStages = [
-  {
-    stage: "Handheld skull cutting",
-    body: "A manual articulating cutter for craniosynostosis. Punch today, a powered burr in the second generation.",
-    value: "Minimally invasive surgery for infants who would otherwise have open surgery.",
-  },
-  {
-    stage: "Robot integration",
-    body: "The same cable-driven handle mounted as an end-effector on a collaborative arm, cutting along a planned, image-guided path.",
-    value: "Tremor-free, repeatable cuts and a shorter learning curve.",
-  },
-  {
-    stage: "Any curved bone cut",
-    body: "Skull, spine, hip and shoulder, open or minimally invasive, with force and shape sensing for bone thickness.",
-    value: "More precision wherever bone is not flat.",
-  },
-] as const;
-
 /** Intellectual property (pitch deck, Appendix D). */
 export const ipPosition = [
   {
     title: "Patents",
-    body: "Articulable surgical instrument assembly and uses thereof. PCT/CA2024/050074, priority January 2023; US 19/150,344 and CA 3,280,783 pending. Assignee SickKids, with an exclusive licence to Ossentra under negotiation.",
+    body: "Articulable surgical instrument assembly and uses therefor [7]. PCT/CA2024/050074, priority January 2023; US 19/150,344 and CA 3,280,783 pending. Assignee SickKids, with an exclusive licence to Ossentra under negotiation.",
   },
   {
     title: "Freedom to operate",
@@ -257,67 +231,13 @@ export const benchResults = [
   },
 ] as const;
 
-/**
- * What still has to be built — CIHR grant Aim 1 (the device work) and the
- * pitch deck roadmap.
- */
-export const openProblems = [
-  {
-    title: "Powered, faster cutting",
-    body: "A manual punch is slow. A powered bone-cutting mechanism is the next end-effector.",
-  },
-  {
-    title: "Suction and irrigation",
-    body: "Bone bleeds the moment you cut it. Two more channels clear the field for the endoscope.",
-  },
-  {
-    title: "Bleeding control",
-    body: "The dural protector, scalp retractor and suction tip double as cautery.",
-  },
-] as const;
 
-/**
- * Where the programme is — pitch deck roadmap and CIHR aims. Each stage gates
- * the next.
- */
-export const developmentStages = [
-  {
-    stage: "Handheld prototype, published",
-    status: "complete",
-    detail: "Cable-driven bending section, integrated end-effector, flexible endoscope. ASME J. Medical Devices, 2025.",
-  },
-  {
-    stage: "Bench characterization",
-    status: "complete",
-    detail: "Stiffness, cutting force, and workspace on CT-derived skull phantoms.",
-  },
-  {
-    stage: "Surgeon evaluation (TIAP study)",
-    status: "complete",
-    detail: "TIAP study of 10 US surgeons. Half would trial it, and articulation was the feature they valued most.",
-  },
-  {
-    stage: "Powered cutting, suction-irrigation",
-    status: "in progress",
-    detail: "Adding the functions surgeons need for a real osteotomy: 12–18 months to 510(k) filing.",
-  },
-  {
-    stage: "Phantom & porcine testing",
-    status: "planned",
-    detail: "Osteotomies compared against open and endoscopic technique.",
-  },
-  {
-    stage: "FDA 510(k), Class II",
-    status: "planned",
-    detail: "Predicate-based clearance; CE Mark and Health Canada filed in parallel.",
-  },
-] as const;
 
 /** Market (pitch deck, "Market"). Third-party market data only. */
 export const market = [
   {
     value: "$570M",
-    label: "Global craniosynostosis treatment market in 2024, growing to about $920M by 2032 [5].",
+    label: "Global craniosynostosis treatment market in 2024, growing to about $920M by 2032 (Data Bridge Market Research, 2025).",
   },
   {
     value: "3x",
@@ -325,7 +245,7 @@ export const market = [
   },
   {
     value: "Class II",
-    label: "FDA 510(k) pathway, with an articulating bone cutter now cleared as a predicate [13].",
+    label: "FDA 510(k) pathway, with an articulating bone cutter now cleared as a predicate.",
   },
 ] as const;
 
@@ -334,5 +254,4 @@ export const marketFocus = [
   { label: "Users", value: "Pediatric neurosurgeons and craniofacial surgeons" },
   { label: "Buyers", value: "Children's hospitals" },
   { label: "Geography", value: "US, Canada, EU, Japan" },
-  { label: "Expansion", value: "Any curved bone cut: skull, spine, orthopedics" },
 ] as const;

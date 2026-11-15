@@ -43,22 +43,26 @@ export const advisors = [
   { name: "UTEST and Rotman", role: "Torys LLP and MBA venture team" },
 ] as const;
 
-/** Programs and institutions that support the work, shown as logos. */
-export const supporters = [
+/** Accelerators and programs Ossentra is part of, shown as logos. */
+export const accelerators = [
+  { name: "Creative Destruction Lab", logo: "/logos/cdl.png" },
+  { name: "UTEST", logo: "/logos/utest.png" },
+  { name: "Health Innovation Hub (H2i)", logo: "/logos/h2i.png" },
+  { name: "ICUBE UTM", logo: "/logos/icube.png" },
+  { name: "Lab2Market Validate", logo: "/logos/lab2market.png" },
+  { name: "BioHubNet", logo: "/logos/biohubnet.png" },
+  { name: "MDDC", logo: "/logos/mddc.png" },
+  { name: "The Cradle", logo: "/logos/the-cradle.png" },
+] as const;
+
+/** Institutions, funders and partners behind the work. */
+export const institutions = [
   { name: "SickKids", logo: "/logos/sickkids.png" },
   { name: "University of Toronto", logo: "/logos/uoft.png" },
   { name: "PCIGITI", logo: "/logos/pcigiti.png" },
   { name: "SickKids Proof of Principle Grant", logo: "/logos/proof-of-principle.png" },
   { name: "CIHR", logo: "/logos/cihr.png" },
   { name: "Toronto Innovation Acceleration Partners", logo: "/logos/tiap.png" },
-  { name: "Health Innovation Hub (H2i)", logo: "/logos/h2i.png" },
-  { name: "UTEST", logo: "/logos/utest.png" },
-  { name: "Creative Destruction Lab", logo: "/logos/cdl.png" },
-  { name: "BioHubNet", logo: "/logos/biohubnet.png" },
-  { name: "Lab2Market Validate", logo: "/logos/lab2market.png" },
-  { name: "ICUBE UTM", logo: "/logos/icube.png" },
-  { name: "The Cradle", logo: "/logos/the-cradle.png" },
-  { name: "MDDC", logo: "/logos/mddc.png" },
 ] as const;
 
 /** Co-authors on the characterization paper who are not company officers. */

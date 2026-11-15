@@ -34,9 +34,9 @@
   --color-bone-field: #0b1a4a;
   --color-dura-field: #1f56d8;
 
-  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-albert), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 }
 
 /* --------------------------------------------------------------------------
@@ -99,29 +99,8 @@ section[id] {
   box-shadow: 0 1px 2px rgba(11, 26, 74, 0.05), 0 10px 28px rgba(11, 26, 74, 0.07);
 }
 
-/* Faint drafting grid behind the hero. */
-.hero-grid {
-  background-image:
-    linear-gradient(rgba(1, 20, 119, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(1, 20, 119, 0.05) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse at 70% 40%, #000 25%, transparent 75%);
-}
-
-/* Travelling dots along the hero curves. */
-@keyframes dash-travel {
-  to {
-    stroke-dashoffset: -240;
-  }
-}
-.dash-travel {
-  animation: dash-travel 9s linear infinite;
-}
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-  .dash-travel {
-    animation: none;
   }
 }

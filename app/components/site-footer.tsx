@@ -1,23 +1,21 @@
-import Link from "next/link";
-import { ecosystem, site } from "../content/site";
-import { Container } from "./primitives";
+import { nav, site } from "../content/site";
 
-const explore = [
-  { href: "/technology", label: "Technology" },
-  { href: "/clinical-need", label: "Clinical need" },
-  { href: "/#status", label: "Development status" },
-  { href: "/team", label: "Team" },
-] as const;
+const heading = "font-mono text-[0.72rem] uppercase tracking-[0.16em] text-[#9fb6ff]";
+const link = "text-[0.95rem] text-[#d5ddf5] transition-colors hover:text-white";
 
-const heading =
-  "text-[0.76rem] font-bold uppercase tracking-[0.14em] text-white";
-const link = "text-[0.92rem] text-[#c3cdf0] transition-colors hover:text-white";
+export function LinkedInIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
+      <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm7 0h3.8v1.5h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1v5.46h-4v-4.84c0-1.16-.02-2.65-1.61-2.65-1.62 0-1.86 1.26-1.86 2.56v4.93h-4v-11Z" />
+    </svg>
+  );
+}
 
 export function SiteFooter() {
   return (
     <footer className="bg-navy pt-16 pb-10 text-white">
-      <Container>
-        <div className="grid gap-12 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)]">
+      <div className="mx-auto w-full max-w-[1160px] px-6 sm:px-8">
+        <div className="grid gap-12 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,1.2fr)]">
           <div className="max-w-sm">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -27,56 +25,58 @@ export function SiteFooter() {
               height={124}
               className="h-7 w-auto"
             />
-            <p className="mt-5 text-[0.92rem] leading-[1.65] text-[#c3cdf0]">
+            <p className="mt-5 text-[0.95rem] leading-[1.65] text-[#d5ddf5]">
               {site.tagline}. Spun out of {site.origin}.
             </p>
+          </div>
+
+          <nav aria-label="Footer">
+            <p className={heading}>On this page</p>
+            <ul className="mt-5 flex flex-col gap-3">
+              {[...nav, { href: "#references", label: "References" }].map((item) => (
+                <li key={item.href}>
+                  <a href={item.href} className={link}>
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div>
+            <p className={heading}>Location</p>
+            <address className="mt-5 text-[0.95rem] not-italic leading-[1.65] text-[#d5ddf5]">
+              {site.address.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+            </address>
             <a
               href={`mailto:${site.email}`}
-              className="mt-4 inline-block text-[0.92rem] font-medium text-white underline underline-offset-4 hover:text-[#c3cdf0]"
+              className={`mt-4 inline-block underline underline-offset-4 ${link}`}
             >
               {site.email}
             </a>
+            <a
+              href={site.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`mt-4 flex items-center gap-2 ${link}`}
+            >
+              <LinkedInIcon />
+              Ossentra on LinkedIn
+            </a>
           </div>
-
-          <nav aria-label="Explore">
-            <p className={heading}>Explore</p>
-            <ul className="mt-5 flex flex-col gap-3">
-              {explore.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className={link}>
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <nav aria-label="Partnerships">
-            <p className={heading}>Partnerships</p>
-            <ul className="mt-5 flex flex-col gap-3">
-              {ecosystem.map((item) => (
-                <li key={item.name} title={item.detail}>
-                  <Link href="/team" className={link}>
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link href="/contact" className={link}>
-                  Contact us
-                </Link>
-              </li>
-            </ul>
-          </nav>
         </div>
 
-        <div className="mt-14 flex flex-col gap-2 border-t border-white/15 pt-6 text-[0.82rem] text-[#a9b6e6] sm:flex-row sm:justify-between sm:gap-8">
+        <div className="mt-14 flex flex-col gap-2 border-t border-white/15 pt-6 font-mono text-[0.74rem] text-[#a9b6e6] sm:flex-row sm:justify-between sm:gap-8">
           <p className="shrink-0">
-            © {new Date().getFullYear()} {site.name}, Toronto, Canada.
+            © {new Date().getFullYear()} {site.name}, Toronto, Canada
           </p>
           <p className="sm:text-right">{site.regulatoryStatus}</p>
         </div>
-      </Container>
+      </div>
     </footer>
   );
 }

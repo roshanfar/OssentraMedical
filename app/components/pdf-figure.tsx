@@ -1,7 +1,6 @@
 /**
- * A figure slot for an image exported from the pitch deck or grant PDF.
- * Drop the PNG into `public/figures/` under the given `src` name and it
- * appears. Until then the framed caption holds the space.
+ * A figure with a transparent background, set straight on the page with an
+ * optional caption underneath. No frame, card or fill behind the image.
  */
 export function PdfFigure({
   src,
@@ -15,13 +14,11 @@ export function PdfFigure({
   className?: string;
 }) {
   return (
-    <figure
-      className={`card-shadow overflow-hidden rounded-2xl border border-hairline bg-plate ${className}`}
-    >
+    <figure className={className}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={alt} className="block h-auto w-full" />
+      <img src={src} alt={alt} className="mx-auto block h-auto w-full" />
       {caption ? (
-        <figcaption className="border-t border-hairline px-5 py-4 text-sm leading-[1.6] text-steel">
+        <figcaption className="mt-4 text-center text-sm leading-[1.6] text-steel-dim">
           {caption}
         </figcaption>
       ) : null}

@@ -60,8 +60,8 @@ export const clinicalImpact = [
 export const operations = [
   {
     name: "Open vault remodeling",
-    cite: "[2]",
-    image: "/figures/open-vault-remodeling.jpg",
+    cite: "[1]",
+    image: "/figures/open-vault-remodeling.webp",
     points: [
       "Full reshaping control",
       "Ear-to-ear scar, 4 to 8 hours",
@@ -70,8 +70,8 @@ export const operations = [
   },
   {
     name: "Endoscopic strip craniectomy",
-    cite: "[2, 3, 4]",
-    image: "/figures/endoscopic-strip-craniectomy.jpg",
+    cite: "[1, 4, 5]",
+    image: "/figures/endoscopic-strip-craniectomy.webp",
     points: [
       "Keyhole, home in a day",
       "Straight tools remove a strip only, so a helmet or spring follows",
@@ -80,20 +80,16 @@ export const operations = [
   },
 ] as const;
 
-/** References, numbered as cited across the site (pitch deck, "References"). */
+/**
+ * References: published papers and the patent only, numbered in order of
+ * first appearance on the page.
+ */
 export const references = [
-  "Governale LS. Craniosynostosis. Pediatr Neurol. 2015;53(5).",
   "Proctor MR. Endoscopic craniosynostosis repair. Transl Pediatr. 2014;3(3):247-258.",
-  "Suleman F et al. The role of helmet therapy in craniosynostosis: a systematic review. Asian J Neurosurg. 2024.",
+  "Law J, Stickley E, Looi T, Diller E, Podolsky D. A novel articulating bone cutting tool for minimally invasive craniosynostosis surgery. ASME J Med Devices. 2025. doi:10.1115/1.4069208",
+  "Governale LS. Craniosynostosis. Pediatr Neurol. 2015;53(5).",
+  "Suleman F, et al. The role of helmet therapy in craniosynostosis: a systematic review. Asian J Neurosurg. 2024.",
   "Pearson G, Khansa I, Drapeau A. Spring cranioplasty: incorporation into practice. J Craniofac Surg. 2020;31(7).",
-  "Data Bridge Market Research. Global Craniosynostosis Treatment Market, Industry Trends and Forecast to 2032. 2025.",
   "Fung E, Yu BZ, Roth JM, et al. Trends in open versus minimally invasive craniosynostosis repair: a 10-year national analysis. J Craniofac Surg. 2025;36(8):2773-2777.",
-  "Law J, Stickley E, Looi T, Podolsky D. A novel articulating bone cutting tool for minimally invasive craniosynostosis surgery. ASME J Med Devices. 2025.",
-  "Law J et al. Design and implementation of a snake robot for cranial surgery. IEEE ICRA. 2025.",
-  "Law J et al. Force-guided collaborative control and simulation of a snake robot for cranial bone surgery. IEEE ICRA. 2026.",
-  "Toronto Innovation Acceleration Partners. Independent qualitative concept evaluation with 10 US craniosynostosis surgeons. July 2025.",
-  "Freedom-to-operate and patent landscape review covering 37 patents and applications. June 2026.",
-  "WO2024156054A1, US 19/150,344, CA 3,280,783. Articulable surgical instrument assembly and uses thereof. Priority January 2023.",
-  "Joint Preservation Innovations. FDA 510(k) clearance of the Articulator Arthroscopic Bur. December 2025.",
-  "Thakkar A, Nayak T, Millett P, Bhatia S. Articulating rotary burs for enhanced bone resection: implications for arthroscopic, endoscopic spinal, and robotic surgery. Surg Innov. 2026.",
+  "Podolsky D, Law J, Drake J. Articulable surgical instrument assembly and uses therefor. WO2024156054A1 (PCT/CA2024/050074); US 19/150,344; CA 3,280,783. Priority January 2023.",
 ] as const;
