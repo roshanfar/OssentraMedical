@@ -70,24 +70,34 @@ function RuledCell({ children }: { children: React.ReactNode }) {
 function Mark({ value }: { value: string }) {
   if (value === "yes")
     return (
-      <span className="text-ok" aria-label="Yes">
-        ✓
-      </span>
+      <svg
+        viewBox="0 0 24 24"
+        className="mx-auto h-7 w-7 text-ok"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        role="img"
+        aria-label="Yes"
+      >
+        <path d="M4.5 12.5l5 5L19.5 6.5" />
+      </svg>
     );
   if (value === "no")
     return (
-      <span className="text-steel-dim" aria-label="No">
-        ✗
+      <span className="text-[1.3rem] font-bold text-steel-dim" aria-label="No">
+        –
       </span>
     );
   if (value === "partial")
     return (
-      <span className="text-steel" aria-label="Partial">
+      <span className="text-[1.3rem] font-bold text-steel" aria-label="Partial">
         ~
       </span>
     );
   return (
-    <span className="font-mono font-bold text-[0.8rem] text-dura">
+    <span className="font-mono text-[0.8rem] font-bold text-dura">
       510(k) path
     </span>
   );
@@ -599,7 +609,7 @@ export default function HomePage() {
           </table>
         </div>
         <p className="mt-4 text-[0.9rem] leading-[1.6] text-steel-dim">
-          ✓ full · ✗ no · ~ partial. Ossentra is investigational and not yet
+          ✓ full · – no · ~ partial. Ossentra is investigational and not yet
           cleared.
         </p>
       </Section>
