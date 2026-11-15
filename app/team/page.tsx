@@ -8,7 +8,7 @@ import {
   Lead,
   Section,
 } from "../components/primitives";
-import { funding, originStory, team } from "../content/team";
+import { advisors, funding, originStory, team } from "../content/team";
 import { ecosystem, site } from "../content/site";
 
 export const metadata: Metadata = {
@@ -67,7 +67,20 @@ export default function TeamPage() {
           ))}
         </div>
 
-
+        <LabelledRule className="mb-8 mt-16">Advisors and support</LabelledRule>
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {advisors.map((a) => (
+            <li
+              key={a.name}
+              className="rounded-2xl border border-hairline bg-plate p-5"
+            >
+              <p className="text-[0.98rem] font-bold text-ink">{a.name}</p>
+              <p className="mt-1 text-[0.88rem] leading-[1.5] text-steel">
+                {a.role}
+              </p>
+            </li>
+          ))}
+        </ul>
       </Section>
 
       {/* --- How it became a company --- */}

@@ -9,7 +9,13 @@ import {
   Lead,
   Section,
 } from "../components/primitives";
-import { clinicalImpact, epidemiology, problems, references } from "../content/need";
+import {
+  clinicalImpact,
+  epidemiology,
+  operations,
+  problems,
+  references,
+} from "../content/need";
 
 export const metadata: Metadata = {
   title: "Clinical need",
@@ -82,6 +88,53 @@ export default function ClinicalNeedPage() {
         </div>
       </Section>
 
+      {/* --- The two operations today --- */}
+      <Section register="field">
+        <div className="max-w-2xl">
+          <Eyebrow>The problem</Eyebrow>
+          <Heading className="mt-5">
+            The tool decides who gets open surgery.
+          </Heading>
+        </div>
+        <div className="mt-12 grid gap-4 md:grid-cols-2">
+          {operations.map((op) => (
+            <article
+              key={op.name}
+              className="overflow-hidden rounded-2xl border border-hairline bg-plate"
+            >
+              <div className="flex h-64 items-center justify-center bg-white p-4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={op.image}
+                  alt={op.name}
+                  loading="lazy"
+                  className="max-h-full max-w-full object-contain"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg font-bold text-ink">
+                  {op.name}{" "}
+                  <span className="text-[0.8rem] font-medium text-steel-dim">
+                    {op.cite}
+                  </span>
+                </h3>
+                <ul className="mt-3 flex flex-col gap-2">
+                  {op.points.map((pt) => (
+                    <li
+                      key={pt}
+                      className="flex gap-2.5 text-[0.95rem] leading-[1.55] text-steel"
+                    >
+                      <span aria-hidden className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-dura" />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </Section>
+
       {/* --- The chain --- */}
       <Section className="border-t border-hairline">
         <LabelledRule className="mb-12">How the limit propagates</LabelledRule>
@@ -104,7 +157,7 @@ export default function ClinicalNeedPage() {
       {/* --- The impact --- */}
       <Section register="field">
         <div className="max-w-2xl">
-          <Eyebrow register="field">Open surgery vs. Ossentra</Eyebrow>
+          <Eyebrow register="field">Open vs. minimally invasive</Eyebrow>
           <Heading register="field" className="mt-5">
             What changes for the infant.
           </Heading>

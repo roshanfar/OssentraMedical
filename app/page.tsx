@@ -14,9 +14,19 @@ import {
 } from "./components/primitives";
 import { DeviceAnimation } from "./components/device-animation";
 import { PdfFigure } from "./components/pdf-figure";
-import { developmentStages, specs } from "./content/device";
+import {
+  capabilities,
+  competitionColumns,
+  competitionRows,
+  differences,
+  market,
+  marketFocus,
+  milestones,
+  patients,
+  specs,
+} from "./content/device";
 import { ecosystem, site } from "./content/site";
-import { team } from "./content/team";
+import { supporters, team } from "./content/team";
 
 /* ---------------------------------------------------------------------------
    Small inline icons, drawn as single strokes in the accent colour.
@@ -41,37 +51,22 @@ function IconTile({ children }: { children: ReactNode }) {
   );
 }
 
-const instrumentFeatures = [
-  {
-    eyebrow: "Articulates",
-    title: "3 sliding curved joints",
-    body: "A multi-joint shaft that bends along the curvature of the skull.",
-    icon: <path d="M5 19c0-8 6-14 14-14M15 5h4v4" />,
-  },
-  {
-    eyebrow: "Cuts bone",
-    title: "Punch · Burr · Ultrasonic",
-    body: "Interchangeable cutting tips for controlled osteotomies.",
-    icon: (
-      <>
-        <path d="M12 3v8" />
-        <path d="M8 11h8l-1 4H9z" />
-        <path d="M6 21h12" />
-      </>
-    ),
-  },
-  {
-    eyebrow: "Right scale",
-    title: "⌀ 13 mm shaft",
-    body: "Sized for endoscopic access in the infant skull, where every millimetre matters.",
-    icon: (
-      <>
-        <circle cx="12" cy="12" r="8" />
-        <path d="M4 12h16" />
-      </>
-    ),
-  },
-] as const;
+const featureIcons = {
+  articulate: <path d="M5 19c0-8 6-14 14-14M15 5h4v4" />,
+  "cuts-bone": (
+    <>
+      <path d="M12 3v8" />
+      <path d="M8 11h8l-1 4H9z" />
+      <path d="M6 21h12" />
+    </>
+  ),
+  "right-scale": (
+    <>
+      <circle cx="12" cy="12" r="8" />
+      <path d="M4 12h16" />
+    </>
+  ),
+} as const;
 
 const needPoints = [
   {
@@ -112,20 +107,29 @@ const requirements = [
   "Path to clearance",
 ] as const;
 
-const marketCards = [
-  {
-    value: "~$850M",
-    label: "Global craniosynostosis market by 2031, up from about $570M today.",
-  },
-  {
-    value: "+195%",
-    label: "Growth in US endoscopic procedures, 2012 to 2024.",
-  },
-  {
-    value: "Class II",
-    label: "FDA 510(k), a predicate-based regulatory pathway.",
-  },
-] as const;
+function Mark({ value }: { value: string }) {
+  if (value === "yes")
+    return (
+      <span className="text-ok" aria-label="Yes">
+        ✓
+      </span>
+    );
+  if (value === "no")
+    return (
+      <span className="text-steel-dim" aria-label="No">
+        ✗
+      </span>
+    );
+  if (value === "partial")
+    return (
+      <span className="text-steel" aria-label="Partial">
+        ~
+      </span>
+    );
+  return (
+    <span className="text-[0.72rem] font-semibold text-dura">510(k) path</span>
+  );
+}
 
 /* ---------------------------------------------------------------------------
    Hero backdrop: faint grid, a blue glow, and three curves with dots
@@ -210,16 +214,23 @@ export default function HomePage() {
       --------------------------------------------------------------- */}
       <section className="border-y border-hairline bg-field py-14">
         <Container>
-          <Eyebrow>Open surgery vs. Ossentra</Eyebrow>
+          <Eyebrow>Open vs. minimally invasive repair</Eyebrow>
           <dl className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
             {specs.map((spec) => (
               <Card key={spec.label} as="div" className="!p-4 sm:!p-6">
                 <dt className="text-[0.8rem] font-semibold text-steel">
                   {spec.label}
                 </dt>
-                <dd className="tnum text-grad mt-3 text-[1.55rem] font-extrabold tracking-[-0.02em] sm:text-4xl">
-                  {spec.value}
-                  <span className="ml-1 text-base sm:text-xl">{spec.unit}</span>
+                <dd className="tnum mt-3 text-[1.15rem] font-extrabold leading-[1.3] tracking-[-0.01em] sm:text-[1.5rem]">
+                  {spec.value.split(" → ").map((part, i) => (
+                    <span key={part}>
+                      {i > 0 ? " " : null}
+                      <span className="text-grad whitespace-nowrap">
+                        {i > 0 ? "→ " : ""}
+                        {part}
+                      </span>
+                    </span>
+                  ))}
                 </dd>
                 <dd className="mt-2 text-sm leading-[1.55] text-steel">
                   {spec.note}
@@ -261,23 +272,72 @@ export default function HomePage() {
         </div>
 
         <div className="mt-14 grid gap-4 md:grid-cols-3">
-          {instrumentFeatures.map((f) => (
-            <Card key={f.eyebrow}>
-              <IconTile>{f.icon}</IconTile>
+          {capabilities.map((f) => (
+            <Card key={f.id}>
+              <IconTile>{featureIcons[f.id]}</IconTile>
               <p className="mt-5 text-[0.72rem] font-bold uppercase tracking-[0.14em] text-dura">
-                {f.eyebrow}
+                {f.title}
               </p>
-              <h3 className="mt-1.5 text-lg font-bold text-ink">{f.title}</h3>
+              <h3 className="mt-1.5 text-lg font-bold text-ink">{f.metric}</h3>
               <Body className="mt-2 text-[0.92rem]">{f.body}</Body>
             </Card>
           ))}
         </div>
+        <p className="mt-6 text-[0.85rem] text-steel-dim">
+          Peer reviewed: Law J et al., ASME Journal of Medical Devices, 2025.
+          Patents pending in the US and Canada.
+        </p>
+      </Section>
+
+      {/* ---------------------------------------------------------------
+          Who it is for
+      --------------------------------------------------------------- */}
+      <Section register="field">
+        <div className="mx-auto max-w-2xl text-center">
+          <Eyebrow>Who it is for</Eyebrow>
+          <Heading className="mt-4">
+            Babies we move from open surgery to a{" "}
+            <Accent>small incision</Accent>
+          </Heading>
+        </div>
+
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
+          {patients.map((p) => (
+            <Card key={p.name} className="flex flex-col">
+              <p className="text-[0.72rem] font-bold uppercase tracking-[0.14em] text-dura">
+                {p.tag}
+              </p>
+              <h3 className="mt-2 text-xl font-bold text-ink">
+                {p.name}, {p.age}
+              </h3>
+              <div className="mt-5 rounded-xl border border-hairline bg-bonefill px-4 py-3">
+                <p className="text-[0.7rem] font-bold uppercase tracking-[0.14em] text-steel-dim">
+                  Now
+                </p>
+                <p className="mt-1 text-[0.92rem] leading-[1.55] text-steel">
+                  {p.now}
+                </p>
+              </div>
+              <div className="mt-3 rounded-xl border border-dura/30 bg-gradient-to-r from-[#3b82f6]/15 to-dura/15 px-4 py-3">
+                <p className="text-[0.7rem] font-bold uppercase tracking-[0.14em] text-dura">
+                  With Ossentra
+                </p>
+                <p className="mt-1 text-[0.92rem] leading-[1.55] text-ink">
+                  {p.with}
+                </p>
+              </div>
+            </Card>
+          ))}
+        </div>
+        <p className="mt-6 text-center text-[0.82rem] text-steel-dim">
+          Illustrative cases.
+        </p>
       </Section>
 
       {/* ---------------------------------------------------------------
           The clinical need
       --------------------------------------------------------------- */}
-      <Section id="need" register="field">
+      <Section id="need">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
           <div>
             <Eyebrow>The clinical need</Eyebrow>
@@ -347,6 +407,34 @@ export default function HomePage() {
       </Section>
 
       {/* ---------------------------------------------------------------
+          Value proposition
+      --------------------------------------------------------------- */}
+      <Section register="field">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+          <div>
+            <Eyebrow>Value proposition</Eyebrow>
+            <p className="mt-5 text-[1.7rem] font-extrabold leading-[1.25] tracking-[-0.02em] text-ink sm:text-[2.1rem]">
+              &ldquo;The reshaping control of open surgery through a{" "}
+              <Accent>minimally invasive incision.</Accent>&rdquo;
+            </p>
+          </div>
+          <dl className="flex flex-col">
+            {differences.map((d) => (
+              <div
+                key={d.label}
+                className="grid gap-1 border-t border-hairline py-4 last:border-b sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6"
+              >
+                <dt className="text-[0.95rem] font-bold text-ink">{d.label}</dt>
+                <dd className="text-[0.95rem] leading-[1.6] text-steel">
+                  {d.body}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </Section>
+
+      {/* ---------------------------------------------------------------
           Differentiation
       --------------------------------------------------------------- */}
       <Section>
@@ -377,70 +465,130 @@ export default function HomePage() {
           ))}
         </ol>
 
-        <PdfFigure
-          src="/figures/competition.png"
-          alt="Competitive comparison: Ossentra vs. bone cutters, articulating tools, and robots"
-          caption="Existing tools either cut bone or articulate. Ossentra does both, at infant scale."
-          className="mt-12"
-        />
+        <div className="mt-12 overflow-x-auto rounded-2xl border border-hairline bg-plate">
+          <table className="w-full min-w-[40rem] border-collapse text-left">
+            <caption className="sr-only">Competition at a glance</caption>
+            <thead>
+              <tr className="border-b border-hairline-strong">
+                <th className="px-5 py-4 text-[0.72rem] font-bold uppercase tracking-[0.12em] text-steel">
+                  Instrument
+                </th>
+                {competitionColumns.map((c) => (
+                  <th
+                    key={c}
+                    className="px-3 py-4 text-center text-[0.72rem] font-bold uppercase tracking-[0.12em] text-steel"
+                  >
+                    {c}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {competitionRows.map((row) => {
+                const ours = row.name === "Ossentra";
+                return (
+                  <tr
+                    key={row.name}
+                    className={`border-b border-hairline last:border-b-0 ${
+                      ours ? "bg-gradient-to-r from-[#3b82f6]/15 to-dura/15" : ""
+                    }`}
+                  >
+                    <th
+                      scope="row"
+                      className={`px-5 py-3.5 text-[0.92rem] ${
+                        ours ? "font-bold text-ink" : "font-medium text-steel"
+                      }`}
+                    >
+                      {row.name}
+                    </th>
+                    {row.marks.map((m, i) => (
+                      <td key={i} className="px-3 py-3.5 text-center text-lg">
+                        <Mark value={m} />
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-[0.82rem] leading-[1.6] text-steel-dim">
+          ✓ full · ✗ no · ~ partial. Freedom to operate: 37 patents and
+          applications reviewed, no blocking IP identified (June 2026).
+          Ossentra is investigational and not yet cleared.
+        </p>
       </Section>
 
       {/* ---------------------------------------------------------------
           Development status
       --------------------------------------------------------------- */}
       <Section id="status" register="field">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center lg:gap-16">
-          <div>
-            <Eyebrow>Development status</Eyebrow>
-            <Heading className="mt-4">A staged path to the clinic</Heading>
-            <Body className="mt-6 max-w-md">
-              From a published handheld prototype to a robot-ready instrument
-              on the FDA 510(k) pathway, de-risked one milestone at a time.
-            </Body>
-          </div>
+        <div className="max-w-2xl">
+          <Eyebrow>Development status</Eyebrow>
+          <Heading className="mt-4">A staged path to the clinic</Heading>
+          <Body className="mt-6">
+            From a published handheld prototype to a robot-ready instrument on
+            the FDA 510(k) pathway, de-risked one milestone at a time.
+          </Body>
+        </div>
 
-          <ol className="relative">
-            <span
-              aria-hidden
-              className="absolute bottom-3 left-[7px] top-3 w-0.5 bg-gradient-to-b from-ok via-dura to-hairline-strong"
-            />
-            {developmentStages.map((stage) => {
-              const done = stage.status === "complete";
-              const active = stage.status === "in progress";
-              return (
-                <li key={stage.stage} className="relative pb-7 pl-10 last:pb-0">
+        <ol className="mt-14 grid gap-4 md:grid-cols-5">
+          {milestones.map((m) => {
+            const done = m.status === "complete";
+            const active = m.status === "in progress";
+            return (
+              <li
+                key={m.when}
+                className={`rounded-2xl border p-5 ${
+                  active
+                    ? "border-dura/40 bg-gradient-to-b from-dura/15 to-plate"
+                    : "border-hairline bg-plate"
+                }`}
+              >
+                <div className="flex items-center gap-2">
                   <span
                     aria-hidden
-                    className={`absolute left-0 top-1 h-4 w-4 rounded-full border-2 ${
+                    className={`h-3 w-3 rounded-full border-2 ${
                       done
                         ? "border-ok bg-ok"
                         : active
-                          ? "border-dura bg-dura shadow-[0_0_14px_rgba(6,214,198,0.7)]"
+                          ? "border-dura bg-dura shadow-[0_0_12px_rgba(6,214,198,0.7)]"
                           : "border-hairline-strong bg-field"
                     }`}
                   />
-                  <p
-                    className={`text-[0.7rem] font-bold uppercase tracking-[0.14em] ${
+                  <span
+                    className={`text-[0.68rem] font-bold uppercase tracking-[0.14em] ${
                       done ? "text-ok" : active ? "text-dura" : "text-steel-dim"
                     }`}
                   >
-                    {stage.status}
-                  </p>
-                  <h3
-                    className={`mt-1 text-[1.02rem] font-semibold ${
-                      done || active ? "text-ink" : "text-steel"
-                    }`}
-                  >
-                    {stage.stage}
-                  </h3>
-                  <p className="mt-1 text-[0.88rem] leading-[1.55] text-steel">
-                    {stage.detail}
-                  </p>
-                </li>
-              );
-            })}
-          </ol>
-        </div>
+                    {done ? "Completed" : active ? "We are here" : "Planned"}
+                  </span>
+                </div>
+                <p className="mt-4 text-[0.85rem] font-semibold text-steel">
+                  {m.when}
+                </p>
+                <h3 className="mt-0.5 text-[1.05rem] font-bold text-ink">
+                  {m.title}
+                </h3>
+                <ul className="mt-3 flex flex-col gap-1.5">
+                  {m.items.map((it) => (
+                    <li
+                      key={it}
+                      className="text-[0.85rem] leading-[1.45] text-steel"
+                    >
+                      {it}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            );
+          })}
+        </ol>
+
+        <p className="mt-6 text-[0.82rem] leading-[1.6] text-steel-dim">
+          2026 programs: Creative Destruction Lab, Lab2Market, UTEST, ICUBE,
+          H2i, an independent US surgeon study and a freedom-to-operate review.
+        </p>
       </Section>
 
       {/* ---------------------------------------------------------------
@@ -454,7 +602,7 @@ export default function HomePage() {
           </Heading>
         </div>
         <dl className="mt-12 grid gap-4 md:grid-cols-3">
-          {marketCards.map((m) => (
+          {market.map((m) => (
             <Card key={m.value} as="div">
               <dt className="sr-only">{m.label}</dt>
               <dd className="text-grad tnum text-4xl font-extrabold tracking-[-0.02em]">
@@ -464,6 +612,18 @@ export default function HomePage() {
                 {m.label}
               </dd>
             </Card>
+          ))}
+        </dl>
+        <dl className="mt-8 grid gap-x-6 gap-y-4 rounded-2xl border border-hairline p-6 sm:grid-cols-2 lg:grid-cols-5">
+          {marketFocus.map((f) => (
+            <div key={f.label}>
+              <dt className="text-[0.7rem] font-bold uppercase tracking-[0.14em] text-dura">
+                {f.label}
+              </dt>
+              <dd className="mt-1 text-[0.9rem] leading-[1.5] text-ink">
+                {f.value}
+              </dd>
+            </div>
           ))}
         </dl>
       </Section>
@@ -524,6 +684,34 @@ export default function HomePage() {
           </Link>
         </div>
       </Section>
+
+      {/* ---------------------------------------------------------------
+          Supported by
+      --------------------------------------------------------------- */}
+      <section className="bg-bone pt-20 sm:pt-24">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <Eyebrow>Acknowledgments</Eyebrow>
+            <Heading className="mt-4">Supported by</Heading>
+          </div>
+          <ul className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
+            {supporters.map((s) => (
+              <li
+                key={s.name}
+                className="flex h-20 items-center justify-center rounded-xl bg-white p-3"
+                title={s.name}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={s.logo}
+                  alt={s.name}
+                  className="max-h-full max-w-full object-contain"
+                />
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
 
       {/* ---------------------------------------------------------------
           Contact

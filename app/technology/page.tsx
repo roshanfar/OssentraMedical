@@ -10,7 +10,15 @@ import {
   Section,
   StatusNote,
 } from "../components/primitives";
-import { benchResults, openProblems, paper } from "../content/device";
+import {
+  benchResults,
+  ipPosition,
+  openProblems,
+  paper,
+  platformStages,
+  regulatorySteps,
+  workflow,
+} from "../content/device";
 import { site } from "../content/site";
 
 export const metadata: Metadata = {
@@ -92,8 +100,50 @@ export default function TechnologyPage() {
         </div>
       </Section>
 
-      {/* --- The bench --- */}
+      {/* --- Workflow --- */}
       <Section>
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
+          <div>
+            <Eyebrow>Workflow</Eyebrow>
+            <Heading className="mt-5">
+              One keyhole, and the endoscope surgeons already use.
+            </Heading>
+            <ol className="mt-8 grid gap-3 sm:grid-cols-2">
+              {workflow.map((w, i) => (
+                <li
+                  key={w.step}
+                  className="flex gap-3 rounded-xl border border-hairline bg-plate p-4"
+                >
+                  <span className="text-grad tnum text-xl font-extrabold">
+                    {i + 1}
+                  </span>
+                  <span>
+                    <span className="block text-[0.95rem] font-bold text-ink">
+                      {w.step}
+                    </span>
+                    <span className="block text-[0.85rem] leading-[1.5] text-steel">
+                      {w.detail}
+                    </span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+            <Body className="mt-6">
+              Nothing new at the table. The cut extends beyond a strip, and
+              conversion to open surgery is always available.
+            </Body>
+          </div>
+
+          <PdfFigure
+            src="/figures/prototype-endoscope-view.jpg"
+            alt="Prototype on a skull phantom and the endoscopic view of the jaws"
+            caption="(a) The handheld prototype, (b) cutting on a skull phantom, and (c) the endoscope view of the jaws."
+          />
+        </div>
+      </Section>
+
+      {/* --- The bench --- */}
+      <Section register="field">
         <LabelledRule className="mb-10">Bench characterization</LabelledRule>
 
         <div className="overflow-x-auto">
@@ -134,32 +184,110 @@ export default function TechnologyPage() {
         </p>
       </Section>
 
-      {/* --- Robot-ready --- */}
-      <Section register="field">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:items-center lg:gap-16">
-          <div>
-            <Eyebrow register="field">Robot-ready</Eyebrow>
-            <Heading register="field" className="mt-5">
-              The same cable that the surgeon pulls, a robot can.
-            </Heading>
-            <Body register="field" className="mt-6">
-              The cable-driven mechanism is the class used in leading surgical
-              robots. It is manual today, and the same architecture mounts as an
-              end-effector on a robotic arm with no redesign. Only the drive needs
-              motorizing.
-            </Body>
-          </div>
+      {/* --- Platform --- */}
+      <Section>
+        <div className="max-w-2xl">
+          <Eyebrow>Platform</Eyebrow>
+          <Heading className="mt-5">
+            Three stages, one cable-driven architecture.
+          </Heading>
+          <Body className="mt-6">
+            Designed for a robotic arm from day one. Only the proximal drive is
+            motorized; nothing at the tip changes. Craniosynostosis is the
+            beachhead, and the platform is every bone that is not flat.
+          </Body>
+        </div>
 
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
+          {platformStages.map((s, i) => (
+            <article
+              key={s.stage}
+              className="rounded-2xl border border-hairline bg-plate p-6"
+            >
+              <span className="text-grad tnum text-3xl font-extrabold">
+                {i + 1}
+              </span>
+              <h3 className="mt-3 text-lg font-bold text-ink">{s.stage}</h3>
+              <Body className="mt-2 text-[0.92rem]">{s.body}</Body>
+              <p className="mt-4 border-t border-hairline pt-3 text-[0.88rem] leading-[1.55] text-ink">
+                <span className="font-semibold text-dura">Value: </span>
+                {s.value}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-8 grid items-start gap-4 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
+          <PdfFigure
+            src="/figures/gen2-design.jpg"
+            alt="Second-generation design: disposable articulating burr arm with tip camera on a reusable motorized handle"
+            caption="Second generation: a disposable articulating burr arm with a tip camera, on a reusable motorized handle."
+          />
           <PdfFigure
             src="/figures/robot-ready.png"
             alt="Ossentra handle mounted as an end-effector on a robotic arm"
-            caption="Phase 2: the handle mounts on a collaborative robotic arm. Same end-effectors, same 510(k) class."
+            caption="Robot integration: the handle mounts as an end-effector on a collaborative arm."
           />
         </div>
       </Section>
 
-      {/* --- What we still have to prove --- */}
+      {/* --- Regulatory pathway --- */}
+      <Section register="field">
+        <div className="max-w-2xl">
+          <Eyebrow>Regulatory pathway</Eyebrow>
+          <Heading className="mt-5">Class II 510(k), with a cleared predicate.</Heading>
+          <Body className="mt-6">
+            Cranial cutting instruments are Class II, and an articulating bone
+            cutter is now a legally marketed predicate. One ISO 13485 quality
+            system, certified through MDSAP, serves both FDA and Health Canada.
+          </Body>
+        </div>
+
+        <ol className="mt-12 grid gap-4 md:grid-cols-5">
+          {regulatorySteps.map((r, i) => (
+            <li
+              key={r.step}
+              className={`rounded-2xl border p-5 ${
+                i === 0
+                  ? "border-dura/40 bg-gradient-to-b from-dura/15 to-plate"
+                  : "border-hairline bg-plate"
+              }`}
+            >
+              <span className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-dura">
+                {r.when}
+              </span>
+              <h3 className="mt-2 text-[1.02rem] font-bold text-ink">
+                {i + 1}. {r.step}
+              </h3>
+              <p className="mt-2 text-[0.85rem] leading-[1.5] text-steel">
+                {r.detail}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      {/* --- Intellectual property --- */}
       <Section>
+        <div className="max-w-2xl">
+          <Eyebrow>Intellectual property</Eyebrow>
+          <Heading className="mt-5">Protected, with no blocking IP found.</Heading>
+        </div>
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
+          {ipPosition.map((item) => (
+            <article
+              key={item.title}
+              className="rounded-2xl border border-hairline bg-plate p-6"
+            >
+              <h3 className="text-lg font-bold text-ink">{item.title}</h3>
+              <Body className="mt-3 text-[0.92rem]">{item.body}</Body>
+            </article>
+          ))}
+        </div>
+      </Section>
+
+      {/* --- What we still have to prove --- */}
+      <Section register="field">
         <div className="max-w-2xl">
           <Eyebrow>What&apos;s next</Eyebrow>
           <Heading className="mt-5">What we still have to build.</Heading>
