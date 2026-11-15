@@ -1,5 +1,6 @@
 import { DeviceAnimation } from "./components/device-animation";
 import { PdfFigure } from "./components/pdf-figure";
+import { RoadmapLadder } from "./components/roadmap-ladder";
 import {
   Accent,
   Body,
@@ -176,8 +177,8 @@ export default function HomePage() {
           </div>
         </Container>
 
-        {/* The device animation runs the full width of the page, at its own aspect ratio. */}
-        <DeviceAnimation className="relative mt-12 w-full sm:mt-16" />
+        {/* The device animation spans 80% of the page width, at its own aspect ratio. */}
+        <DeviceAnimation className="relative mx-auto mt-12 w-full sm:mt-16 sm:w-4/5" />
 
         <Container className="relative">
           <p className="mt-4 text-center text-sm leading-[1.6] text-steel-dim">
@@ -259,7 +260,16 @@ export default function HomePage() {
           ))}
         </RuledColumns>
         <p className="mt-6 text-[0.9rem] text-steel-dim">
-          Peer reviewed: Law et al., ASME Journal of Medical Devices, 2025 [2].
+          Peer reviewed:{" "}
+          <a
+            href="https://doi.org/10.1115/1.4069208"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-dura underline underline-offset-4 hover:text-ink"
+          >
+            Law et al., ASME Journal of Medical Devices, 2025
+          </a>{" "}
+          [2].
           Patents pending in the US and Canada [3].
         </p>
       </Section>
@@ -608,72 +618,7 @@ export default function HomePage() {
           intro="From a published handheld prototype to a Class II 510(k) submission, de-risked one milestone at a time."
         />
 
-        {/* Staircase: each stage sits one step higher than the last. */}
-        <ol className="mt-14 grid gap-y-10 md:mt-24 md:grid-cols-4 md:items-start md:gap-y-0">
-          {milestones.map((m, i) => {
-            const done = m.status === "complete";
-            const active = m.status === "in progress";
-            const reached = done || active;
-            const last = i === milestones.length - 1;
-            const lift =
-              ["md:mt-[10.5rem]", "md:mt-[7rem]", "md:mt-[3.5rem]", "md:mt-0"][
-                i
-              ] ?? "";
-            return (
-              <li key={m.when} className={`relative ${lift}`}>
-                <div className="relative">
-                  <span
-                    aria-hidden
-                    className={`block h-[6px] w-full ${reached ? "bg-navy" : "bg-[#c3cbe0]"}`}
-                  />
-                  {!last ? (
-                    <span
-                      aria-hidden
-                      className={`absolute bottom-0 right-0 hidden h-[calc(3.5rem+6px)] w-[6px] md:block ${
-                        done ? "bg-navy" : "bg-[#c3cbe0]"
-                      }`}
-                    />
-                  ) : null}
-                  {active ? (
-                    <span
-                      aria-hidden
-                      className="absolute -top-[9px] left-4 h-6 w-6 rounded-full border-4 border-white bg-dura shadow-[0_0_0_2px_#1f56d8]"
-                    />
-                  ) : null}
-                </div>
-                <div className="md:pr-8 md:pl-4">
-                  <p
-                    className={`mt-5 font-mono text-[0.8rem] font-bold uppercase tracking-[0.1em] ${
-                      done ? "text-ok" : active ? "text-dura" : "text-steel-dim"
-                    }`}
-                  >
-                    {done ? "Completed" : active ? "We are here" : "Planned"}
-                  </p>
-                  <p
-                    className={`mt-1 font-display text-[1.35rem] font-bold ${
-                      active ? "text-dura" : "text-ink"
-                    }`}
-                  >
-                    {m.when}
-                  </p>
-                  <h3 className="mt-1 font-display text-[1.2rem] font-bold text-ink">
-                    {m.title}
-                  </h3>
-                  <ul className="mt-3 space-y-1.5">
-                    {m.items.map((it) => (
-                      <li
-                        key={it}
-                        className="text-[0.98rem] leading-[1.5] text-steel"
-                      >
-                        {it}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </li>
-            );
-          })}
-        </ol>
+        <RoadmapLadder milestones={milestones} />
 
         <div className="mt-20">
           <Label>Regulatory pathway · Class II 510(k)</Label>
