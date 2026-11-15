@@ -11,8 +11,7 @@ const publicSans = Public_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default:
-      "Ossentra | Precision was never a straight line",
+    default: "Ossentra | Precision was never a straight line",
     template: "%s | Ossentra",
   },
   description:

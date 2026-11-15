@@ -11,7 +11,11 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-hairline bg-white/95 backdrop-blur-md">
       <Container>
         <div className="flex h-[68px] items-center justify-between gap-6">
-          <a href="#top" className="flex items-center" onClick={() => setOpen(false)}>
+          <a
+            href="#top"
+            className="flex items-center"
+            onClick={() => setOpen(false)}
+          >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/brand/ossentra-logo.svg"

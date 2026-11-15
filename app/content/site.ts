@@ -39,13 +39,15 @@ export const news = [
   },
 ] as const;
 
-
 /** Programmes and institutions that are actually behind the company. */
 export const ecosystem = [
   {
     name: "SickKids",
     detail: "Clinical home, IP, and the Proof-of-Principle grant",
   },
-  { name: "PCIGITI", detail: "The lab the instrument was designed and built in" },
+  {
+    name: "PCIGITI",
+    detail: "The lab the instrument was designed and built in",
+  },
   { name: "UTEST", detail: "2026 cohort, early-stage technology incubation" },
 ] as const;

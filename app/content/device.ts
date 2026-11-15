@@ -5,15 +5,26 @@
  * need.ts. No financial projections or fundraising terms appear here.
  */
 
-
 /**
  * Open vs. minimally invasive repair, from the literature (pitch deck,
  * "Value proposition" and Appendix B).
  */
 export const specs = [
-  { label: "Transfusion risk", value: "90% → 20–40%", note: "Open vs. endoscopic repair [1]" },
-  { label: "Procedure time", value: "4–8 h → 1–2 h", note: "Less anaesthesia for the infant [1]" },
-  { label: "Hospital stay", value: "3–5 d → 1–2 d", note: "Home in a day or two [1]" },
+  {
+    label: "Transfusion risk",
+    value: "90% → 20–40%",
+    note: "Open vs. endoscopic repair [1]",
+  },
+  {
+    label: "Procedure time",
+    value: "4–8 h → 1–2 h",
+    note: "Less anaesthesia for the infant [1]",
+  },
+  {
+    label: "Hospital stay",
+    value: "3–5 d → 1–2 d",
+    note: "Home in a day or two [1]",
+  },
 ] as const;
 
 /** The three things that make the instrument (pitch deck, "Our solution"). */
@@ -37,7 +48,6 @@ export const capabilities = [
     metric: "⌀ 13 mm shaft",
   },
 ] as const;
-
 
 /** How Ossentra differs from today's tools (pitch deck, "Value proposition"). */
 export const differences = [
@@ -68,7 +78,10 @@ export const workflow = [
   { step: "Incision", detail: "1 cm at the vertex" },
   { step: "Tunnel", detail: "Under the pericranium" },
   { step: "Entry", detail: "Through a burr hole" },
-  { step: "Steer and cut", detail: "Along the curved path, under endoscopic view" },
+  {
+    step: "Steer and cut",
+    detail: "Along the curved path, under endoscopic view",
+  },
   { step: "Check", detail: "Osteotomy complete" },
   { step: "Close", detail: "Standard closure" },
 ] as const;
@@ -83,12 +96,30 @@ export const competitionColumns = [
 ] as const;
 
 export const competitionRows = [
-  { name: "Scissors and rongeurs", marks: ["yes", "no", "partial", "no", "yes"] },
-  { name: "Powered drills and ultrasonic cutters", marks: ["yes", "no", "partial", "partial", "yes"] },
-  { name: "Articulating soft-tissue instruments", marks: ["no", "yes", "no", "yes", "yes"] },
-  { name: "Articulating orthopedic bur", marks: ["yes", "yes", "no", "partial", "yes"] },
-  { name: "Fixed-angle cranial drill", marks: ["yes", "no", "yes", "yes", "no"] },
-  { name: "Robotic surgical platforms", marks: ["no", "partial", "partial", "no", "yes"] },
+  {
+    name: "Scissors and rongeurs",
+    marks: ["yes", "no", "partial", "no", "yes"],
+  },
+  {
+    name: "Powered drills and ultrasonic cutters",
+    marks: ["yes", "no", "partial", "partial", "yes"],
+  },
+  {
+    name: "Articulating soft-tissue instruments",
+    marks: ["no", "yes", "no", "yes", "yes"],
+  },
+  {
+    name: "Articulating orthopedic bur",
+    marks: ["yes", "yes", "no", "partial", "yes"],
+  },
+  {
+    name: "Fixed-angle cranial drill",
+    marks: ["yes", "no", "yes", "yes", "no"],
+  },
+  {
+    name: "Robotic surgical platforms",
+    marks: ["no", "partial", "partial", "no", "yes"],
+  },
   { name: "Ossentra", marks: ["yes", "yes", "yes", "yes", "pathway"] },
 ] as const;
 
@@ -98,7 +129,12 @@ export const milestones = [
     when: "2023 to 2025",
     title: "Proof of concept",
     status: "complete",
-    items: ["Patent filed", "Prototype validated", "ASME publication", "SickKids Proof-of-Principle grant"],
+    items: [
+      "Patent filed",
+      "Prototype validated",
+      "ASME publication",
+      "SickKids Proof-of-Principle grant",
+    ],
   },
   {
     when: "Q4 2026",
@@ -110,7 +146,11 @@ export const milestones = [
     when: "2027",
     title: "Regulatory",
     status: "planned",
-    items: ["FDA Pre-Submission (Q-Sub)", "Design for manufacturing, ISO 10993", "510(k) filing, Q4"],
+    items: [
+      "FDA Pre-Submission (Q-Sub)",
+      "Design for manufacturing, ISO 10993",
+      "510(k) filing, Q4",
+    ],
   },
   {
     when: "2028",
@@ -124,50 +164,56 @@ export const milestones = [
 export const regulatorySteps = [
   {
     step: "Predicate",
-    detail: "An articulating arthroscopic bone cutter, 510(k) cleared December 2025.",
+    detail:
+      "An articulating arthroscopic bone cutter, 510(k) cleared December 2025.",
     when: "In progress",
   },
   {
     step: "Pre-Submission",
-    detail: "Q-Sub for FDA written feedback on classification, predicate and test plan.",
+    detail:
+      "Q-Sub for FDA written feedback on classification, predicate and test plan.",
     when: "Q1 2027",
   },
   {
     step: "Evidence",
-    detail: "Bench verification, ISO 10993 biocompatibility, sterilization and reprocessing, IEC 62366 usability.",
+    detail:
+      "Bench verification, ISO 10993 biocompatibility, sterilization and reprocessing, IEC 62366 usability.",
     when: "2027",
   },
   {
     step: "510(k) filed",
-    detail: "Health Canada Class II licence filed in parallel, on one ISO 13485 quality system via MDSAP.",
+    detail:
+      "Health Canada Class II licence filed in parallel, on one ISO 13485 quality system via MDSAP.",
     when: "Q4 2027",
   },
   {
     step: "Clearance",
-    detail: "Typical FDA review of 130 to 170 days, then a 10-patient first-in-human study at SickKids under REB approval.",
+    detail:
+      "Typical FDA review of 130 to 170 days, then a 10-patient first-in-human study at SickKids under REB approval.",
     when: "2028",
   },
 ] as const;
-
-
-
-
 
 /** Market (pitch deck, "Market"). Third-party market data only. */
 export const market = [
   {
     value: "3x",
-    label: "The minimally invasive share of US craniosynostosis repairs rose from 3% to 9% between 2013 and 2022 [7].",
+    label:
+      "The minimally invasive share of US craniosynostosis repairs rose from 3% to 9% between 2013 and 2022 [7].",
   },
   {
     value: "Class II",
-    label: "FDA 510(k) pathway, with an articulating bone cutter now cleared as a predicate.",
+    label:
+      "FDA 510(k) pathway, with an articulating bone cutter now cleared as a predicate.",
   },
 ] as const;
 
 export const marketFocus = [
   { label: "Beachhead", value: "Craniosynostosis, 3 to 12 months" },
-  { label: "Users", value: "Pediatric neurosurgeons and craniofacial surgeons" },
+  {
+    label: "Users",
+    value: "Pediatric neurosurgeons and craniofacial surgeons",
+  },
   { label: "Buyers", value: "Children's hospitals" },
   { label: "Geography", value: "US, Canada, EU, Japan" },
 ] as const;

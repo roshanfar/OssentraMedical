@@ -1,11 +1,21 @@
 import { nav, site } from "../content/site";
 
-const heading = "font-mono font-bold text-[0.8rem] uppercase tracking-[0.1em] text-[#9fb6ff]";
+const heading =
+  "font-mono font-bold text-[0.8rem] uppercase tracking-[0.1em] text-[#9fb6ff]";
 const link = "text-[1rem] text-[#eef2fc] transition-colors hover:text-white";
 
-export function LinkedInIcon({ className = "h-5 w-5" }: { className?: string }) {
+export function LinkedInIcon({
+  className = "h-5 w-5",
+}: {
+  className?: string;
+}) {
   return (
-    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="currentColor"
+      aria-hidden
+    >
       <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm7 0h3.8v1.5h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1v5.46h-4v-4.84c0-1.16-.02-2.65-1.61-2.65-1.62 0-1.86 1.26-1.86 2.56v4.93h-4v-11Z" />
     </svg>
   );
@@ -33,13 +43,15 @@ export function SiteFooter() {
           <nav aria-label="Footer">
             <p className={heading}>On this page</p>
             <ul className="mt-5 flex flex-col gap-3">
-              {[...nav, { href: "#references", label: "References" }].map((item) => (
-                <li key={item.href}>
-                  <a href={item.href} className={link}>
-                    {item.label}
-                  </a>
-                </li>
-              ))}
+              {[...nav, { href: "#references", label: "References" }].map(
+                (item) => (
+                  <li key={item.href}>
+                    <a href={item.href} className={link}>
+                      {item.label}
+                    </a>
+                  </li>
+                ),
+              )}
             </ul>
           </nav>
 
@@ -70,11 +82,11 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-2 border-t border-white/15 pt-6 font-mono font-bold text-[0.8rem] text-[#cbd5f5] sm:flex-row sm:justify-between sm:gap-8">
-          <p className="shrink-0">
+        <div className="mt-14 flex flex-col gap-2 border-t border-white/15 pt-6 font-mono font-bold text-[0.8rem] text-[#cbd5f5]">
+          <p className="lg:whitespace-nowrap">{site.regulatoryStatus}</p>
+          <p>
             © {new Date().getFullYear()} {site.name}, Toronto, Canada
           </p>
-          <p className="sm:text-right">{site.regulatoryStatus}</p>
         </div>
       </div>
     </footer>

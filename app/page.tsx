@@ -949,21 +949,6 @@ export default function HomePage() {
                   ))}
                 </dd>
               </div>
-              <div className="grid gap-1 border-b border-hairline py-4 sm:grid-cols-[8rem_minmax(0,1fr)]">
-                <dt className="font-mono font-bold text-[0.8rem] uppercase tracking-[0.08em] text-steel-dim">
-                  LinkedIn
-                </dt>
-                <dd>
-                  <a
-                    href={site.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-ink underline underline-offset-4 hover:text-dura"
-                  >
-                    Ossentra on LinkedIn
-                  </a>
-                </dd>
-              </div>
             </dl>
           </div>
         </Container>

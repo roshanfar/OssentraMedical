@@ -16,10 +16,16 @@ const BAR = 6;
  * from the first step up to the current stage, carrying the "we are here"
  * marker with it. Visitors who prefer reduced motion see the end state.
  */
-export function RoadmapLadder({ milestones }: { milestones: readonly Milestone[] }) {
+export function RoadmapLadder({
+  milestones,
+}: {
+  milestones: readonly Milestone[];
+}) {
   const wrap = useRef<HTMLDivElement>(null);
   const bars = useRef<(HTMLSpanElement | null)[]>([]);
-  const [path, setPath] = useState<{ d: string; w: number; h: number } | null>(null);
+  const [path, setPath] = useState<{ d: string; w: number; h: number } | null>(
+    null,
+  );
   const [run, setRun] = useState(false);
 
   const activeIndex = Math.max(
@@ -47,7 +53,9 @@ export function RoadmapLadder({ milestones }: { milestones: readonly Milestone[]
         if (i < activeIndex) pts.push([r.right - box.left - BAR / 2, y]);
         else pts.push([left + 28, y]);
       }
-      const d = pts.map(([x, y], k) => `${k ? "L" : "M"}${x.toFixed(1)} ${y.toFixed(1)}`).join(" ");
+      const d = pts
+        .map(([x, y], k) => `${k ? "L" : "M"}${x.toFixed(1)} ${y.toFixed(1)}`)
+        .join(" ");
       setPath({ d, w: box.width, h: box.height });
     };
     measure();
@@ -71,7 +79,12 @@ export function RoadmapLadder({ milestones }: { milestones: readonly Milestone[]
     return () => io.disconnect();
   }, []);
 
-  const lifts = ["md:mt-[10.5rem]", "md:mt-[7rem]", "md:mt-[3.5rem]", "md:mt-0"];
+  const lifts = [
+    "md:mt-[10.5rem]",
+    "md:mt-[7rem]",
+    "md:mt-[3.5rem]",
+    "md:mt-0",
+  ];
 
   return (
     <div ref={wrap} className="relative mt-14 md:mt-24">
@@ -126,7 +139,10 @@ export function RoadmapLadder({ milestones }: { milestones: readonly Milestone[]
                 </h3>
                 <ul className="mt-3 space-y-1.5">
                   {m.items.map((it) => (
-                    <li key={it} className="text-[0.98rem] leading-[1.5] text-steel">
+                    <li
+                      key={it}
+                      className="text-[0.98rem] leading-[1.5] text-steel"
+                    >
                       {it}
                     </li>
                   ))}
@@ -175,4 +191,3 @@ export function RoadmapLadder({ milestones }: { milestones: readonly Milestone[]
     </div>
   );
 }
-

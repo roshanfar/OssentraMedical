@@ -17,7 +17,8 @@ export const team = [
     affiliation: "Pediatric craniofacial surgeon · Lead, PCIGITI",
     bio: "Craniofacial surgeon and engineer, and developer of the device. He still operates, which is why the requirements came from a real case. Founded and exited Simulare Medical.",
     photo: "/figures/Dale.jpg",
-    linkedin: "https://www.linkedin.com/in/dale-podolsky-md-phd-frcsc-facs-2b307143/",
+    linkedin:
+      "https://www.linkedin.com/in/dale-podolsky-md-phd-frcsc-facs-2b307143/",
   },
   {
     name: "Thomas Looi",
@@ -64,7 +65,10 @@ export const institutions = [
   { name: "SickKids", logo: "/logos/sickkids.png" },
   { name: "University of Toronto", logo: "/logos/uoft.png" },
   { name: "PCIGITI", logo: "/logos/pcigiti.png" },
-  { name: "SickKids Proof of Principle Grant", logo: "/logos/proof-of-principle.png" },
+  {
+    name: "SickKids Proof of Principle Grant",
+    logo: "/logos/proof-of-principle.png",
+  },
   { name: "CIHR", logo: "/logos/cihr.png" },
   { name: "Toronto Innovation Acceleration Partners", logo: "/logos/tiap.png" },
 ] as const;
@@ -86,19 +90,23 @@ export const contributors = [
 export const originStory = [
   {
     step: "Validate",
-    detail: "Shadowed surgeons in the OR. The gap wasn't knowledge. It was an instrument.",
+    detail:
+      "Shadowed surgeons in the OR. The gap wasn't knowledge. It was an instrument.",
   },
   {
     step: "Build",
-    detail: "Prototyped inside PCIGITI with a craniofacial surgeon in the room, then characterized on the bench.",
+    detail:
+      "Prototyped inside PCIGITI with a craniofacial surgeon in the room, then characterized on the bench.",
   },
   {
     step: "Protect",
-    detail: "US patent filed through SickKids Industry Partnerships & Commercialization.",
+    detail:
+      "US patent filed through SickKids Industry Partnerships & Commercialization.",
   },
   {
     step: "Launch",
-    detail: "Spun out as Ossentra, backed by a SickKids Proof-of-Principle grant and UTEST 2026.",
+    detail:
+      "Spun out as Ossentra, backed by a SickKids Proof-of-Principle grant and UTEST 2026.",
   },
 ] as const;
 
