@@ -15,7 +15,7 @@ export const team = [
     credentials: "MD, PhD, FRCSC, FACS",
     role: "Co-founder & CMO",
     affiliation: "Pediatric craniofacial surgeon · Lead, PCIGITI",
-    bio: "Craniofacial surgeon and engineer, and developer of the device. He still operates, which is why the requirements came from a real case. Founded and exited Simulare Medical.",
+    bio: "Craniofacial surgeon and engineer, and developer of the device. He founded and exited Simulare Medical.",
     photo: "/figures/Dale.jpg",
     linkedin:
       "https://www.linkedin.com/in/dale-podolsky-md-phd-frcsc-facs-2b307143/",
@@ -25,7 +25,7 @@ export const team = [
     credentials: "PhD, MBA",
     role: "Co-founder & Co-CTO",
     affiliation: "Program Director, PCIGITI",
-    bio: "Fifteen years taking surgical innovation from bench to clinic. Owns the path to something a hospital can buy, reprocess and trust.",
+    bio: "More than 15 years taking surgical technology from bench to clinic at PCIGITI.",
     photo: "/figures/Thomas.jpg",
     linkedin: "https://www.linkedin.com/in/thomas-looi-ba657a8/",
   },
@@ -34,7 +34,7 @@ export const team = [
     credentials: "PhD Candidate",
     role: "Co-founder & CTO",
     affiliation: "PCIGITI · University of Toronto",
-    bio: "Inventor and lead developer, and first author on the characterization paper. Owns the bending section, the end-effector and the punch-to-dura tolerance stack.",
+    bio: "Inventor and lead developer of the instrument, and first author on the ASME Journal of Medical Devices paper.",
     photo: "/figures/Jones.png",
     linkedin: "https://www.linkedin.com/in/jones-law-316791128/",
   },
@@ -44,7 +44,10 @@ export const team = [
 export const advisors = [
   { name: "SickKids IP&C", role: "Licensing, freedom to operate, investors" },
   { name: "Creative Destruction Lab", role: "Mentors and Sauder MBA team" },
-  { name: "UTEST and Rotman", role: "Torys LLP and MBA venture team" },
+  {
+    name: "UTEST and Rotman",
+    role: "Incubation, legal support and an MBA venture team",
+  },
 ] as const;
 
 /** Accelerators and programs Ossentra is part of, shown as logos. */

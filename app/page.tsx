@@ -182,7 +182,7 @@ const surgeonFindings = [
   },
   {
     title: "Rigid tools force awkward hand angles.",
-    body: "A rigid cutter has to sit under the dissection. Surgeons described wanting a tool whose curve follows the skull so the hand does not have to change position.",
+    body: "A rigid cutter has to sit under the dissection. One surgeon described, in his own words, a tool whose curve follows the skull so the hand does not have to change position.",
   },
   {
     title: "The dura and sagittal sinus come first.",
@@ -296,7 +296,7 @@ export default function HomePage() {
                 Others cut bone. Others articulate. <Accent>We do both.</Accent>
               </>
             }
-            intro="Purpose-built for the 3 to 6-month infant skull. An articulating bone punch that follows the curve of the cranium through a small endoscopic incision."
+            intro="Purpose-built for the infant skull. An articulating bone punch that follows the curve of the cranium through a small endoscopic incision."
           />
           <PdfFigure
             src="/figures/solution-skull.webp"
@@ -377,9 +377,9 @@ export default function HomePage() {
             </div>
             <div>
               <Body>
-                A cable-driven bending section in two segments conforms to the
-                roughly 140 mm curvature of the infant cranium. A worm-gear
-                drive holds the angle without power and without back-driving.
+                A cable-driven bending section of three sliding curved joints
+                conforms to the curvature of the infant cranium, and a
+                self-locking mechanism holds the bend while the punch cuts.
               </Body>
               <Body className="mt-3">
                 On the bench, the bending section held its shape under load, the
@@ -922,9 +922,9 @@ export default function HomePage() {
                 We want surgeons who&apos;ll tell us it doesn&apos;t work.
               </h2>
               <p className="mt-5 max-w-xl text-[1.06rem] leading-[1.7] text-steel">
-                Bench and cadaveric evaluation is open to craniofacial and
-                pediatric neurosurgeons. Procurement and investor materials are
-                available on request.
+                We are inviting craniofacial and pediatric neurosurgeons to take
+                part in bench and cadaveric evaluation. Procurement and investor
+                materials are available on request.
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
                 <ButtonLink href={`mailto:${site.email}`}>Email us</ButtonLink>
