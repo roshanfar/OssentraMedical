@@ -20,7 +20,13 @@ export function SiteHeader() {
             onClick={() => setOpen(false)}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/Logo.png" alt="Ossentra" className="h-9 w-auto" />
+            <img
+              src="/brand/ossentra-logo.svg"
+              alt="Ossentra"
+              width={634}
+              height={124}
+              className="h-8 w-auto"
+            />
           </Link>
 
           <nav aria-label="Primary" className="hidden md:block">

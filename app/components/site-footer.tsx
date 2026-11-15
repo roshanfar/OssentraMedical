@@ -8,10 +8,15 @@ export function SiteFooter() {
       <Container>
         <div className="flex flex-col gap-10 md:flex-row md:justify-between">
           <div className="max-w-sm">
-            <p className="font-display text-lg font-semibold tracking-[-0.01em] text-bone-field">
-              {site.name}
-            </p>
-            <p className="mt-2 font-serif text-sm leading-[1.65] text-steel-field">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/brand/ossentra-logo-dark.svg"
+              alt={site.name}
+              width={637}
+              height={127}
+              className="h-8 w-auto"
+            />
+            <p className="mt-4 font-serif text-sm leading-[1.65] text-steel-field">
               {site.tagline}. Spun out of {site.origin}.
             </p>
             <a

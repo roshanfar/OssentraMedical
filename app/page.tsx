@@ -9,6 +9,7 @@ import {
   Section,
   StatusNote,
 } from "./components/primitives";
+import { DeviceAnimation } from "./components/device-animation";
 import { PdfFigure } from "./components/pdf-figure";
 import { capabilities, developmentStages, market, specs } from "./content/device";
 import { site } from "./content/site";
@@ -46,11 +47,7 @@ export default function HomePage() {
               </StatusNote>
             </div>
 
-            <PdfFigure
-              src="/figures/solution-skull.png"
-              alt="Ossentra articulating instrument following the curved endoscopic path beneath the scalp"
-              caption="A steerable instrument for curved osteotomy trajectories."
-            />
+            <DeviceAnimation caption="The shaft bends to the skull's curve and the bone punch cuts at the tip." />
           </div>
         </Container>
       </section>
@@ -86,15 +83,23 @@ export default function HomePage() {
           What the instrument does.
       --------------------------------------------------------------- */}
       <Section>
-        <div className="max-w-2xl">
-          <Eyebrow>The instrument</Eyebrow>
-          <Heading className="mt-5">
-            Others cut bone. Others articulate. We do both.
-          </Heading>
-          <Body className="mt-6">
-            Tools that cut bone are rigid and straight. Tools that bend are made
-            for soft tissue. No instrument has done both, until now.
-          </Body>
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
+          <div className="max-w-2xl">
+            <Eyebrow>The instrument</Eyebrow>
+            <Heading className="mt-5">
+              Others cut bone. Others articulate. We do both.
+            </Heading>
+            <Body className="mt-6">
+              Tools that cut bone are rigid and straight. Tools that bend are
+              made for soft tissue. No instrument has done both, until now.
+            </Body>
+          </div>
+
+          <PdfFigure
+            src="/figures/solution-skull.png"
+            alt="Ossentra articulating instrument following the curved endoscopic path beneath the scalp"
+            caption="A steerable instrument for curved osteotomy trajectories."
+          />
         </div>
 
         <div className="mt-14 grid gap-px bg-hairline sm:grid-cols-3">
