@@ -23,6 +23,20 @@ export const nav = [
   { href: "#need", label: "Clinical need" },
   { href: "#status", label: "Roadmap" },
   { href: "#team", label: "Team" },
+  { href: "#news", label: "News" },
+] as const;
+
+/** News and coverage, newest first. Summaries are our own words. */
+export const news = [
+  {
+    date: "September 10, 2026",
+    source: "MDDC Insight to Innovation",
+    logo: "/logos/mddc.png",
+    title: "Ossentra receives an MDDC Discovery Sprint Award",
+    summary:
+      "The Medical Device Development Centre profiled Ossentra after the team, led by Majid Roshanfar and Dr. Dale Podolsky at SickKids, won a $5,000 Discovery Sprint Award for an unmet need in bone cutting for minimally invasive craniosynostosis surgery. The piece describes the reusable articulating handheld instrument developed at PCIGITI and the company's plan for FDA Class II 510(k) clearance.",
+    url: "https://mddc.org/i2i-success/ossentra-precision-was-never-a-straight-line/",
+  },
 ] as const;
 
 

@@ -1,19 +1,12 @@
 import type { Metadata } from "next";
-import { Red_Hat_Display, Red_Hat_Text } from "next/font/google";
+import { Public_Sans } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "./components/site-header";
 import { SiteFooter } from "./components/site-footer";
 
-const display = Red_Hat_Display({
-  variable: "--font-display-face",
+const publicSans = Public_Sans({
+  variable: "--font-public",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-});
-
-const text = Red_Hat_Text({
-  variable: "--font-text-face",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -35,7 +28,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${display.variable} ${text.variable} h-full`}
+      className={`${publicSans.variable} h-full`}
     >
       <body className="min-h-full flex flex-col text-ink">
         <SiteHeader />

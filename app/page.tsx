@@ -27,7 +27,7 @@ import {
   workflow,
 } from "./content/device";
 import { operations, references } from "./content/need";
-import { site } from "./content/site";
+import { news, site } from "./content/site";
 import { accelerators, advisors, institutions, team } from "./content/team";
 
 /* ---------------------------------------------------------------------------
@@ -88,7 +88,11 @@ function Mark({ value }: { value: string }) {
         ~
       </span>
     );
-  return <span className="font-mono font-semibold text-[0.8rem] text-dura">510(k) path</span>;
+  return (
+    <span className="font-mono font-bold text-[0.8rem] text-dura">
+      510(k) path
+    </span>
+  );
 }
 
 function LogoGrid({
@@ -153,7 +157,7 @@ export default function HomePage() {
         <Container className="relative">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center">
             <div>
-              <p className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-dura">
+              <p className="font-mono font-bold text-[0.8rem] uppercase tracking-[0.1em] text-dura">
                 Pediatric skull surgery · SickKids, Toronto
               </p>
               <h1 className="mt-6 font-display text-[2.6rem] font-bold leading-[1.06] tracking-[-0.02em] text-ink text-balance sm:text-[3.4rem] lg:text-[4rem]">
@@ -169,7 +173,9 @@ export default function HomePage() {
                   Why it matters
                 </ButtonLink>
               </div>
-              <StatusNote className="mt-10 max-w-md">{site.regulatoryStatus}</StatusNote>
+              <StatusNote className="mt-10 max-w-md">
+                {site.regulatoryStatus}
+              </StatusNote>
             </div>
 
             <DeviceAnimation caption="The shaft bends to the curve of the skull and the bone punch closes at the tip." />
@@ -182,27 +188,29 @@ export default function HomePage() {
       --------------------------------------------------------------- */}
       <section className="bg-navy py-14 text-white">
         <Container>
-          <p className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-[#9fb6ff]">
+          <p className="font-mono font-bold text-[0.8rem] uppercase tracking-[0.1em] text-[#9fb6ff]">
             Open vs. minimally invasive repair
           </p>
           <dl className="mt-8 grid gap-x-8 gap-y-10 sm:grid-cols-3">
             {specs.map((spec) => (
               <div key={spec.label} className="border-t border-white/25 pt-5">
-                <dt className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-[#c3cdf0]">
+                <dt className="font-mono font-bold text-[0.8rem] uppercase tracking-[0.1em] text-[#e1e7fa]">
                   {spec.label}
                 </dt>
-                <dd className="tnum mt-3 font-display text-[1.25rem] font-semibold leading-[1.3] sm:text-[1.65rem]">
+                <dd className="tnum mt-3 font-display text-[1.25rem] font-bold leading-[1.3] sm:text-[1.65rem]">
                   {spec.value.split(" → ").map((part, i) => (
                     <span key={part}>
                       {i > 0 ? " " : null}
                       <span className="whitespace-nowrap">
-                        {i > 0 ? <span className="text-[#9fb6ff]">→ </span> : null}
+                        {i > 0 ? (
+                          <span className="text-[#9fb6ff]">→ </span>
+                        ) : null}
                         {part}
                       </span>
                     </span>
                   ))}
                 </dd>
-                <dd className="mt-2 text-[0.96rem] leading-[1.55] text-[#c3cdf0]">
+                <dd className="mt-2 text-[0.96rem] leading-[1.55] text-[#e1e7fa]">
                   {spec.note}
                 </dd>
               </div>
@@ -239,7 +247,7 @@ export default function HomePage() {
               <Label>
                 {String(i + 1).padStart(2, "0")} · {c.title}
               </Label>
-              <h3 className="mt-3 font-display text-[1.3rem] font-semibold text-ink">
+              <h3 className="mt-3 font-display text-[1.3rem] font-bold text-ink">
                 {c.metric}
               </h3>
               <Body className="mt-2">{c.body}</Body>
@@ -266,7 +274,7 @@ export default function HomePage() {
         <div className="mt-16 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-center lg:gap-16">
           <div>
             <Label>The end-effector</Label>
-            <h3 className="mt-3 font-display text-[1.6rem] font-semibold leading-[1.2] text-ink">
+            <h3 className="mt-3 font-display text-[1.6rem] font-bold leading-[1.2] text-ink">
               The jaw that cuts is the jaw that shields.
             </h3>
             <Body className="mt-4">
@@ -295,7 +303,7 @@ export default function HomePage() {
           />
           <div className="lg:order-first">
             <Label>Articulation</Label>
-            <h3 className="mt-3 font-display text-[1.6rem] font-semibold leading-[1.2] text-ink">
+            <h3 className="mt-3 font-display text-[1.6rem] font-bold leading-[1.2] text-ink">
               It bends to the skull&apos;s curve.
             </h3>
             <Body className="mt-4">
@@ -313,7 +321,7 @@ export default function HomePage() {
         <div className="mt-20 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
           <div>
             <Label>Workflow</Label>
-            <h3 className="mt-3 font-display text-[1.6rem] font-semibold leading-[1.2] text-ink">
+            <h3 className="mt-3 font-display text-[1.6rem] font-bold leading-[1.2] text-ink">
               One keyhole, and the endoscope surgeons already use.
             </h3>
             <ol className="mt-7 border-t border-ink/80">
@@ -322,10 +330,10 @@ export default function HomePage() {
                   key={w.step}
                   className="grid grid-cols-[2.5rem_9rem_minmax(0,1fr)] items-baseline gap-2 border-b border-hairline py-3.5"
                 >
-                  <span className="tnum font-mono font-semibold text-[0.82rem] text-dura">
+                  <span className="tnum font-mono font-bold text-[0.82rem] text-dura">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="font-medium text-ink">{w.step}</span>
+                  <span className="font-semibold text-ink">{w.step}</span>
                   <span className="text-[0.98rem] text-steel">{w.detail}</span>
                 </li>
               ))}
@@ -376,7 +384,7 @@ export default function HomePage() {
                   {["Test", "Result", "Conditions"].map((h) => (
                     <th
                       key={h}
-                      className="py-3 pr-6 font-mono font-semibold text-[0.8rem] uppercase tracking-[0.09em] text-steel-dim"
+                      className="py-3 pr-6 font-mono font-bold text-[0.8rem] uppercase tracking-[0.09em] text-steel-dim"
                     >
                       {h}
                     </th>
@@ -386,11 +394,15 @@ export default function HomePage() {
               <tbody>
                 {benchResults.map((row) => (
                   <tr key={row.test} className="border-b border-hairline">
-                    <td className="py-4 pr-6 font-medium text-ink">{row.test}</td>
-                    <td className="tnum py-4 pr-6 font-mono font-medium text-[0.98rem] text-dura">
+                    <td className="py-4 pr-6 font-semibold text-ink">
+                      {row.test}
+                    </td>
+                    <td className="tnum py-4 pr-6 font-mono font-semibold text-[0.98rem] text-dura">
                       {row.result}
                     </td>
-                    <td className="py-4 text-[1rem] text-steel">{row.condition}</td>
+                    <td className="py-4 text-[1rem] text-steel">
+                      {row.condition}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -417,7 +429,7 @@ export default function HomePage() {
         <RuledColumns className="mt-12">
           {surgeonFindings.slice(0, 3).map((f) => (
             <RuledCell key={f.title}>
-              <h3 className="font-display text-[1.25rem] font-semibold leading-[1.3] text-ink">
+              <h3 className="font-display text-[1.25rem] font-bold leading-[1.3] text-ink">
                 {f.title}
               </h3>
               <Body className="mt-3">{f.body}</Body>
@@ -427,7 +439,7 @@ export default function HomePage() {
         <RuledColumns cols={2} className="mt-10">
           {surgeonFindings.slice(3).map((f) => (
             <RuledCell key={f.title}>
-              <h3 className="font-display text-[1.25rem] font-semibold leading-[1.3] text-ink">
+              <h3 className="font-display text-[1.25rem] font-bold leading-[1.3] text-ink">
                 {f.title}
               </h3>
               <Body className="mt-3">{f.body}</Body>
@@ -446,11 +458,12 @@ export default function HomePage() {
           title="Two operations, each with a cost to the child."
           intro={
             <>
-              Craniosynostosis is the premature fusion of an infant&apos;s cranial
-              sutures, and it needs surgery to reshape the skull [4]. Open repair
-              gives full control but brings a long scalp incision and transfusion.
-              Endoscopic repair is far smaller, but it is offered mainly to young
-              infants and is followed by months of helmet therapy.
+              Craniosynostosis is the premature fusion of an infant&apos;s
+              cranial sutures, and it needs surgery to reshape the skull [4].
+              Open repair gives full control but brings a long scalp incision
+              and transfusion. Endoscopic repair is far smaller, but it is
+              offered mainly to young infants and is followed by months of
+              helmet therapy.
             </>
           }
         />
@@ -467,7 +480,7 @@ export default function HomePage() {
                 />
               </div>
               <div className="mt-8 border-t border-ink/80 pt-5">
-                <h3 className="font-display text-[1.3rem] font-semibold text-ink">
+                <h3 className="font-display text-[1.3rem] font-bold text-ink">
                   {op.name}{" "}
                   <span className="text-[0.9rem] text-steel-dim">
                     {op.cite}
@@ -490,12 +503,23 @@ export default function HomePage() {
 
         <div className="mt-14 grid gap-6 border-t border-ink/80 pt-8 md:grid-cols-3">
           {[
-            ["Age decides the approach", "Endoscopic repair is offered to young infants. Children who present later go to open surgery."],
-            ["The burden after surgery", "After a strip craniectomy the child wears a helmet for months, or has a second operation to remove a spring."],
-            ["Reach in metopic cases", "Getting a straight tool to the base of a metopic suture through a small incision is hard in a small working space."],
+            [
+              "Age decides the approach",
+              "Endoscopic repair is offered to young infants. Children who present later go to open surgery.",
+            ],
+            [
+              "The burden after surgery",
+              "After a strip craniectomy the child wears a helmet for months, or has a second operation to remove a spring.",
+            ],
+            [
+              "Reach in metopic cases",
+              "Getting a straight tool to the base of a metopic suture through a small incision is hard in a small working space.",
+            ],
           ].map(([h, b]) => (
             <div key={h}>
-              <h3 className="font-display text-[1.1rem] font-semibold text-ink">{h}</h3>
+              <h3 className="font-display text-[1.1rem] font-bold text-ink">
+                {h}
+              </h3>
               <Body className="mt-2">{b}</Body>
             </div>
           ))}
@@ -508,12 +532,12 @@ export default function HomePage() {
       <Section>
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-16">
           <div>
-            <div className="flex items-center gap-4 font-mono font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-dura">
+            <div className="flex items-center gap-4 font-mono font-bold text-[0.8rem] uppercase tracking-[0.1em] text-dura">
               <span>05</span>
               <span>Value proposition</span>
               <span aria-hidden className="h-px flex-1 bg-hairline" />
             </div>
-            <p className="mt-7 font-display text-[1.75rem] font-medium leading-[1.3] tracking-[-0.01em] text-ink sm:text-[2.1rem]">
+            <p className="mt-7 font-display text-[1.75rem] font-semibold leading-[1.3] tracking-[-0.01em] text-ink sm:text-[2.1rem]">
               A cutter whose curve follows the skull, so the{" "}
               <Accent>hand does not have to.</Accent>
             </p>
@@ -524,10 +548,12 @@ export default function HomePage() {
                 key={d.label}
                 className="grid gap-1 border-b border-hairline py-4 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6"
               >
-                <dt className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-ink">
+                <dt className="font-mono font-bold text-[0.8rem] uppercase tracking-[0.1em] text-ink">
                   {d.label}
                 </dt>
-                <dd className="text-[0.98rem] leading-[1.6] text-steel">{d.body}</dd>
+                <dd className="text-[0.98rem] leading-[1.6] text-steel">
+                  {d.body}
+                </dd>
               </div>
             ))}
           </dl>
@@ -549,13 +575,13 @@ export default function HomePage() {
             <caption className="sr-only">Competition at a glance</caption>
             <thead>
               <tr className="border-y border-ink/80">
-                <th className="px-4 py-3.5 font-mono font-semibold text-[0.8rem] uppercase tracking-[0.09em] text-steel-dim">
+                <th className="px-4 py-3.5 font-mono font-bold text-[0.8rem] uppercase tracking-[0.09em] text-steel-dim">
                   Instrument
                 </th>
                 {competitionColumns.map((c) => (
                   <th
                     key={c}
-                    className="px-3 py-3.5 text-center font-mono font-semibold text-[0.8rem] uppercase tracking-[0.08em] text-steel-dim"
+                    className="px-3 py-3.5 text-center font-mono font-bold text-[0.8rem] uppercase tracking-[0.08em] text-steel-dim"
                   >
                     {c}
                   </th>
@@ -573,7 +599,7 @@ export default function HomePage() {
                     <th
                       scope="row"
                       className={`px-4 py-3.5 text-[1rem] ${
-                        ours ? "font-semibold text-ink" : "font-normal text-steel"
+                        ours ? "font-bold text-ink" : "font-normal text-steel"
                       }`}
                     >
                       {row.name}
@@ -607,43 +633,68 @@ export default function HomePage() {
           intro="From a published handheld prototype to a Class II 510(k) submission, de-risked one milestone at a time."
         />
 
-        <ol className="relative mt-14 grid gap-y-10 md:grid-cols-4">
-          <span
-            aria-hidden
-            className="absolute left-0 right-0 top-[7px] hidden h-px bg-ink/80 md:block"
-          />
-          {milestones.map((m) => {
+        {/* Staircase: each stage sits one step higher than the last. */}
+        <ol className="mt-14 grid gap-y-10 md:mt-24 md:grid-cols-4 md:items-start md:gap-y-0">
+          {milestones.map((m, i) => {
             const done = m.status === "complete";
             const active = m.status === "in progress";
+            const reached = done || active;
+            const last = i === milestones.length - 1;
+            const lift =
+              ["md:mt-[10.5rem]", "md:mt-[7rem]", "md:mt-[3.5rem]", "md:mt-0"][
+                i
+              ] ?? "";
             return (
-              <li key={m.when} className="relative md:pr-8">
-                <span
-                  aria-hidden
-                  className={`relative block h-[15px] w-[15px] border-2 ${
-                    done
-                      ? "border-ok bg-ok"
-                      : active
-                        ? "border-dura bg-dura"
-                        : "border-ink/60 bg-white"
-                  }`}
-                />
-                <p
-                  className={`mt-5 font-mono font-semibold text-[0.8rem] uppercase tracking-[0.09em] ${
-                    done ? "text-ok" : active ? "text-dura" : "text-steel-dim"
-                  }`}
-                >
-                  {done ? "Completed" : active ? "We are here" : "Planned"} · {m.when}
-                </p>
-                <h3 className="mt-2 font-display text-[1.25rem] font-semibold text-ink">
-                  {m.title}
-                </h3>
-                <ul className="mt-3 space-y-1.5">
-                  {m.items.map((it) => (
-                    <li key={it} className="text-[1rem] leading-[1.5] text-steel">
-                      {it}
-                    </li>
-                  ))}
-                </ul>
+              <li key={m.when} className={`relative ${lift}`}>
+                <div className="relative">
+                  <span
+                    aria-hidden
+                    className={`block h-[6px] w-full ${reached ? "bg-navy" : "bg-[#c3cbe0]"}`}
+                  />
+                  {!last ? (
+                    <span
+                      aria-hidden
+                      className={`absolute bottom-0 right-0 hidden h-[calc(3.5rem+6px)] w-[6px] md:block ${
+                        done ? "bg-navy" : "bg-[#c3cbe0]"
+                      }`}
+                    />
+                  ) : null}
+                  {active ? (
+                    <span
+                      aria-hidden
+                      className="absolute -top-[9px] left-4 h-6 w-6 rounded-full border-4 border-white bg-dura shadow-[0_0_0_2px_#1f56d8]"
+                    />
+                  ) : null}
+                </div>
+                <div className="md:pr-8 md:pl-4">
+                  <p
+                    className={`mt-5 font-mono text-[0.8rem] font-bold uppercase tracking-[0.1em] ${
+                      done ? "text-ok" : active ? "text-dura" : "text-steel-dim"
+                    }`}
+                  >
+                    {done ? "Completed" : active ? "We are here" : "Planned"}
+                  </p>
+                  <p
+                    className={`mt-1 font-display text-[1.35rem] font-bold ${
+                      active ? "text-dura" : "text-ink"
+                    }`}
+                  >
+                    {m.when}
+                  </p>
+                  <h3 className="mt-1 font-display text-[1.2rem] font-bold text-ink">
+                    {m.title}
+                  </h3>
+                  <ul className="mt-3 space-y-1.5">
+                    {m.items.map((it) => (
+                      <li
+                        key={it}
+                        className="text-[0.98rem] leading-[1.5] text-steel"
+                      >
+                        {it}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </li>
             );
           })}
@@ -657,14 +708,16 @@ export default function HomePage() {
                 key={r.step}
                 className="grid gap-1 border-b border-hairline py-4 sm:grid-cols-[3rem_11rem_8rem_minmax(0,1fr)] sm:items-baseline sm:gap-4"
               >
-                <span className="tnum font-mono font-semibold text-[0.82rem] text-dura">
+                <span className="tnum font-mono font-bold text-[0.82rem] text-dura">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="font-medium text-ink">{r.step}</span>
-                <span className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.08em] text-steel-dim">
+                <span className="font-semibold text-ink">{r.step}</span>
+                <span className="font-mono font-bold text-[0.8rem] uppercase tracking-[0.08em] text-steel-dim">
                   {r.when}
                 </span>
-                <span className="text-[1rem] leading-[1.6] text-steel">{r.detail}</span>
+                <span className="text-[1rem] leading-[1.6] text-steel">
+                  {r.detail}
+                </span>
               </li>
             ))}
           </ol>
@@ -683,7 +736,7 @@ export default function HomePage() {
         <RuledColumns className="mt-12">
           {ipPosition.map((item) => (
             <RuledCell key={item.title}>
-              <h3 className="font-display text-[1.2rem] font-semibold text-ink">
+              <h3 className="font-display text-[1.2rem] font-bold text-ink">
                 {item.title}
               </h3>
               <Body className="mt-3">{item.body}</Body>
@@ -704,7 +757,7 @@ export default function HomePage() {
         <RuledColumns cols={2} className="mt-12">
           {market.map((m) => (
             <RuledCell key={m.value}>
-              <p className="tnum font-display text-[2.6rem] font-semibold leading-none text-navy">
+              <p className="tnum font-display text-[2.6rem] font-bold leading-none text-navy">
                 {m.value}
               </p>
               <Body className="mt-4">{m.label}</Body>
@@ -714,7 +767,7 @@ export default function HomePage() {
         <dl className="mt-10 grid gap-x-8 gap-y-5 border-t border-hairline pt-6 sm:grid-cols-2 lg:grid-cols-4">
           {marketFocus.map((f) => (
             <div key={f.label}>
-              <dt className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.09em] text-steel-dim">
+              <dt className="font-mono font-bold text-[0.8rem] uppercase tracking-[0.09em] text-steel-dim">
                 {f.label}
               </dt>
               <dd className="mt-1 text-[0.98rem] text-ink">{f.value}</dd>
@@ -742,16 +795,18 @@ export default function HomePage() {
                 alt={person.name}
                 className="aspect-[4/5] w-full object-cover object-top"
               />
-              <h3 className="mt-5 font-display text-[1.2rem] font-semibold text-ink">
+              <h3 className="mt-5 font-display text-[1.2rem] font-bold text-ink">
                 {person.name}
                 <span className="ml-2 text-[0.9rem] text-steel-dim">
                   {person.credentials}
                 </span>
               </h3>
-              <p className="mt-1 font-mono font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-dura">
+              <p className="mt-1 font-mono font-bold text-[0.8rem] uppercase tracking-[0.1em] text-dura">
                 {person.role}
               </p>
-              <p className="mt-1 text-[0.95rem] text-steel-dim">{person.affiliation}</p>
+              <p className="mt-1 text-[0.95rem] text-steel-dim">
+                {person.affiliation}
+              </p>
               <Body className="mt-3 text-[0.94rem]">{person.bio}</Body>
             </article>
           ))}
@@ -762,7 +817,7 @@ export default function HomePage() {
           <RuledColumns cols={4} className="mt-5">
             {advisors.map((a) => (
               <RuledCell key={a.name}>
-                <p className="font-medium text-ink">{a.name}</p>
+                <p className="font-semibold text-ink">{a.name}</p>
                 <p className="mt-1 text-[0.98rem] text-steel">{a.role}</p>
               </RuledCell>
             ))}
@@ -771,10 +826,59 @@ export default function HomePage() {
       </Section>
 
       {/* ---------------------------------------------------------------
+          News
+      --------------------------------------------------------------- */}
+      <Section id="news">
+        <SectionHead index="11" label="News" title="In the news." />
+        <ul className="mt-12 border-t border-ink/80">
+          {news.map((n) => (
+            <li
+              key={n.url}
+              className="grid gap-6 border-b border-hairline py-8 md:grid-cols-[11rem_minmax(0,1fr)_auto] md:items-start md:gap-10"
+            >
+              <div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={n.logo} alt={n.source} className="h-14 w-auto" />
+                <p className="mt-4 text-[0.92rem] font-bold text-steel-dim">
+                  {n.date}
+                </p>
+                <p className="text-[0.92rem] text-steel-dim">{n.source}</p>
+              </div>
+              <div>
+                <h3 className="font-display text-[1.45rem] font-bold leading-[1.25] text-ink">
+                  <a
+                    href={n.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-dura"
+                  >
+                    {n.title}
+                  </a>
+                </h3>
+                <Body className="mt-3 max-w-3xl">{n.summary}</Body>
+              </div>
+              <a
+                href={n.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 self-start border border-ink/30 px-5 py-2.5 text-[0.95rem] font-bold text-ink transition-colors hover:border-ink"
+              >
+                Read the article →
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      {/* ---------------------------------------------------------------
           11 Supported by
       --------------------------------------------------------------- */}
-      <Section id="support">
-        <SectionHead index="11" label="Supported by" title="Accelerators, programs and institutions." />
+      <Section id="support" tone="grey">
+        <SectionHead
+          index="12"
+          label="Supported by"
+          title="Accelerators, programs and institutions."
+        />
         <div className="mt-12">
           <Label>Accelerators and programs</Label>
           <div className="mt-4">
@@ -792,15 +896,21 @@ export default function HomePage() {
       {/* ---------------------------------------------------------------
           12 References
       --------------------------------------------------------------- */}
-      <Section id="references" tone="grey">
-        <SectionHead index="12" label="References" title="Published work and patent." />
+      <Section id="references">
+        <SectionHead
+          index="13"
+          label="References"
+          title="Published work and patent."
+        />
         <ol className="mt-10 border-t border-ink/80">
           {references.map((ref, i) => (
             <li
               key={ref}
               className="grid grid-cols-[3rem_minmax(0,1fr)] gap-2 border-b border-hairline py-3.5 text-[1rem] leading-[1.6] text-steel"
             >
-              <span className="tnum font-mono font-semibold text-[0.82rem] text-dura">[{i + 1}]</span>
+              <span className="tnum font-mono font-bold text-[0.82rem] text-dura">
+                [{i + 1}]
+              </span>
               <span>{ref}</span>
             </li>
           ))}
@@ -810,15 +920,18 @@ export default function HomePage() {
       {/* ---------------------------------------------------------------
           Contact
       --------------------------------------------------------------- */}
-      <section id="contact" className="border-t border-hairline bg-bone py-20 sm:py-24">
+      <section
+        id="contact"
+        className="border-t border-hairline bg-bone py-20 sm:py-24"
+      >
         <Container>
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:gap-16">
             <div>
-              <div className="flex items-center gap-4 font-mono font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-dura">
+              <div className="flex items-center gap-4 font-mono font-bold text-[0.8rem] uppercase tracking-[0.1em] text-dura">
                 <span>Contact</span>
                 <span aria-hidden className="h-px flex-1 bg-hairline" />
               </div>
-              <h2 className="mt-7 font-display text-[1.9rem] font-semibold leading-[1.15] text-ink text-balance sm:text-[2.45rem]">
+              <h2 className="mt-7 font-display text-[1.9rem] font-bold leading-[1.15] text-ink text-balance sm:text-[2.45rem]">
                 We want surgeons who&apos;ll tell us it doesn&apos;t work.
               </h2>
               <p className="mt-5 max-w-xl text-[1.06rem] leading-[1.7] text-steel">
@@ -832,7 +945,7 @@ export default function HomePage() {
                   href={site.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border border-ink/30 px-6 py-3 text-[1rem] font-medium text-ink transition-colors hover:border-ink"
+                  className="inline-flex items-center gap-2 border border-ink/30 px-6 py-3 text-[1rem] font-semibold text-ink transition-colors hover:border-ink"
                 >
                   <LinkedInIcon className="h-4 w-4" />
                   Follow on LinkedIn
@@ -842,17 +955,20 @@ export default function HomePage() {
 
             <dl className="self-end border-t border-ink/80">
               <div className="grid gap-1 border-b border-hairline py-4 sm:grid-cols-[8rem_minmax(0,1fr)]">
-                <dt className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.08em] text-steel-dim">
+                <dt className="font-mono font-bold text-[0.8rem] uppercase tracking-[0.08em] text-steel-dim">
                   Email
                 </dt>
                 <dd>
-                  <a href={`mailto:${site.email}`} className="text-ink underline underline-offset-4 hover:text-dura">
+                  <a
+                    href={`mailto:${site.email}`}
+                    className="text-ink underline underline-offset-4 hover:text-dura"
+                  >
                     {site.email}
                   </a>
                 </dd>
               </div>
               <div className="grid gap-1 border-b border-hairline py-4 sm:grid-cols-[8rem_minmax(0,1fr)]">
-                <dt className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.08em] text-steel-dim">
+                <dt className="font-mono font-bold text-[0.8rem] uppercase tracking-[0.08em] text-steel-dim">
                   Location
                 </dt>
                 <dd className="text-ink">
@@ -864,7 +980,7 @@ export default function HomePage() {
                 </dd>
               </div>
               <div className="grid gap-1 border-b border-hairline py-4 sm:grid-cols-[8rem_minmax(0,1fr)]">
-                <dt className="font-mono font-semibold text-[0.8rem] uppercase tracking-[0.08em] text-steel-dim">
+                <dt className="font-mono font-bold text-[0.8rem] uppercase tracking-[0.08em] text-steel-dim">
                   LinkedIn
                 </dt>
                 <dd>

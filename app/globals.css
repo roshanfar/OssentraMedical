@@ -18,9 +18,9 @@
   --color-hairline-strong: #c9d2e1;
 
   /* Text, in the logo's navy */
-  --color-ink: #0b1a4a; /* headings and primary text */
-  --color-steel: #4a5878; /* body text */
-  --color-steel-dim: #7a879f; /* captions */
+  --color-ink: #08133a; /* headings and primary text */
+  --color-steel: #1f2a44; /* body text */
+  --color-steel-dim: #44506b; /* captions */
 
   /* Brand */
   --color-navy: #011477; /* logo navy, used for dark bands */
@@ -34,10 +34,10 @@
   --color-bone-field: #0b1a4a;
   --color-dura-field: #1f56d8;
 
-  --font-display: var(--font-display-face), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-text-face), ui-sans-serif, system-ui, sans-serif;
-  /* Small labels use the text face in caps, not a monospace */
-  --font-mono: var(--font-text-face), ui-sans-serif, system-ui, sans-serif;
+  /* One family throughout: Public Sans, wide and sturdy for legibility */
+  --font-display: var(--font-public), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-public), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-public), ui-sans-serif, system-ui, sans-serif;
 }
 
 /* --------------------------------------------------------------------------
@@ -47,7 +47,7 @@
 /* Global type scale. rem-based utilities scale from the root, so the whole
    site resizes proportionally. */
 html {
-  font-size: 18px;
+  font-size: 19px;
   scroll-behavior: smooth;
 }
 
@@ -56,6 +56,7 @@ body {
   background-color: var(--color-bone);
   color: var(--color-ink);
   font-family: var(--font-serif);
+  font-weight: 500;
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;

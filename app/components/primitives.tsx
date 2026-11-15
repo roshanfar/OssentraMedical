@@ -61,7 +61,7 @@ export function SectionHead({
 }) {
   return (
     <header className={className}>
-      <div className="flex items-center gap-4 font-mono font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-dura">
+      <div className="flex items-center gap-4 font-mono font-bold text-[0.8rem] uppercase tracking-[0.1em] text-dura">
         <span className="tnum">{index}</span>
         <span>{label}</span>
         <span aria-hidden className="h-px flex-1 bg-hairline" />
@@ -92,7 +92,7 @@ export function Label({
 }) {
   return (
     <p
-      className={`font-mono font-semibold text-[0.8rem] uppercase tracking-[0.09em] text-steel-dim ${className}`}
+      className={`font-mono font-bold text-[0.8rem] uppercase tracking-[0.09em] text-steel-dim ${className}`}
     >
       {children}
     </p>
@@ -125,7 +125,7 @@ export function Accent({ children }: { children: ReactNode }) {
 type ButtonVariant = "solid" | "outline";
 
 const buttonBase =
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap border px-6 py-3 text-[1rem] font-medium transition-colors duration-150";
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap border px-6 py-3 text-[1rem] font-semibold transition-colors duration-150";
 
 function buttonClasses(variant: ButtonVariant) {
   return variant === "solid"
