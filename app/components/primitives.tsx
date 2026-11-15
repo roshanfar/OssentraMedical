@@ -15,7 +15,7 @@ export function Container({
   className?: string;
 }) {
   return (
-    <div className={`mx-auto w-full max-w-6xl px-6 sm:px-8 ${className}`}>
+    <div className={`mx-auto w-full max-w-[1140px] px-6 ${className}`}>
       {children}
     </div>
   );
@@ -37,13 +37,11 @@ export function Section({
   className?: string;
   id?: string;
 }) {
-  // Light sections are transparent so the textured ground shows through;
-  // the field register keeps its bold blue block.
-  const ground =
-    register === "field" ? "bg-ink text-bone-field" : "text-ink";
+  // Sections alternate between the two dark grounds.
+  const ground = register === "field" ? "bg-field" : "bg-bone";
 
   return (
-    <section id={id} className={`${ground} py-20 sm:py-28 ${className}`}>
+    <section id={id} className={`${ground} text-ink py-20 sm:py-24 ${className}`}>
       <Container>{children}</Container>
     </section>
   );
@@ -66,10 +64,10 @@ export function Eyebrow({
   register?: Register;
   className?: string;
 }) {
-  const tone = register === "field" ? "text-steel-field" : "text-steel";
+  void register;
   return (
     <p
-      className={`font-mono text-[0.6875rem] font-medium uppercase tracking-[0.18em] ${tone} ${className}`}
+      className={`text-[0.76rem] font-bold uppercase tracking-[0.14em] text-dura ${className}`}
     >
       {children}
     </p>
@@ -90,22 +88,22 @@ export function Heading({
   const Tag = `h${level}` as "h1" | "h2" | "h3";
   const size =
     level === 1
-      ? "text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.04] tracking-[-0.025em]"
+      ? "text-[2.5rem] sm:text-5xl lg:text-[3.6rem] leading-[1.08] tracking-[-0.025em]"
       : level === 2
-        ? "text-3xl sm:text-4xl leading-[1.08] tracking-[-0.02em]"
-        : "text-xl sm:text-2xl leading-[1.15] tracking-[-0.015em]";
-  const tone = register === "field" ? "text-bone-field" : "text-ink";
+        ? "text-3xl sm:text-[2.6rem] leading-[1.13] tracking-[-0.02em]"
+        : "text-xl sm:text-2xl leading-[1.2] tracking-[-0.015em]";
+  void register;
 
   return (
     <Tag
-      className={`font-display font-semibold text-balance ${size} ${tone} ${className}`}
+      className={`font-display font-extrabold text-balance text-ink ${size} ${className}`}
     >
       {children}
     </Tag>
   );
 }
 
-/** Body copy. Serif, because this audience reads journals, not landing pages. */
+/** Body copy, in the muted tone. */
 export function Lead({
   children,
   register = "plate",
@@ -115,9 +113,9 @@ export function Lead({
   register?: Register;
   className?: string;
 }) {
-  const tone = register === "field" ? "text-steel-field" : "text-steel";
+  void register;
   return (
-    <p className={`font-serif text-lg leading-[1.65] text-pretty ${tone} ${className}`}>
+    <p className={`text-lg leading-[1.65] text-pretty text-steel ${className}`}>
       {children}
     </p>
   );
@@ -132,9 +130,9 @@ export function Body({
   register?: Register;
   className?: string;
 }) {
-  const tone = register === "field" ? "text-steel-field" : "text-steel";
+  void register;
   return (
-    <p className={`font-serif text-base leading-[1.7] text-pretty ${tone} ${className}`}>
+    <p className={`text-base leading-[1.7] text-pretty text-steel ${className}`}>
       {children}
     </p>
   );
@@ -144,25 +142,18 @@ export function Body({
    Controls
 --------------------------------------------------------------------------- */
 
-/**
- * Square corners throughout. Surgical instruments are machined, not rounded,
- * and a pill button would be the one thing on this page that came from a
- * different world.
- */
+/** Pill buttons: gradient for the main action, glass for the second. */
 type ButtonVariant = "solid" | "outline";
 
 const buttonBase =
-  "inline-flex items-center justify-center gap-2 px-5 h-11 font-mono text-xs font-medium uppercase tracking-[0.12em] transition-colors";
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border px-[22px] py-3 text-[0.95rem] font-semibold transition duration-200 hover:-translate-y-0.5";
 
 function buttonClasses(variant: ButtonVariant, register: Register) {
+  void register;
   if (variant === "solid") {
-    return register === "field"
-      ? `${buttonBase} bg-bone-field text-ink hover:bg-dura-field`
-      : `${buttonBase} bg-ink text-bone hover:bg-dura`;
+    return `${buttonBase} bg-grad accent-shadow border-transparent text-[#04121a]`;
   }
-  return register === "field"
-    ? `${buttonBase} border border-hairline-field text-bone-field hover:border-bone-field`
-    : `${buttonBase} border border-ink/25 text-ink hover:border-ink`;
+  return `${buttonBase} border-hairline-strong bg-white/[0.04] text-ink hover:bg-white/[0.09]`;
 }
 
 export function ButtonLink({
@@ -253,7 +244,7 @@ export function FigurePlate({
   className?: string;
 }) {
   const rule = register === "field" ? "border-hairline-field" : "border-hairline";
-  const surface = register === "field" ? "bg-ink" : "bg-plate";
+  const surface = "bg-plate";
   const label = register === "field" ? "text-steel-field" : "text-steel";
 
   return (
@@ -290,13 +281,13 @@ export function LabelledRule({
   register?: Register;
   className?: string;
 }) {
-  const rule = register === "field" ? "border-hairline-field" : "border-hairline";
-  const label = register === "field" ? "text-steel-field" : "text-steel";
+  void register;
+  const rule = "border-hairline";
   return (
     <div className={`flex items-center gap-4 ${className}`}>
       {children ? (
         <span
-          className={`font-mono text-[0.6875rem] font-medium uppercase tracking-[0.18em] ${label}`}
+          className={`text-[0.76rem] font-bold uppercase tracking-[0.14em] text-dura`}
         >
           {children}
         </span>
@@ -320,13 +311,36 @@ export function StatusNote({
   register?: Register;
   className?: string;
 }) {
-  const tone = register === "field" ? "text-steel-field" : "text-steel";
-  const rule = register === "field" ? "border-dura-field" : "border-dura";
+  void register;
   return (
     <p
-      className={`border-l-2 ${rule} pl-3 font-mono text-[0.6875rem] leading-[1.6] uppercase tracking-[0.1em] ${tone} ${className}`}
+      className={`border-l-2 border-dura pl-3 text-[0.78rem] leading-[1.6] text-steel ${className}`}
     >
       {children}
     </p>
   );
+}
+
+/** A raised card on the dark ground. */
+export function Card({
+  children,
+  className = "",
+  as: Tag = "article",
+}: {
+  children: ReactNode;
+  className?: string;
+  as?: "article" | "div" | "li";
+}) {
+  return (
+    <Tag
+      className={`rounded-2xl border border-hairline bg-plate p-6 sm:p-7 ${className}`}
+    >
+      {children}
+    </Tag>
+  );
+}
+
+/** Blue-to-teal gradient text, for the phrase a heading turns on. */
+export function Accent({ children }: { children: ReactNode }) {
+  return <span className="text-grad">{children}</span>;
 }

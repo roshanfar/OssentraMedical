@@ -11,21 +11,21 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-hairline bg-bone/90 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-hairline bg-bone/70 backdrop-blur-[14px]">
       <Container>
-        <div className="flex h-16 items-center justify-between gap-6">
+        <div className="flex h-[66px] items-center justify-between gap-6">
           <Link
             href="/"
-            className="flex items-center gap-2.5"
+            className="flex items-center"
             onClick={() => setOpen(false)}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/brand/ossentra-logo.svg"
+              src="/brand/ossentra-logo-dark.svg"
               alt="Ossentra"
-              width={634}
-              height={124}
-              className="h-8 w-auto"
+              width={637}
+              height={127}
+              className="h-7 w-auto"
             />
           </Link>
 
@@ -38,10 +38,8 @@ export function SiteHeader() {
                     <Link
                       href={item.href}
                       aria-current={active ? "page" : undefined}
-                      className={`border-b-2 pb-1 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.16em] transition-colors ${
-                        active
-                          ? "border-dura text-ink"
-                          : "border-transparent text-steel hover:text-ink"
+                      className={`text-[0.9rem] font-medium transition-colors ${
+                        active ? "text-ink" : "text-steel hover:text-ink"
                       }`}
                     >
                       {item.label}
@@ -52,12 +50,27 @@ export function SiteHeader() {
             </ul>
           </nav>
 
+          <div className="hidden items-center gap-3 md:flex">
+            <Link
+              href="/#status"
+              className="rounded-full border border-hairline-strong bg-white/[0.04] px-4 py-2 text-[0.88rem] font-semibold text-ink transition hover:bg-white/[0.09]"
+            >
+              Roadmap
+            </Link>
+            <Link
+              href="/contact"
+              className="bg-grad accent-shadow rounded-full px-4 py-2 text-[0.88rem] font-semibold text-[#04121a] transition hover:-translate-y-0.5"
+            >
+              Get in touch
+            </Link>
+          </div>
+
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-nav"
-            className="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.16em] text-steel md:hidden"
+            className="rounded-full border border-hairline-strong px-4 py-1.5 text-[0.85rem] font-semibold text-ink md:hidden"
           >
             {open ? "Close" : "Menu"}
           </button>
@@ -68,11 +81,11 @@ export function SiteHeader() {
         <nav
           id="mobile-nav"
           aria-label="Primary"
-          className="border-t border-hairline md:hidden"
+          className="border-t border-hairline bg-bone md:hidden"
         >
           <Container>
             <ul className="flex flex-col py-2">
-              {nav.map((item) => {
+              {[...nav, { href: "/#status", label: "Roadmap" }].map((item) => {
                 const active = pathname === item.href;
                 return (
                   <li key={item.href}>
@@ -80,7 +93,7 @@ export function SiteHeader() {
                       href={item.href}
                       onClick={() => setOpen(false)}
                       aria-current={active ? "page" : undefined}
-                      className={`block border-b border-hairline py-3 font-mono text-xs font-medium uppercase tracking-[0.16em] last:border-b-0 ${
+                      className={`block border-b border-hairline py-3 text-[0.95rem] font-medium last:border-b-0 ${
                         active ? "text-dura" : "text-steel"
                       }`}
                     >

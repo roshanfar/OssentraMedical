@@ -8,7 +8,7 @@ import { contactRoutes, type ContactRouteId } from "../content/site";
 import { Button } from "./primitives";
 
 const fieldClasses =
-  "w-full border border-hairline bg-plate px-3 py-2.5 font-serif text-base text-ink placeholder:text-steel/60 focus:border-ink focus:outline-none";
+  "w-full rounded-xl border border-hairline bg-plate px-3.5 py-2.5 font-serif text-base text-ink placeholder:text-steel/60 focus:border-dura focus:outline-none";
 
 const labelClasses =
   "font-mono text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-steel";
@@ -49,7 +49,7 @@ export function EnquiryForm() {
       {/* Who you are decides who reads this, so it is the first thing we ask. */}
       <fieldset>
         <legend className={labelClasses}>Who should read this?</legend>
-        <div className="mt-3 grid gap-px bg-hairline sm:grid-cols-3">
+        <div className="mt-3 grid gap-3 sm:grid-cols-3">
           {contactRoutes.map((option) => {
             const active = option.id === route;
             return (
@@ -58,10 +58,10 @@ export function EnquiryForm() {
                 /* Keep every `bg-*` in one branch — two background utilities on
                    the same element resolve by stylesheet order, not by the
                    order they appear in this string. */
-                className={`cursor-pointer px-4 py-3 font-mono text-[0.6875rem] font-medium uppercase leading-[1.4] tracking-[0.1em] transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-dura ${
+                className={`cursor-pointer rounded-xl border px-4 py-3 font-mono text-[0.6875rem] font-medium uppercase leading-[1.4] tracking-[0.1em] transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-dura ${
                   active
-                    ? "bg-ink text-bone"
-                    : "bg-plate text-steel hover:text-ink"
+                    ? "border-dura/50 bg-dura/10 text-ink"
+                    : "border-hairline bg-plate text-steel hover:text-ink"
                 }`}
               >
                 <input

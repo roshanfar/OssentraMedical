@@ -16,12 +16,12 @@ export function PdfFigure({
 }) {
   return (
     <figure
-      className={`card-shadow overflow-hidden rounded-xl border border-hairline bg-plate ${className}`}
+      className={`card-shadow overflow-hidden rounded-2xl border border-hairline bg-plate ${className}`}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="block h-auto w-full" />
       {caption ? (
-        <figcaption className="border-t border-hairline px-5 py-4 font-serif text-sm leading-[1.6] text-steel">
+        <figcaption className="border-t border-hairline px-5 py-4 text-sm leading-[1.6] text-steel">
           {caption}
         </figcaption>
       ) : null}

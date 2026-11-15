@@ -131,7 +131,7 @@ export const developmentStages = [
     detail: "Stiffness, cutting force, and workspace on CT-derived skull phantoms.",
   },
   {
-    stage: "Surgeon evaluation",
+    stage: "Surgeon evaluation (TIAP study)",
     status: "complete",
     detail: "TIAP study of 10 US surgeons. Half would trial it, and articulation was the feature they valued most.",
   },

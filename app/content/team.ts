@@ -12,7 +12,7 @@ export const team = [
     name: "Majid Roshanfar",
     credentials: "PhD",
     role: "Co-founder & CEO",
-    affiliation: "Postdoctoral fellow, SickKids",
+    affiliation: "Research Associate, SickKids",
     bio: "Surgical-robotics engineer. Eight years making surgery safer with robots. Leads the venture.",
     photo: "/figures/Majid.jpg",
   },

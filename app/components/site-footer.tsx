@@ -1,12 +1,23 @@
 import Link from "next/link";
-import { ecosystem, nav, site } from "../content/site";
+import { ecosystem, site } from "../content/site";
 import { Container } from "./primitives";
+
+const explore = [
+  { href: "/technology", label: "Technology" },
+  { href: "/clinical-need", label: "Clinical need" },
+  { href: "/#status", label: "Development status" },
+  { href: "/team", label: "Team" },
+] as const;
+
+const heading =
+  "text-[0.76rem] font-bold uppercase tracking-[0.14em] text-ink";
+const link = "text-[0.92rem] text-steel transition-colors hover:text-ink";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-hairline-field bg-ink py-14 text-bone-field">
+    <footer className="border-t border-hairline bg-bone pt-16 pb-10 text-ink">
       <Container>
-        <div className="flex flex-col gap-10 md:flex-row md:justify-between">
+        <div className="grid gap-12 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)]">
           <div className="max-w-sm">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -14,54 +25,56 @@ export function SiteFooter() {
               alt={site.name}
               width={637}
               height={127}
-              className="h-8 w-auto"
+              className="h-7 w-auto"
             />
-            <p className="mt-4 font-serif text-sm leading-[1.65] text-steel-field">
+            <p className="mt-5 text-[0.92rem] leading-[1.65] text-steel">
               {site.tagline}. Spun out of {site.origin}.
             </p>
             <a
               href={`mailto:${site.email}`}
-              className="mt-4 inline-block font-mono text-xs tracking-[0.06em] text-dura-field underline underline-offset-4 hover:text-bone-field"
+              className="mt-4 inline-block text-[0.92rem] font-medium text-dura hover:text-ink"
             >
               {site.email}
             </a>
           </div>
 
-          <nav aria-label="Footer">
-            <ul className="flex flex-col gap-3 md:items-end">
-              {nav.map((item) => (
+          <nav aria-label="Explore">
+            <p className={heading}>Explore</p>
+            <ul className="mt-5 flex flex-col gap-3">
+              {explore.map((item) => (
                 <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.16em] text-steel-field transition-colors hover:text-bone-field"
-                  >
+                  <Link href={item.href} className={link}>
                     {item.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
+
+          <nav aria-label="Partnerships">
+            <p className={heading}>Partnerships</p>
+            <ul className="mt-5 flex flex-col gap-3">
+              {ecosystem.map((item) => (
+                <li key={item.name} title={item.detail}>
+                  <Link href="/team" className={link}>
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link href="/contact" className={link}>
+                  Contact us
+                </Link>
+              </li>
+            </ul>
+          </nav>
         </div>
 
-        <ul className="mt-12 flex flex-wrap gap-x-6 gap-y-2 border-t border-hairline-field pt-6">
-          {ecosystem.map((item) => (
-            <li
-              key={item.name}
-              title={item.detail}
-              className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-steel-field"
-            >
-              {item.name}
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-6 border-t border-hairline-field pt-6">
-          <p className="font-mono text-[0.6875rem] uppercase leading-[1.7] tracking-[0.1em] text-steel-field">
-            {site.regulatoryStatus}
+        <div className="mt-14 flex flex-col gap-2 border-t border-hairline pt-6 text-[0.82rem] text-steel-dim sm:flex-row sm:justify-between sm:gap-8">
+          <p className="shrink-0">
+            © {new Date().getFullYear()} {site.name}, Toronto, Canada.
           </p>
-          <p className="mt-3 font-mono text-[0.6875rem] uppercase tracking-[0.1em] text-steel-field">
-            © {new Date().getFullYear()} {site.name}, Toronto, Canada
-          </p>
+          <p className="sm:text-right">{site.regulatoryStatus}</p>
         </div>
       </Container>
     </footer>

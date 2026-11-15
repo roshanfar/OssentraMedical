@@ -99,7 +99,7 @@ export default function TechnologyPage() {
         <div className="overflow-x-auto">
           <table className="w-full min-w-[42rem] border-collapse text-left">
             <thead>
-              <tr className="border-b border-ink">
+              <tr className="border-b border-hairline-strong">
                 <th className="w-40 pb-3 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-steel">
                   Test
                 </th>

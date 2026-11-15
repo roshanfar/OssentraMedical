@@ -37,14 +37,14 @@ export default function TeamPage() {
       <Section>
         <LabelledRule className="mb-12">Founders</LabelledRule>
 
-        <div className="grid gap-px bg-hairline sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2">
           {team.map((person) => (
-            <article key={person.name} className="bg-plate p-6 sm:p-8">
+            <article key={person.name} className="rounded-2xl border border-hairline bg-plate p-6 sm:p-8">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={person.photo}
                 alt={person.name}
-                className="card-shadow h-40 w-40 rounded-full object-cover object-top"
+                className="h-32 w-32 rounded-full border-2 border-dura/40 object-cover object-top"
               />
 
               <h2 className="mt-6 font-display text-xl font-semibold tracking-[-0.015em] text-ink">
@@ -80,9 +80,9 @@ export default function TeamPage() {
           </Heading>
         </div>
 
-        <ol className="mt-14 grid gap-px bg-hairline-field md:grid-cols-4">
+        <ol className="mt-14 grid gap-4 md:grid-cols-4">
           {originStory.map((item, i) => (
-            <li key={item.step} className="bg-ink p-6">
+            <li key={item.step} className="rounded-2xl border border-hairline bg-plate p-6">
               <span className="tnum font-mono text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-dura-field">
                 {String(i + 1).padStart(2, "0")}
               </span>

@@ -1,41 +1,41 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   Ossentra design system
+   Ossentra design system (dark)
 
-   Two registers:
-   PLATE  — white page ground, the light surface.
-   FIELD  — bold SickKids blue, the operative field.
-
-   One accent: `dura`, an azure blue distinct from the navy ink, carried with a
-   soft blue shadow. Used for the one idea — the thing that must not be cut.
+   Near-black navy ground in two depths (`bone` and `field`), raised `plate`
+   cards with hairline borders, and one blue-to-teal gradient for emphasis.
 --------------------------------------------------------------------------- */
 
 @theme {
-  /* Plate register — clean white */
-  --color-bone: #ffffff; /* page ground / light-on-dark */
-  --color-plate: #ffffff; /* raised cards */
-  --color-bonefill: #d5e3f2;
-  --color-scalp: #cbdcec;
-  --color-hairline: #d6e3f1; /* rules on light */
+  /* Ground — near-black navy, alternating between two depths */
+  --color-bone: #0a0d14; /* page ground */
+  --color-field: #0e121c; /* alternate section ground */
+  --color-plate: #121723; /* raised cards */
+  --color-bonefill: #171e2c; /* cards on cards */
+  --color-scalp: #171e2c;
+  --color-hairline: rgba(255, 255, 255, 0.08); /* rules */
+  --color-hairline-strong: rgba(255, 255, 255, 0.15);
 
-  /* Ink — the SickKids blue, carrying text and the bold FIELD blocks */
-  --color-ink: #023e7d; /* primary ink, and the FIELD ground */
-  --color-navy: #0466c8; /* brighter brand blue, for the mark & links */
-  --color-steel: #45617d; /* secondary text */
+  /* Text */
+  --color-ink: #eaf0f8; /* primary text */
+  --color-steel: #9aa8bd; /* secondary text */
+  --color-steel-dim: #6d7b90;
 
-  /* Field register — set on the bold blue ground */
-  --color-hairline-field: #1a5296;
-  --color-steel-field: #9cc0e4;
-  --color-bone-field: #eaf3fd;
+  /* Brand gradient: blue to teal */
+  --color-navy: #3b82f6;
+  --color-dura: #06d6c6;
+  --color-ok: #22c55e;
 
-  /* The one accent — azure, replacing the old red */
-  --color-dura: #0aa2dc;
-  --color-dura-field: #7fd4f5; /* legible on blue */
+  /* Legacy "field" names, kept so older markup reads correctly on dark */
+  --color-hairline-field: rgba(255, 255, 255, 0.1);
+  --color-steel-field: #9aa8bd;
+  --color-bone-field: #eaf0f8;
+  --color-dura-field: #06d6c6;
 
-  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-source-serif), ui-serif, Georgia, serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 /* --------------------------------------------------------------------------
@@ -45,7 +45,8 @@
 /* Global type scale. rem-based utilities scale from the root, so the whole
    site resizes proportionally. */
 html {
-  font-size: 18.48px;
+  font-size: 17px;
+  scroll-behavior: smooth;
 }
 
 /* Flat white ground. */
@@ -53,12 +54,18 @@ body {
   background-color: var(--color-bone);
   color: var(--color-ink);
   font-family: var(--font-serif);
+  line-height: 1.6;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
   background-color: var(--color-dura);
-  color: #ffffff;
+  color: #04121a;
+}
+
+section[id] {
+  scroll-margin-top: 82px;
 }
 
 :focus-visible {
@@ -71,12 +78,52 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* The one accent, carried with a soft azure shadow. */
-.accent-shadow {
-  box-shadow: 0 6px 22px rgba(10, 162, 220, 0.28);
+/* Blue-to-teal gradient, as fill and as text. */
+.bg-grad {
+  background-image: linear-gradient(120deg, #3b82f6, #06d6c6);
+}
+.text-grad {
+  background-image: linear-gradient(120deg, #3b82f6, #06d6c6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-/* Cards lift off the white with a soft blue-tinted shadow. */
+.accent-shadow {
+  box-shadow: 0 8px 30px rgba(6, 214, 198, 0.24);
+}
+.accent-shadow:hover {
+  box-shadow: 0 12px 38px rgba(6, 214, 198, 0.36);
+}
+
+/* Cards lift off the dark ground with a deep, soft shadow. */
 .card-shadow {
-  box-shadow: 0 2px 10px rgba(2, 62, 125, 0.06), 0 12px 32px rgba(2, 62, 125, 0.07);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* Faint drafting grid behind the hero. */
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at 60% 40%, #000 30%, transparent 75%);
+}
+
+/* Travelling dots along the hero curves. */
+@keyframes dash-travel {
+  to {
+    stroke-dashoffset: -240;
+  }
+}
+.dash-travel {
+  animation: dash-travel 9s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .dash-travel {
+    animation: none;
+  }
 }

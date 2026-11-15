@@ -36,7 +36,7 @@ export default function ClinicalNeedPage() {
 
       {/* --- The numbers --- */}
       <div className="border-b border-hairline py-12">
-        <div className="mx-auto w-full max-w-6xl px-6 sm:px-8">
+        <div className="mx-auto w-full max-w-[1140px] px-6">
           <dl className="grid gap-x-8 gap-y-8 sm:grid-cols-3">
             {epidemiology.map((fact) => (
               <div key={fact.label} className="border-t border-hairline pt-4">
@@ -110,10 +110,10 @@ export default function ClinicalNeedPage() {
           </Heading>
         </div>
 
-        <dl className="mt-12 grid gap-px bg-hairline-field md:grid-cols-3">
+        <dl className="mt-12 grid gap-4 md:grid-cols-3">
           {clinicalImpact.map((item) => (
-            <div key={item.value} className="bg-ink p-6 sm:p-7">
-              <dd className="tnum font-display text-3xl font-semibold tracking-[-0.02em] text-bone-field">
+            <div key={item.value} className="rounded-2xl border border-hairline bg-plate p-6 sm:p-7">
+              <dd className="tnum text-grad font-display text-3xl font-extrabold tracking-[-0.02em]">
                 {item.value}
               </dd>
               <dt className="mt-3 font-serif text-[0.9375rem] leading-[1.55] text-steel-field">

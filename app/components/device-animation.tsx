@@ -34,7 +34,7 @@ export function DeviceAnimation({
 
   return (
     <figure
-      className={`card-shadow overflow-hidden rounded-xl border border-hairline bg-[#1b1b1b] ${className}`}
+      className={`card-shadow overflow-hidden rounded-2xl border border-hairline bg-[#1b1b1b] ${className}`}
     >
       <video
         ref={ref}
@@ -52,7 +52,7 @@ export function DeviceAnimation({
         <source src="/media/ossentra-cutting-loop.mp4" type="video/mp4" />
       </video>
       {caption ? (
-        <figcaption className="border-t border-hairline bg-plate px-5 py-4 font-serif text-sm leading-[1.6] text-steel">
+        <figcaption className="border-t border-hairline bg-plate px-5 py-4 text-sm leading-[1.6] text-steel">
           {caption}
         </figcaption>
       ) : null}
